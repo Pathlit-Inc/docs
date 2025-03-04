@@ -1,22 +1,24 @@
 ---
-title: 'Video Input Node'
-description: 'Download transcript from a given video URL'
+title: "Video Input Node"
+description: "Download transcript from a given video URL"
 ---
 
 ## Overview
+
 The Video Input Node is an essential component of the Pathlit workflow builder that allows users to download transcripts from videos hosted on platforms like YouTube. By providing a video URL, this node extracts not only the transcript but also additional information such as the video title and description. This makes it easier to incorporate video content into your workflows for analysis, reporting, or content generation.
 
 ## Configuration Parameters
 
 To set up the Video Input Node, you need to configure the following parameters:
 
-* **URL**:
+- **URL**:
 
-    The URL of the video from which you want to extract the transcript.
+  The URL of the video from which you want to extract the transcript.
 
-    Example value: `https://www.youtube.com/watch?v=kCc8FmEb1nY`
+  Example value: `https://www.youtube.com/watch?v=kCc8FmEb1nY`
 
 ## Expected Inputs and Outputs
+
 - **Inputs**:
 
   This node does not require any inputs from other nodes in the workflow.
@@ -32,33 +34,36 @@ To set up the Video Input Node, you need to configure the following parameters:
   - **Transcript**: The extracted text from the video transcript.
 
 ## Use Case Examples
+
 1. **Content Creation**:
 
-    If you are creating articles or blog posts based on video content, you can use the Video Input Node to extract transcripts. This allows you to easily reference spoken content without needing to watch the entire video.
+   If you are creating articles or blog posts based on video content, you can use the Video Input Node to extract transcripts. This allows you to easily reference spoken content without needing to watch the entire video.
 
 2. **Video Analysis**:
 
-    For educators or analysts, extracting transcripts can help in evaluating the content of educational videos or presentations. You can analyze the text for key themes, frequency of terms, or other metrics.
+   For educators or analysts, extracting transcripts can help in evaluating the content of educational videos or presentations. You can analyze the text for key themes, frequency of terms, or other metrics.
 
 ## Error Handling and Troubleshooting
+
 - **Video URL Issues**:
 
-    If the provided video URL is incorrect or the video is unavailable, you may encounter errors when trying to extract the transcript. Double-check the URL for accuracy.
+  If the provided video URL is incorrect or the video is unavailable, you may encounter errors when trying to extract the transcript. Double-check the URL for accuracy.
 
 If you encounter any issues with the Video Input Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
 
 ## Relevant Nodes
+
 <CardGroup>
   <Card
     title="Web Extract Node"
-    href="/pathways/web-extract"
+    href="/docs/pathways/web-extract"
   >
     Extract content from a specified webpage
   </Card>
 
   <Card
     title="Gmail Send Node"
-    href="/pathways/gmail-send"
+    href="/docs/pathways/gmail-send"
   >
     Send emails directly from your workflow
   </Card>

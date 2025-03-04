@@ -1,6 +1,6 @@
 ---
-title: 'Embedding Search Node'
-description: 'Search for similar data chunks using embeddings'
+title: "Embedding Search Node"
+description: "Search for similar data chunks using embeddings"
 ---
 
 ## Overview
@@ -13,45 +13,45 @@ This node connects to a specified knowledge base and retrieves the most relevant
 
 To configure the Embedding Search Node, you need to set up the following parameters:
 
-* **Knowledge Base**
+- **Knowledge Base**
   Provide the context to the search by selecting a knowledge base. If you haven't created one yet, you can do so by navigating to the Knowledge Base page.
 
-* **Search String**
+- **Search String**
   The query string used for embedding search.
   Example: "What are the benefits of AI?"
 
-* **Include Document Metadata for Citations**
+- **Include Document Metadata for Citations**
   A checkbox option to include XML formatted metadata for citations in the output.
 
 ### Advanced Settings
 
-* **\[VectorDB] Search Type**
+- **\[VectorDB] Search Type**
   Choose the search type for the retriever. Options include "Similarity" and "MMR".
 
-* **\[VectorDB] Retrieve Top-N Chunks**
+- **\[VectorDB] Retrieve Top-N Chunks**
   Specify the number of most similar data chunks to extract. Range: 0 to 100.
 
-* **\[VectorDB] Similarity Score Threshold**
+- **\[VectorDB] Similarity Score Threshold**
   Set a minimal score threshold for the results. Range: 0.0 to 1.0.
 
-* **\[Reranker] Rerank Model**
+- **\[Reranker] Rerank Model**
   Select the reranker model. Options include "Cohere Rerank-v3.5", "Cohere Rerank-English-v3.0", and "Cohere Rerank-Multilingual-v3.0".
 
-* **\[Reranker] Return Top-N Chunks**
+- **\[Reranker] Return Top-N Chunks**
   Specify the number of chunks the reranker returns. Range: 0 to 100.
 
-* **\[Advanced RAG] Max Continuation Radius**
+- **\[Advanced RAG] Max Continuation Radius**
   Define the maximum number of neighboring continuation chunks to add to the returned chunks. Range: 0 to 20.
 
 ## Expected Inputs and Outputs
 
-* **Inputs**:
+- **Inputs**:
 
-  * This node expects input data in the form of a query string to perform the search.
+  - This node expects input data in the form of a query string to perform the search.
 
-* **Outputs**:
+- **Outputs**:
 
-  * The output is a string containing the retrieved data chunks based on the search query. If the metadata option is enabled, the output will include formatted citations.
+  - The output is a string containing the retrieved data chunks based on the search query. If the metadata option is enabled, the output will include formatted citations.
 
 ## Use Case Examples
 
@@ -69,7 +69,7 @@ To configure the Embedding Search Node, you need to set up the following paramet
 
 ## Error Handling and Troubleshooting
 
-* **Missing Knowledge Base**
+- **Missing Knowledge Base**
   If you encounter an error stating "A knowledge base must be selected," ensure that you have selected a knowledge base from the dropdown menu.
 
 If you experience any other issues with the Embedding Search Node not covered here, please contact our [support team](mailto:dev@pathlit.ai) for further assistance.
@@ -77,11 +77,11 @@ If you experience any other issues with the Embedding Search Node not covered he
 ## Related Nodes
 
 <CardGroup>
-  <Card title="Document Data Node" href="/pathways/document-data">
+  <Card title="Document Data Node" href="/docs/pathways/document-data">
     Extract and manage data from various document types
   </Card>
 
-  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+  <Card title="Google Drive Input Node" href="/docs/pathways/google-drive-input">
     Import files from Google Drive into your workflow
   </Card>
 </CardGroup>
