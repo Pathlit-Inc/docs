@@ -1,0 +1,116 @@
+---
+title: 'Bitbucket Event Receive Node'
+description: 'Trigger a workflow when specific Bitbucket events occur'
+---
+
+## Overview
+The Bitbucket Event Receive Node enables you to trigger workflows based on specified events occurring within your Bitbucket workspace. This node listens for events such as pull request creation, repository pushes, and more, allowing you to automate processes and respond to repository activities instantly.
+
+## Configuration Parameters
+
+To configure the Bitbucket Event Receive Node, you'll need to authenticate with your Bitbucket account. After authentication, configure the following parameters:
+
+* **Workspace Name**:
+
+    Specify the name of the Bitbucket workspace you want the node to monitor for events.
+
+* **Events**:
+
+    Select one or more Bitbucket events that will trigger the workflow. Supported events include:
+
+    - Pull Request Created
+    - Pull Request Updated
+    - Pull Request Approved
+    - Pull Request Merged
+    - Repository Push
+    - Repository Fork
+    - Repository Updated
+
+    Choose the events relevant to your automation scenario.
+
+## Trigger Testing Inputs
+
+Workflows containing the Bitbucket Event Receive Node will only trigger when the workflow is saved and **deployed**. To test the workflow manually within the editor, click the **Run Workflow** button. A side panel will appear, allowing you to input test values:
+
+* **Test Event Type**:
+
+    Specify the type of event to simulate during testing (e.g., `pullrequest:created`).
+
+* **Test Payload JSON**:
+
+    Provide a mock JSON payload representing the event data for testing purposes.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+    - This node does not require input from other nodes.
+
+- **Outputs**:
+
+    The node provides the following outputs upon receiving a configured Bitbucket event:
+
+    - **event_type**: The type of Bitbucket event that occurred (e.g., `pullrequest:created`).
+    - **payload_json**: The complete JSON payload of the event, containing detailed event data.
+
+## Use Case Examples
+
+1. **Continuous Integration (CI) Automation**:
+
+    Trigger automated builds and tests whenever new code is pushed or a pull request is created. Integrate with CI/CD pipelines to streamline your development process.
+
+2. **Code Review Notifications**:
+
+    Automatically notify team members via Slack or email when a new pull request is created or updated, ensuring timely reviews and collaboration.
+
+3. **Repository Activity Logging**:
+
+    Maintain logs or databases of repository activities such as pushes, merges, and forks for auditing and analytics purposes.
+
+4. **Automated Issue Tracking**:
+
+    Automatically create or update Jira issues or other project management tasks based on repository events, improving project tracking efficiency.
+
+## Error Handling and Troubleshooting
+
+- **Workflow Not Triggered by Bitbucket Events**:
+
+    Ensure your workflow is saved, deployed, and that the correct workspace and events are configured. Verify your Bitbucket account integration is active and authorized.
+
+- **Incorrect Event Payload or Type**:
+
+    If you encounter unexpected behavior or incorrect event data, check the provided test payload JSON and event type during testing. Ensure the JSON structure matches Bitbucket's event payload documentation.
+
+If you encounter any issues with the Bitbucket Event Receive Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card
+    title="Jira Issue Output Node"
+    href="/pathways/jira-issue-output"
+  >
+    Automate creation or updating of Jira issues based on Bitbucket events
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/pathways/slack-message-send"
+  >
+    Send notifications to Slack channels when Bitbucket events occur
+  </Card>
+
+  <Card
+    title="Bitbucket PR Input Node"
+    href="/pathways/bitbucket-pr-input"
+  >
+    Fetch detailed pull request information from Bitbucket
+  </Card>
+
+  <Card
+    title="Workflow Invocation Node"
+    href="/pathways/workflow-invocation"
+  >
+    Trigger additional workflows based on Bitbucket event outcomes
+  </Card>
+</CardGroup>
