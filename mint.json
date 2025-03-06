@@ -1,20 +1,43 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Pathlit",
-  "logo": { "dark": "/logo/logo.svg", "light": "/logo/logo-long.svg" },
+  "logo": {
+    "dark": "/logo/logo.svg",
+    "light": "/logo/logo-long.svg"
+  },
   "favicon": "/logo/logo.svg",
   "colors": {
     "primary": "#1A2024",
     "light": "#FFFFFF",
     "dark": "#1A2024",
-    "anchors": { "from": "#475C6D", "to": "#475C6D" }
+    "anchors": {
+      "from": "#475C6D",
+      "to": "#475C6D"
+    }
   },
-  "modeToggle": { "default": "light", "isHidden": false },
-  "topbarLinks": [{ "name": "Sign In", "url": "https://pathlit.com/" }],
-  "topbarCtaButton": { "name": "Get Started", "url": "https://pathlit.com" },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": false
+  },
+  "topbarLinks": [
+    {
+      "name": "Sign In",
+      "url": "https://pathlit.com/"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://pathlit.com"
+  },
   "tabs": [
-    { "name": "Documentation", "url": "docs" },
-    { "name": "Changelog", "url": "docs/changelog" }
+    {
+      "name": "Documentation",
+      "url": "docs"
+    },
+    {
+      "name": "Changelog",
+      "url": "docs/changelog"
+    }
   ],
   "navigation": [
     {
@@ -56,6 +79,7 @@
         "docs/pathways/slack-message-send",
         "docs/pathways/slack-trigger",
         "docs/pathways/sticky-note",
+        "docs/pathways/structured-output-node",
         "docs/pathways/summarizer",
         "docs/pathways/text-variable",
         "docs/pathways/text2image",
@@ -66,7 +90,12 @@
         "docs/pathways/workflow-invocation"
       ]
     },
-    { "group": "Changelog", "pages": ["docs/changelog/overview"] }
+    {
+      "group": "Changelog",
+      "pages": [
+        "docs/changelog/overview"
+      ]
+    }
   ],
   "footerSocials": {
     "x": "https://x.com/pathlit_ai",

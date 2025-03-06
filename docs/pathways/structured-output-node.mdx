@@ -1,0 +1,185 @@
+---
+title: 'Structured Output Node'
+description: 'Generate structured outputs from unstructured text using defined schemas'
+---
+
+## Overview
+
+The Structured Output Node in Pathlit enables you to transform unstructured textual data into structured outputs based on predefined schemas. This node leverages advanced language models to accurately parse and structure information, making it ideal for extracting structured data from free-form text, emails, documents, or any unstructured content.
+
+## Configuration Parameters
+
+To configure the Structured Output Node, you must specify the following parameters:
+
+* **Model**:
+
+    Select the language model used for structuring the output. Choose a model based on your desired accuracy and cost efficiency.
+
+    <Tip>
+    Use smaller models (e.g., GPT-3.5 Turbo, Llama 3.1 7B) for simpler text extraction tasks and larger, more capable models (e.g., GPT-4, Claude 3.5) for complex structuring tasks.
+    </Tip>
+
+* **Schema Definition**:
+
+    Define the schema that the structured output should follow. The schema must clearly specify the fields you expect the model to extract or generate from the input text.
+
+    Example schema:
+
+    ```json
+    {
+      "name": "string",
+      "email": "string",
+      "phone_number": "string",
+      "company": "string"
+    }
+    ```
+
+* **Prompt**:
+
+    Provide a prompt instructing the model on how to extract and structure the data. This prompt will guide the model's behavior and improve accuracy.
+
+    Example prompt:
+
+    ```
+    Extract the contact details from the following email:
+    [Insert email content here]
+    ```
+
+### Advanced Settings
+
+You can access the advanced settings panel by clicking the settings button located at the top-right corner of the node. The following configurations are available:
+
+* **System Prompt**:
+
+    A system-level instruction that guides the model in structuring the output. The default system prompt is optimized to guide the model effectively. Modify this carefully, as it significantly affects the model's behavior.
+
+* **Temperature**:
+
+    Adjusts the randomness of the model's output. Lower values produce more deterministic results, while higher values encourage variety.
+
+* **Top-P**:
+
+    Controls the diversity of the model's output by limiting the probability distribution of possible outputs.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+    - This node requires unstructured textual input data from another node in your workflow.
+
+- **Outputs**:
+
+    The node outputs structured data according to the schema you defined. Each field defined in the schema becomes an output port, containing the corresponding extracted data.
+
+## Use Case Examples
+
+1. **Email Data Extraction**:
+
+    Automatically extract structured information (names, phone numbers, addresses) from incoming emails for CRM integration or customer support automation.
+
+2. **Resume Parsing**:
+
+    Convert resumes or CV documents into structured candidate profiles, capturing key details like education, skills, and work experience.
+
+3. **Invoice Processing**:
+
+    Extract structured financial data from invoices and receipts, facilitating automated bookkeeping and financial reporting.
+
+4. **Survey Response Structuring**:
+
+    Parse survey responses or feedback forms to create structured datasets for analysis and reporting.
+
+## Error Handling and Troubleshooting
+
+- **Incorrect or Missing Structured Data**:
+
+    If the output does not match your schema, verify that your prompt and schema definitions are clear and aligned. Adjusting the prompt or using a more capable model can significantly improve accuracy.
+
+- **Unexpected Outputs**:
+
+    If the model produces unexpected results, consider adjusting the temperature and top-p settings to make the output more deterministic.
+
+If you encounter issues not covered here, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+
+  <Card
+    title="Language Model Node"
+    href="/docs/pathways/llm"
+  >
+    Generate text based on prompts and options
+  </Card>
+
+  <Card
+    title="Summarizer Node"
+    href="/docs/pathways/summarizer"
+  >
+    Summarize long-form text into concise summaries
+  </Card>
+
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+</CardGroup>
+
+## Use Case Examples
+
+1. **Customer Support Automation**:
+
+    Use the Structured Output Node to parse customer emails and automatically create structured support tickets, reducing manual data entry.
+
+2. **Market Research**:
+
+    Extract structured insights from survey responses or customer feedback, enabling easy analysis and reporting.
+
+3. **Financial Data Extraction**:
+
+    Automatically parse financial statements, invoices, or receipts into structured data for accounting and bookkeeping workflows.
+
+## Error Handling and Troubleshooting
+
+- **Schema Validation Errors**:
+
+    If your structured output does not match the expected schema, double-check the schema definition for accuracy and completeness.
+
+- **Model Selection**:
+
+    If extraction accuracy is insufficient, try using a different model or refining your prompt to better guide the model.
+
+For further assistance or unresolved issues, contact our [support team](mailto:dev@pathlit.ai).
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+
+  <Card
+    title="Summarizer Node"
+    href="/docs/pathways/summarizer"
+  >
+    Summarize text into concise summaries
+  </Card>
+
+  <Card
+    title="Language Model Node"
+    href="/docs/pathways/llm"
+  >
+    Generate text based on prompts and options
+  </Card>
+</CardGroup>
