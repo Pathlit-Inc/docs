@@ -63,6 +63,7 @@
         "docs/pathways/gmail-send",
         "docs/pathways/global-variable",
         "docs/pathways/google-drive-input",
+        "docs/pathways/google-search",
         "docs/pathways/input",
         "docs/pathways/jira-issue-input",
         "docs/pathways/jira-issue-output",
@@ -92,9 +93,7 @@
     },
     {
       "group": "Changelog",
-      "pages": [
-        "docs/changelog/overview"
-      ]
+      "pages": ["docs/changelog/overview"]
     }
   ],
   "footerSocials": {
