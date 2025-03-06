@@ -54,6 +54,7 @@
         "docs/pathways/airtable-in",
         "docs/pathways/airtable-out",
         "docs/pathways/audio-transcribe",
+        "docs/pathways/bitbucket-agent-node",
         "docs/pathways/bitbucket-event-receive-node",
         "docs/pathways/bitbucket-pr-input",
         "docs/pathways/code",
