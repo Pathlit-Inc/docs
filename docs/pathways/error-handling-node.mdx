@@ -1,0 +1,84 @@
+---
+title: 'Error Handling Node'
+description: 'Handle and manage errors within workflows effectively'
+---
+
+## Overview
+The Error Handling Node is a crucial component in the Pathlit workflow builder designed to manage and respond to errors that occur during workflow execution. This node provides a systematic way to capture errors, enabling you to implement custom error handling strategies and maintain workflow stability.
+
+## Configuration Parameters
+
+To set up the Error Handling Node, you need to configure the following parameters:
+
+* **Error Type**:
+
+    Specify the type of error you want the node to handle. This could be a specific exception or a general error category.
+
+* **Error Message**:
+
+    Define a custom error message that will be logged or used in subsequent nodes. This message helps in identifying the error context and can be used for debugging purposes.
+
+* **Retry Logic**:
+
+    Configure the retry logic to determine how the node should attempt to resolve the error. This includes setting the number of retries and the delay between attempts.
+
+    <Tip>
+    Use a backoff strategy to gradually increase the delay between retries for better error recovery.
+    </Tip>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts an error object or message from other nodes in the workflow. This input is used to trigger the error handling logic.
+
+- **Outputs**:
+
+  - The node outputs a status indicating whether the error was resolved or if further action is required. It can also output any modified data or error messages for logging.
+
+## Use Case Examples
+1. **API Call Failures**:
+
+    Use the Error Handling Node to manage errors from failed API calls. The node can retry the call or log the error for further investigation.
+
+2. **Data Validation Errors**:
+
+    If a workflow involves data processing, the node can handle validation errors by either correcting the data or notifying the user of the issue.
+
+3. **Notification System**:
+
+    Set up alerts for critical errors. The node can send notifications via email or messaging platforms to inform stakeholders of the issue.
+
+## Error Handling and Troubleshooting
+- **Unresolved Errors**:
+
+    If the node cannot resolve an error after the specified retries, it will output a failure status. Ensure that the error handling logic is comprehensive and covers all potential error scenarios.
+
+- **Logging**:
+
+    Use the node's logging capabilities to keep track of errors and their resolutions. This helps in identifying patterns and improving future error handling strategies.
+
+If you encounter any issues with the Error Handling Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Logger Node"
+    href="/docs/pathways/logger"
+  >
+    Capture and store logs for workflow events and errors
+  </Card>
+
+  <Card
+    title="Retry Node"
+    href="/docs/pathways/retry"
+  >
+    Implement retry logic for failed workflow steps
+  </Card>
+
+  <Card
+    title="Notification Node"
+    href="/docs/pathways/notification"
+  >
+    Send alerts and notifications based on workflow events
+  </Card>
+</CardGroup>
