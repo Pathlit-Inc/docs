@@ -1,89 +1,91 @@
 ---
 title: 'Global Variable Node'
-description: 'Store and retrieve global variables within your workflow'
+description: 'Manage and utilize global variables within your workflow'
 ---
 
 ## Overview
-
-The Global Variable Node allows you to define, store, and retrieve global variables within your Pathlit workflows. This node provides an easy and efficient way to manage variables that need to be accessible across different parts of your workflow, enabling more dynamic and flexible automation scenarios.
+The Global Variable Node is a powerful feature in the Pathlit workflow builder that allows you to manage and utilize global variables across different nodes within your workflow. This node is ideal for scenarios where you need to store and access data that is shared across multiple nodes, enabling more cohesive and efficient workflow designs.
 
 ## Configuration Parameters
 
-The Global Variable Node requires minimal setup. You can configure the following parameters directly within the node:
+To set up the Global Variable Node, you need to configure the following parameters:
 
-- **Variable Name**:
+* **Variable Name**:
 
-  The name of the global variable you wish to store or retrieve. This name is used as a key to identify the variable across the workflow.
+    The name of the global variable you wish to create or access. This name should be unique within the workflow to avoid conflicts.
 
-- **Default Value**:
+* **Initial Value**:
 
-  The default value assigned to the global variable. This value is used if no other value has been set during workflow execution.
+    The initial value of the global variable. This value can be of any data type supported by Pathlit, such as strings, numbers, or objects.
+
+<Note>
+Ensure that the variable name is descriptive to make it easier to understand its purpose within the workflow.
+</Note>
+
+## Usage
+
+The Global Variable Node can be used in various parts of the workflow to store, modify, and retrieve global data. This is particularly useful in scenarios where multiple nodes need to access and update shared information.
 
 ## Expected Inputs and Outputs
-
 - **Inputs**:
 
-  - When retrieving a variable, this node does not require any inputs.
-  - When storing a variable, the input should be the value you want to save globally.
+  - This node does not require specific inputs from other nodes. It operates independently to manage global variables.
 
 - **Outputs**:
 
-  - The node outputs the current value of the global variable.
+  - The node outputs the current value of the global variable, which can be accessed by other nodes in the workflow.
 
 ## Use Case Examples
+1. **Configuration Management**:
 
-1. **Workflow Settings and Configurations**
+    Use the Global Variable Node to store configuration settings that need to be accessed by multiple nodes. This ensures consistency and simplifies updates across the workflow.
 
-   Store workflow-wide settings such as API keys, configuration flags, or environment-specific variables. This allows easy access and modification without needing to update each node individually.
+2. **State Management**:
 
-2. **Session Management**
+    For workflows that require maintaining state information, such as counters or flags, the Global Variable Node can be used to store and update these values as the workflow progresses.
 
-   Maintain stateful variables across multiple workflow executions, such as user sessions or counters, enabling more complex logic and state management.
+3. **Data Sharing**:
 
-3. **Conditional Logic**
-
-   Use global variables to control conditional branching in your workflow, allowing dynamic execution paths based on stored values.
+    When different parts of the workflow need to share data, such as user preferences or session information, the Global Variable Node provides a centralized way to manage this data.
 
 ## Error Handling and Troubleshooting
+- **Variable Conflicts**:
 
-- **Variable Not Found**:
+    If you encounter issues with variable names conflicting, ensure that each global variable has a unique name within the workflow.
 
-  If the node attempts to retrieve a variable that hasn't been set, it will return the default value configured. Ensure that a sensible default is provided to prevent unexpected behavior.
+- **Data Type Mismatch**:
 
-- **Variable Overwrite**
+    Ensure that the initial value and any updates to the global variable are consistent with the expected data type to avoid runtime errors.
 
-  If multiple nodes attempt to set the same global variable simultaneously, the last executed node's value will overwrite previous values. Plan your workflow accordingly to avoid unintended overwrites.
-
-If you encounter issues not addressed here, please contact our [support team](mailto:dev@pathlit.ai).
+If you encounter any issues with the Global Variable Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
 
 ## Relevant Nodes
-
 <CardGroup>
   <Card
     title="Text Variable Node"
     href="/docs/pathways/text-variable"
   >
-    Define text variables for use within your workflow
-  </Card>
-
-  <Card
-    title="Sticky Note Node"
-    href="/docs/pathways/sticky-note"
-  >
-    Add annotations and notes within your workflow
-  </Card>
-
-  <Card
-    title="Simple Router Node"
-    href="/docs/pathways/simple-router"
-  >
-    Route workflow execution based on dynamic conditions
+    Manage and manipulate text variables within your workflow
   </Card>
 
   <Card
     title="Structured Output Node"
     href="/docs/pathways/structured-output"
   >
-    Output structured data from your workflow
+    Generate and handle structured data outputs
+  </Card>
+
+  <Card
+    title="Input Node"
+    href="/docs/pathways/input"
+  >
+    Capture and utilize input data in your workflow
+  </Card>
+
+  <Card
+    title="Output Node"
+    href="/docs/pathways/output"
+  >
+    Define and manage outputs for your workflow processes
   </Card>
 </CardGroup>
