@@ -1,92 +1,83 @@
 ---
 title: 'JSON Node'
-description: 'Parse and construct JSON data within your workflow'
+description: 'Parse JSON and output individual fields'
 ---
 
 ## Overview
-
-The JSON Node allows you to easily parse JSON-formatted strings into structured data and construct JSON strings from structured data within your Pathlit workflows. This node is particularly useful when integrating with APIs, handling webhooks, or processing data from external sources that communicate using JSON.
+The JSON Node in Pathlit is designed to parse a JSON object and extract specified fields, making it easier to handle structured data within your workflows. This node is particularly useful for workflows that require processing JSON data from various sources, enabling you to extract and utilize specific information efficiently.
 
 ## Configuration Parameters
 
-The JSON Node does not require any specific authentication or external configuration. It is ready to use immediately upon adding it to your workflow.
+To configure the JSON Node, you need to define the following parameters:
 
-## Node Inputs and Outputs
+* **JSON Input**:
 
-### Inputs
+    Enter a valid JSON object in this field. The node will parse this JSON to extract the specified fields.
 
-The JSON Node accepts the following inputs:
+    <Tip>
+    Ensure that the JSON input is correctly formatted to avoid parsing errors.
+    </Tip>
 
-- **JSON String** *(optional)*: A string containing JSON-formatted data that you want to parse into structured data.
-- **Structured Data** *(optional)*: Data in a structured format (such as key-value pairs) that you want to convert into a JSON-formatted string.
+* **Expected Fields**:
 
-> **Note:** You should provide either a JSON String or Structured Data as input, depending on your intended operation. Providing both simultaneously may lead to unexpected behavior.
+    Specify the fields you expect to extract from the JSON object. These fields will be dynamically created as output ports, allowing you to use the extracted data in subsequent nodes.
 
-### Outputs
+## Expected Inputs and Outputs
 
-The node outputs the following:
+- **Inputs**:
 
-- **Parsed Data**: If provided a JSON String as input, the node outputs structured data parsed from the JSON string.
-- **JSON String**: If provided Structured Data as input, the node outputs a JSON-formatted string constructed from the structured data.
+  - This node accepts input data through a specified input port, which can be used for templating the JSON input.
+
+- **Outputs**:
+
+  - The node outputs the specified fields from the JSON object. If a field is not found, a warning will be logged, and an empty string will be returned for that field.
 
 ## Use Case Examples
 
-1. **API Integrations**:
+1. **API Response Parsing**:
 
-    When interacting with third-party APIs that return JSON responses, use the JSON Node to parse the response into structured data that can be easily used in subsequent nodes.
+    When working with APIs that return JSON data, use the JSON Node to extract relevant information, such as user details or transaction records, for further processing in your workflow.
 
-2. **Webhook Processing**:
+2. **Data Transformation**:
 
-    If your workflow receives webhook payloads in JSON format, the JSON Node allows you to parse and extract relevant information for further processing.
+    Transform and route data from JSON files for data processing tasks. Extract specific fields that need to be processed or analyzed separately.
 
-3. **Data Transformation**:
+3. **Integration with Webhooks**:
 
-    Convert structured data from your workflow into JSON format to send to external services or APIs that require JSON payloads.
-
-4. **Debugging and Logging**:
-
-    Easily inspect and log JSON data within your workflow by parsing it into structured data, making it simpler to debug and review.
+    Extract specific fields from JSON payloads received via webhooks. This allows you to automate actions based on the content of the webhook data.
 
 ## Error Handling and Troubleshooting
 
-- **Invalid JSON Format**:
+- **Invalid JSON Input**:
 
-    If the input JSON string is improperly formatted, the node will raise an error. Ensure the JSON string is correctly formatted and valid.
+    If the JSON input is invalid, the node will raise an error. Ensure that the JSON is properly formatted and valid.
 
-- **Empty Inputs**:
+- **Field Not Found**:
 
-    If no input is provided, the node will not execute successfully. Ensure either a valid JSON String or Structured Data is provided.
+    If a specified field is not found in the JSON object, a warning will be logged, and an empty string will be returned for that field. Double-check the field names in the JSON input and the Expected Fields configuration.
 
 If you encounter any issues with the JSON Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
 
 ## Relevant Nodes
-
 <CardGroup>
   <Card
-    title="Webhook Trigger Node"
-    href="/docs/pathways/webhook-trigger"
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
   >
-    Trigger workflows based on incoming webhook requests
+    Trigger workflows based on incoming emails
   </Card>
 
   <Card
-    title="API Call Node"
-    href="/docs/pathways/api-call"
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
   >
-    Make HTTP requests to external APIs within your workflow
+    Route input data based on specified prompts and options
   </Card>
 
   <Card
-    title="Structured Output Node"
-    href="/docs/pathways/structured-output"
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
   >
-    Output structured data from your workflow
-  </Card>
-
-  <Card
-    title="Code Node"
-    href="/docs/pathways/code"
-  >
-    Execute custom Python code to manipulate and process data
+    Import files from Google Drive into your workflow
   </Card>
 </CardGroup>
