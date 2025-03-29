@@ -1,0 +1,119 @@
+---
+title: 'Agent Swarm Node'
+description: 'Coordinate multiple agents to perform tasks concurrently'
+---
+
+## Overview
+The Agent Swarm Node is a powerful component within the Pathlit workflow builder that enables users to coordinate multiple agents to perform tasks concurrently. This node is particularly useful for scenarios where parallel processing is required, such as data scraping, distributed computing, or handling multiple asynchronous tasks efficiently.
+
+## Configuration Parameters
+
+To set up the Agent Swarm Node, you need to configure the following parameters:
+
+* **Agent Type**:
+
+    Specify the type of agents you want to deploy. Depending on the task complexity, you can choose from different agent types that are optimized for specific operations.
+
+    <Tip>
+    Use lightweight agents for simple tasks and more robust agents for complex operations requiring more resources.
+    </Tip>
+
+* **Task Definition**:
+
+    Define the tasks that each agent will perform. This should be a clear and concise description of the operations to be executed by the agents.
+
+    Example:
+    ```
+    [Insert task here]
+    Each agent should scrape data from a specified URL and store the results in a database.
+    ```
+
+* **Concurrency Level**:
+
+    Determine the number of agents to run concurrently. This controls the parallelism of the task execution.
+
+    <Tip>
+    Adjust the concurrency level based on the available resources and the complexity of tasks to optimize performance.
+    </Tip>
+
+### Advanced Settings
+
+Advanced settings panel can be expanded by clicking on the settings button on the top right corner of the node. The following additional configurations are available:
+
+* **Retry Policy**:
+
+    Configure the retry policy for tasks that fail. Define the number of retry attempts and the delay between retries.
+
+* **Timeout**:
+
+    Set a timeout for each task. If a task exceeds this duration, it will be considered failed and retried according to the retry policy.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node accepts input data that defines the scope and parameters for the tasks to be executed by the agents.
+
+- **Outputs**:
+
+  - The output will be a collection of results from each agent, aggregated and returned once all tasks are completed.
+
+## Use Case Examples
+1. **Web Scraping**:
+
+    Use the Agent Swarm Node to deploy multiple agents that scrape data from different web pages concurrently, significantly speeding up the data collection process.
+
+2. **Data Processing**:
+
+    In a data analysis pipeline, the node can be used to distribute data processing tasks across multiple agents, allowing for faster computation and analysis.
+
+3. **Automated Testing**:
+
+    For software development teams, the node can coordinate multiple agents to perform automated testing on different parts of an application simultaneously, improving test coverage and efficiency.
+
+## Limitations
+
+- The Agent Swarm Node requires careful configuration of concurrency levels and resource management to ensure optimal performance without overwhelming system resources.
+
+- Task definitions must be precise and well-structured to avoid errors and ensure consistent results across all agents.
+
+## Error Handling and Troubleshooting
+- **Task Failures**:
+
+    If tasks frequently fail, review the retry policy and timeout settings. Ensure that the tasks are well-defined and that the agents have sufficient resources to complete them.
+
+- **Resource Constraints**:
+
+    If the system experiences resource constraints, consider reducing the concurrency level or optimizing the tasks to require fewer resources.
+
+If you encounter any issues with the Agent Swarm Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Task Scheduler Node"
+    href="/docs/pathways/task-scheduler"
+  >
+    Schedule and manage the execution of tasks within a workflow
+  </Card>
+
+  <Card
+    title="Data Aggregator Node"
+    href="/docs/pathways/data-aggregator"
+  >
+    Aggregate data from multiple sources into a unified format
+  </Card>
+
+  <Card
+    title="Agent Swarm Node"
+    href="/docs/pathways/agent-swarm"
+  >
+    Coordinate multiple agents to perform tasks concurrently
+  </Card>
+
+  <Card
+    title="Resource Monitor Node"
+    href="/docs/pathways/resource-monitor"
+  >
+    Monitor and manage system resources during workflow execution
+  </Card>
+</CardGroup>
