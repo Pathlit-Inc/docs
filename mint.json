@@ -63,6 +63,7 @@
         "docs/pathways/gmail-receive",
         "docs/pathways/gmail-send",
         "docs/pathways/global-variable",
+        "docs/pathways/google-calendar-agent-node",
         "docs/pathways/google-drive-input",
         "docs/pathways/google-search",
         "docs/pathways/input",
@@ -94,7 +95,9 @@
     },
     {
       "group": "Changelog",
-      "pages": ["docs/changelog/overview"]
+      "pages": [
+        "docs/changelog/overview"
+      ]
     }
   ],
   "footerSocials": {
