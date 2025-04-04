@@ -1,0 +1,72 @@
+---
+title: 'External Service Node'
+description: 'Connects to an external service using an API key'
+---
+
+## Overview
+The External Service Node allows you to seamlessly integrate with an external service by providing an API key. This node is essential for workflows that require data or functionality from third-party services, enabling you to extend the capabilities of your workflow.
+
+## Configuration Parameters
+
+To set up the External Service Node, you need to provide the following configuration:
+
+* **API Key**:
+
+    The API key required to authenticate with the external service. Ensure that the API key has the necessary permissions to access the desired resources.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node does not require any specific inputs from other nodes in the workflow.
+
+- **Outputs**:
+
+  - **Status**: Provides the status of the service connection, indicating whether the connection was successful or if there were any issues.
+
+## Use Case Examples
+1. **Data Retrieval**:
+
+    Use the External Service Node to fetch data from a third-party API, such as weather information or stock prices, and incorporate it into your workflow for further processing or analysis.
+
+2. **Automated Notifications**:
+
+    Integrate with a notification service to send alerts or updates based on specific triggers or conditions within your workflow.
+
+3. **Service Automation**:
+
+    Automate tasks by connecting to an external service that performs a specific action, such as sending emails, processing payments, or managing customer data.
+
+## Error Handling and Troubleshooting
+- **Invalid API Key**:
+
+    If the API key is invalid or expired, the node will not be able to connect to the external service. Ensure that the API key is correct and has the necessary permissions.
+
+- **Service Unavailability**:
+
+    If the external service is down or experiencing issues, the node may not function as expected. Check the service status and try again later.
+
+If you encounter any issues with the External Service Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="API Call Node"
+    href="/docs/pathways/api-call"
+  >
+    Make HTTP requests to external APIs
+  </Card>
+
+  <Card
+    title="Webhook Node"
+    href="/docs/pathways/webhook"
+  >
+    Trigger workflows based on incoming webhooks
+  </Card>
+
+  <Card
+    title="Data Processing Node"
+    href="/docs/pathways/data-processing"
+  >
+    Process and transform data from external sources
+  </Card>
+</CardGroup>
