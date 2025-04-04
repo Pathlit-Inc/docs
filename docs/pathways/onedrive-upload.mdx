@@ -1,0 +1,72 @@
+---
+title: 'OneDrive Upload Node'
+description: 'Upload a file to a specified folder in OneDrive'
+---
+
+## Overview
+The OneDrive Upload Node in Pathlit allows you to automate the process of uploading files to your OneDrive account. This node is particularly useful for workflows that require file storage and management, enabling seamless integration with your OneDrive folders.
+
+## Configuration Parameters
+
+To set up the OneDrive Upload Node, you need to authenticate with your OneDrive account. Once authenticated, you can specify the file and the folder where you want the file to be uploaded.
+
+## Inputs and Outputs
+
+- **Inputs**:
+  - **File**: The file you wish to upload to OneDrive. It should be provided through the input port.
+
+- **Outputs**:
+  - **Status**: The status of the file upload operation.
+  - **Uploaded Folder**: The folder in OneDrive where the file was uploaded.
+
+## Configuration Options
+
+- **Upload Folder**:
+
+    Select the folder in your OneDrive account where the file will be uploaded. Options include:
+    - Root
+    - Documents
+    - Pictures
+
+## Use Case Examples
+
+1. **Document Archiving**:
+
+    Automatically upload important documents to a designated OneDrive folder for archival purposes. This ensures that all critical files are stored securely and can be accessed later.
+
+2. **Media Management**:
+
+    Use the OneDrive Upload Node to organize and store media files such as images and videos in your OneDrive account. This is particularly useful for media teams that need to manage large volumes of content.
+
+3. **Backup Solutions**:
+
+    Integrate the node into a backup workflow to periodically upload essential files to OneDrive, ensuring data is backed up and protected against loss.
+
+## Error Handling and Troubleshooting
+
+- **File Upload Errors**:
+
+    If an error occurs during the file upload process, ensure that the file is correctly specified and that you have the necessary permissions to upload to the selected folder.
+
+- **Authentication Issues**:
+
+    If you encounter authentication problems, re-authenticate with your OneDrive account and ensure that the integration is correctly set up.
+
+For any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Drive Upload Node"
+    href="/docs/pathways/google-drive-upload"
+  >
+    Upload files to Google Drive
+  </Card>
+
+  <Card
+    title="Dropbox Upload Node"
+    href="/docs/pathways/dropbox-upload"
+  >
+    Upload files to Dropbox
+  </Card>
+</CardGroup>
