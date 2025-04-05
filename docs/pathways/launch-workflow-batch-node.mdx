@@ -1,0 +1,92 @@
+---
+title: 'Launch Workflow Batch Node'
+description: 'Execute a specified workflow for each item in an input list'
+---
+
+## Overview
+The Launch Workflow Batch Node is a powerful component in the Pathlit workflow builder that allows you to execute a specified workflow for each item in a provided input list. This node is particularly useful for batch processing tasks where the same workflow needs to be applied to multiple data items.
+
+## Configuration Parameters
+
+To set up the Launch Workflow Batch Node, you need to configure the following parameters:
+
+* **Workflow**:
+
+    Select a deployed workflow that you want to run for each item in the input list. The workflow must be deployed before it can be selected.
+
+    <Tip>
+    Ensure that the selected workflow is intended for batch processing and can handle the input format provided by this node.
+    </Tip>
+
+### Advanced Settings
+
+Advanced settings can be accessed by clicking on the settings button on the top right corner of the node. The following additional configuration is available:
+
+* **Allow Self-Loop**:
+
+    A checkbox option that determines whether the workflow can invoke itself. Enable this option if the workflow is designed to handle recursive invocations.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **List**: A list of items that the workflow will be run on. Each item in the list will be processed individually by the selected workflow.
+  - **Input**: Additional input data that can be passed to the workflow. This input can be used to provide context or supplementary information required by the workflow.
+
+- **Outputs**:
+
+  - This node does not produce any direct outputs. The results of the workflow executions are managed within the context of the selected workflow.
+
+## Use Case Examples
+1. **Data Processing**:
+
+    Use the Launch Workflow Batch Node to process a list of data entries, such as customer records or transaction logs. Each entry is processed through a common workflow to extract, transform, or analyze the data.
+
+2. **Email Campaigns**:
+
+    For marketing teams, this node can be used to send personalized emails to a list of recipients. Each recipient's information is processed to customize the email content before sending.
+
+3. **Automated Reporting**:
+
+    Generate reports for a list of departments or projects. Each report is created by running a reporting workflow that compiles and formats the necessary data.
+
+## Error Handling and Troubleshooting
+- **Workflow Not Selected**:
+
+    If no workflow is selected, the node will raise an error. Ensure that you select a deployed workflow before running the batch process.
+
+- **Input Format Issues**:
+
+    If the input list or additional inputs do not match the expected format of the selected workflow, errors may occur. Verify that the inputs are correctly formatted and aligned with the workflow's requirements.
+
+If you encounter any issues with the Launch Workflow Batch Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Send Node"
+    href="/docs/pathways/gmail-send"
+  >
+    Automate sending emails from your Gmail account
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/pathways/slack-message-send"
+  >
+    Send messages to your Slack channels based on email triggers
+  </Card>
+
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+</CardGroup>
