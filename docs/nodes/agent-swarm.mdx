@@ -1,0 +1,111 @@
+---
+title: 'Agent Swarm Node'
+description: 'Orchestrate multiple AI agents to collaborate and solve complex tasks'
+---
+
+## Overview
+The Agent Swarm Node enables multiple AI agents to work together collaboratively to solve complex tasks. This node allows you to:
+- Configure multiple specialized agents with different capabilities
+- Define an initial agent to start the conversation
+- Allow agents to hand off tasks to other agents based on their expertise
+- Create complex workflows where agents collaborate to achieve a goal
+
+## Configuration Parameters
+
+The Agent Swarm Node requires configuration of multiple agents that will work together in the swarm. Each agent can be configured independently with its own settings and capabilities.
+
+### Node Configuration
+
+- **Query**:
+
+  Specify the task or question for the swarm to handle. For example,
+
+  > *Given this email: <Tooltip tip="email id from the gmail receive node">\{email id\}</Tooltip>, identify if it is asking for availability. Look at my calendar to check for my availability and provide timeslots to respond to the email.*
+
+  > *Given a contact, conduct web search on the person, and then draft a personalized outreach email to ...*
+
+
+- **Agents**
+
+  Configure multiple agents that will participate in the swarm. For each agent, you can:
+  - Set a custom display name
+  - Designate it as the initial agent
+  - Configure agent-specific settings and tools
+  - Define the agent's role and capabilities
+
+  <Tip>Choose the initial agent carefully as it will be responsible for starting the conversation and delegating tasks to other agents.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the swarm can take (1-200). This prevents infinite loops and ensures the swarm reaches a conclusion.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data that can be referenced in the query using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result produced by the swarm
+  - **conversation**: A detailed log of the conversation between agents, showing how they collaborated to reach the solution
+
+## Use Case Examples
+1. **Complex Problem Solving**:
+
+    Configure multiple agents with different expertise to break down and solve complex problems. Each agent can handle specific aspects of the problem based on their specialized knowledge.
+
+2. **Multi-perspective Analysis**:
+
+    Use different agents to analyze the same problem from various angles, providing a comprehensive understanding of the situation.
+
+3. **Collaborative Content Creation**:
+
+    Set up agents with different writing styles and expertise to collaboratively create content, with each agent contributing their specialized knowledge.
+
+## Error Handling and Troubleshooting
+- **Agent Configuration**:
+
+    Make sure each agent in the swarm is properly configured with appropriate settings and tools for their intended role.
+
+- **Max Steps Exceeded**:
+
+    If the swarm is not reaching a conclusion, you may need to increase the max_steps parameter or optimize the agent configurations.
+
+If you encounter issues not covered in this documentation, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    Generic Agent Node
+  </Card>
+
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Agent that interact with Gmail
+  </Card>
+
+  <Card
+    title="Google Calendar Agent Node"
+    href="/docs/nodes/gcal-agent"
+  >
+    Agent that interact with Google Calendar
+  </Card>
+
+  <Card
+    title="Bitbucket Agent Node"
+    href="/docs/nodes/bitbucket-agent"
+  >
+    Agent that interact with Bitbucket
+  </Card>
+</CardGroup>

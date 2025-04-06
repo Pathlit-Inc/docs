@@ -1,0 +1,106 @@
+---
+title: 'Google Sheets Agent Node'
+description: 'Interact with and manipulate Google Sheets using a specialized AI agent'
+---
+
+## Overview
+The Google Sheets Agent Node is a specialized agent designed to work with Google Spreadsheets. This node enables:
+- Reading and writing data to Google Sheets
+- Creating new spreadsheets
+- Modifying existing spreadsheet content
+- Batch operations for efficient data manipulation
+- Natural language interaction with spreadsheet data
+
+## Configuration Parameters
+
+The Google Sheets Agent Node requires Google authentication and specific configuration to interact with your spreadsheets.
+
+### Node Configuration
+
+- **Select Spreadsheet**:
+  
+  Choose one or multiple Google Sheets to work with. The agent will have access to all selected spreadsheets, with the first selected sheet being the default.
+
+- **Prompt**:
+  
+  Specify what the agent should do with the selected spreadsheet(s). For example,
+
+  > *Create a new sheet and populate it with the following data...*
+
+  > *Find all rows where the status is "Pending" and update them to "In Progress".*
+
+  > *Create a summary sheet that combines data from sheets A and B.*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Model</strong>: Select the language model to power the agent. Choose a model that supports function calling for optimal performance.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps (1-50) the agent can take when executing a task.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result of the agent's actions
+  - **conversation**: A detailed log of the agent's thought process and actions taken
+
+## Use Case Examples
+1. **Data Entry Automation**:
+
+    Configure the agent to automatically populate spreadsheets with data from other sources, maintaining specific formatting and validation rules.
+
+2. **Spreadsheet Management**:
+
+    Use the agent to perform routine maintenance tasks like updating statuses, cleaning data, or reorganizing information across multiple sheets.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If you encounter authentication errors, try disconnecting and reconnecting your Google account, ensuring you grant all necessary Sheets permissions.
+
+- **Access Permissions**:
+
+    Ensure you have appropriate access rights to all spreadsheets you're trying to modify.
+
+If you encounter issues not covered in this documentation, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Swarm Node"
+    href="/docs/nodes/agent-swarm"
+  >
+    Orchestrate multiple agents for complex tasks
+  </Card>
+
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Agent that interact with Gmail
+  </Card>
+
+  <Card
+    title="Google Calendar Agent Node"
+    href="/docs/nodes/gcal-agent"
+  >
+    Agent that interact with Google Calendar
+  </Card>
+
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for various tasks
+  </Card>
+</CardGroup>

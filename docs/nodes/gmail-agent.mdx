@@ -1,0 +1,125 @@
+---
+title: 'Gmail Agent Node'
+description: 'Automate tasks and interactions using Gmail as an agent'
+---
+
+## Overview
+The Gmail Agent Node is a powerful agent designed to automate tasks and interactions using Gmail. This node allows you to perform the following actions:
+- sending/drafting emails
+- managing email labels
+- find emails from inbox
+- reading emails and their attachments
+
+## Configuration Parameters
+
+To set up the Gmail Agent Node, you need to authenticate with your Google account. Once authenticated, you can configure the node to perform specific actions based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Specify what the agent should do. For example,
+
+  > *Send an email to Mark (look through my inbox as needed), saying I will get back to him after reviewing the documents I received.*
+
+  > *Find the last few emails from Jacob and summarize our conversations.*
+
+  > *Given this email <Tooltip tip="email id from the gmail receive node">\{email id\}</Tooltip>, classify the email and assign it to the appropriate gmail label that is configured.*
+
+  > *Given this email <Tooltip tip="email id from the gmail receive node">\{email id\}</Tooltip>, identify if it is legal related. If so, draft an reply and cc legal@team.com.*
+
+- **Tools**
+
+  The tools given to the Gmail Agent. This allows us to limit what the agent can do to prevent undesirable actions by the agent.
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Send Email | Send email or reply |
+  | Draft Email | Create email draft |
+  | Send Draft | Send created draft |
+  | Get Message | Read email metadata (recipients, date, etc), labels, content, and its attachment file names |
+  | Get Attachment | Read attachment file content |
+  | List Labels | Get configured gmail labels |
+  | Modify Labels | Add and remove labels to and from emails |
+
+  <Tip>Do not select the *Send Email* tool if you do not want the agent to accidentally send emails. Same goes for *Delete Email*</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Configure the persona, rules, and guidelines the agent should follow.
+      </li>
+      <li>
+        <strong>Model</strong>: Choose the language model for the agent. This will affect the processing and understanding of the query.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take when executing a query. This helps in controlling the depth of interaction with the API.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node can accept text input data to include in the prompts. Usually, it is the email id from the gmail receive node.
+
+- **Outputs**:
+
+  - The node outputs the result of the action performed, such as confirmation of an email sent, details of emails processed, or status updates of inbox management actions.
+
+## Use Case Examples
+1. **Automated Email Campaigns**:
+
+    Use the Gmail Agent Node to automate the sending of promotional emails to a list of recipients. You can configure the node to send personalized emails based on input data from your workflow.
+
+2. **Inbox Management**:
+
+    Set up workflows to organize your Gmail inbox by labeling or archiving emails based on specific criteria. This can help maintain a clutter-free inbox and improve productivity.
+
+3. **Customer Interaction Automation**:
+
+    Automate responses to customer inquiries by configuring the node to send predefined replies based on the content of incoming emails. This ensures prompt and consistent communication with customers.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate with Gmail, ensure that the correct credentials are provided and that the necessary permissions are granted.
+
+- **Unsupported Model**:
+
+    Ensure that the selected model supports function calling. If not, choose a compatible model from the available options.
+
+If you encounter any issues with the Gmail Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Send Node"
+    href="/docs/nodes/gmail-send"
+  >
+    Automate sending emails from your Gmail account
+  </Card>
+
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/nodes/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/nodes/slack-message-send"
+  >
+    Send messages to your Slack channels based on email triggers
+  </Card>
+</CardGroup>

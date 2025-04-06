@@ -15,37 +15,74 @@ Nodes in Pathlit are categorized based on their functionality and purpose. Here 
 
 ### Triggers
 
-Trigger nodes initiate the execution of a workflow based on specific events or conditions. They can be scheduled to run at regular intervals, triggered by external events, or activated manually by users.
+Trigger nodes initiate the execution of a workflow based on specific events or conditions. Examples include:
+- Scheduler node for time-based triggers
+- Gmail Receive for email-based triggers
+- Slack Trigger for Slack message-based events
+- Bitbucket Event Receive for code repository events
 
-### Data sources
+### Core Flow
 
-Data source nodes retrieve data from external services or platforms and make it available for processing within the workflow. Examples include nodes for importing data from Google Drive, Airtable, or performing embedding search using Knowledge Bases.
+Core Flow nodes manage the fundamental flow and data manipulation within your workflow. These include:
+- Input node for accepting user input
+- Simple Router for conditional branching
+- Text Variable for managing text data
 
-### Language models
+### AI & Agents
 
-Language model nodes leverage natural language processing (NLP) models to process text data. They can perform tasks like text generation, sentiment analysis, named entity recognition, and more.
+AI & Agents nodes leverage artificial intelligence and specialized agents to perform complex tasks:
+- LLM Node for direct language model interactions
+- Agent Node for create autonomous AI system that uses tools to complete tasks
+- Agent Swarm for multi-agent collaboration
+- Text-to-Image generation
+- Summarizer for text summarization
 
-### Image models
+### Integrations
 
-Image model nodes use machine learning models to analyze images and extract information from them. These nodes can perform tasks like object detection, image classification, and image segmentation.
+Integration nodes connect your workflow with external services and platforms. These are grouped by service:
 
-### Action Model
+#### Google Workspace
+- Gmail (Send, Receive, Agent)
+- Google Drive Input
+- Google Sheets Agent
+- Google Calendar Agent
+- Google Tasks Agent
 
-Action Model nodes are used to perform actions like sending emails, outputting data to external services like airtabled
+#### Communication Platforms
+- Slack (Message Send, Trigger)
+- Outlook (Send, Receive)
 
-### Control Flow
+#### Development Tools
+- Bitbucket (Agent, PR Input, Event Receive)
+- Jira (Issue Input, Output, Receive)
 
-Control Flow nodes manage the flow of execution within a workflow. They can conditionally route data, branch based on specific criteria, and invoke other deployed workflows to create complex automation sequences and looping behaviors.
+#### Productivity Tools
+- Notion Page Output
+- Airtable (Input, Output)
+- LinkedIn Output
 
-### Other
+### Subflows
 
-In the Other category, you will find utility node such as the sticky note node, which allows you to add comments or notes to your workflow for documentation purposes.
+Subflow nodes enable the creation of modular and reusable workflow components:
+- Workflow Invocation
+- Workflow Batch Invocation
+
+### Advanced
+
+Advanced nodes provide specialized functionality for complex use cases:
+- Code Execution for custom Python code
 
 ## Node Documentation
 
 View the documentation for each node type to learn more about their configuration, expected inputs and outputs, use case examples, and error handling.
 
 <CardGroup>
+  <Card title="Agent" href="/docs/pathways/agent">
+    General-purpose AI agent for various tasks
+  </Card>
+  <Card title="Agent Swarm" href="/docs/pathways/agent-swarm">
+    Orchestrate multiple AI agents to collaborate on complex tasks
+  </Card>
   <Card title="Airtable Input" href="/docs/pathways/airtable-in">
     Import data from Airtable into your workflow
   </Card>
@@ -55,121 +92,124 @@ View the documentation for each node type to learn more about their configuratio
   <Card title="Audio Transcribe" href="/docs/pathways/audio-transcribe">
     Transcribe audio files into text
   </Card>
-  <Card title="Bitbucket Agent Node" href="/docs/pathways/bitbucket-agent-node">
-    Interact with the Bitbucket Cloud API using the Bitbucket Agent Node
+  <Card title="Bitbucket Agent" href="/docs/pathways/bitbucket-agent">
+    Interact with Bitbucket using an AI agent
   </Card>
-  <Card title="Bitbucket Event Receive Node" href="/docs/pathways/bitbucket-event-receive-node">
+  <Card title="Bitbucket Event Receive" href="/docs/pathways/bitbucket-event-receive">
     Trigger workflows based on Bitbucket events
   </Card>
   <Card title="Bitbucket PR Input" href="/docs/pathways/bitbucket-pr-input">
     Import data from Bitbucket pull requests
   </Card>
-  <Card title="Code Execution" href="/docs/pathways/code">
-    Dynamically execute Python code within your workflow.
+  <Card title="Code" href="/docs/pathways/code">
+    Execute Python code within your workflow
   </Card>
   <Card title="Document Data" href="/docs/pathways/document-data">
-    Upload and manage document data within your workflow
+    Process and manage document data
   </Card>
   <Card title="Embed Search" href="/docs/pathways/embed-search">
-    Embed real-time search results into your workflow
+    Perform vector similarity search
   </Card>
-  <Card title="Gmail Agent Node" href="/docs/pathways/gmail-agent-node">
-    Automate tasks and interactions using Gmail as an agent
+  <Card title="Google Calendar Agent" href="/docs/pathways/gcal-agent">
+    Manage calendar events using an AI agent
+  </Card>
+  <Card title="Global Variable" href="/docs/pathways/global-variable">
+    Store and manage workflow-wide variables
+  </Card>
+  <Card title="Gmail Agent" href="/docs/pathways/gmail-agent">
+    Automate email tasks using an AI agent
   </Card>
   <Card title="Gmail Receive" href="/docs/pathways/gmail-receive">
-    Receive emails from Gmail into your workflow
+    Trigger workflows from incoming emails
   </Card>
   <Card title="Gmail Send" href="/docs/pathways/gmail-send">
-    Send emails using Gmail from your workflow
-  </Card>
-  <Card title="Global Variable Node" href="/docs/pathways/global-variable">
-    Store and retrieve global variables within your workflow
+    Send emails from your workflow
   </Card>
   <Card title="Google Drive Input" href="/docs/pathways/google-drive-input">
-    Import files from Google Drive into your workflow
+    Import files from Google Drive
   </Card>
   <Card title="Google Search" href="/docs/pathways/google-search">
-    Perform Google searches and integrate results directly into your workflows
+    Perform Google searches within your workflow
+  </Card>
+  <Card title="Google Task Agent" href="/docs/pathways/google-task-agent">
+    Manage Google Tasks using an AI agent
+  </Card>
+  <Card title="Google Sheets Agent" href="/docs/pathways/gsheets-agent">
+    Interact with Google Sheets using an AI agent
   </Card>
   <Card title="Input" href="/docs/pathways/input">
-    General input node for various data types
-  </Card>
-  <Card title="Introduction" href="/docs/pathways/introduction">
-    Introduction to the workflow concepts and nodes
+    Accept input data into your workflow
   </Card>
   <Card title="Jira Issue Input" href="/docs/pathways/jira-issue-input">
-    Retrieve Jira issues from your instance according to a filter
+    Import Jira issues into your workflow
   </Card>
   <Card title="Jira Issue Output" href="/docs/pathways/jira-issue-output">
-    Create Jira issues
+    Create or update Jira issues
   </Card>
   <Card title="Jira Issue Receive" href="/docs/pathways/jira-issue-receive">
-    Trigger a workflow with incoming Jira issues
+    Trigger workflows from Jira events
   </Card>
-  <Card title="JSON Node" href="/docs/pathways/json-node">
-    Parse and construct JSON data within your workflow
+  <Card title="JSON" href="/docs/pathways/json">
+    Process and transform JSON data
   </Card>
-  <Card title="Linkedin Output" href="/docs/pathways/linkedin-output">
-    Export data to Linkedin from your workflow
+  <Card title="LinkedIn Output" href="/docs/pathways/linkedin-output">
+    Post content to LinkedIn
   </Card>
-  <Card title="Llm" href="/docs/pathways/llm">
-    Utilize language learning models within your workflow
+  <Card title="LLM" href="/docs/pathways/llm">
+    Interact with language models directly
   </Card>
   <Card title="Notion Page Output" href="/docs/pathways/notion-page-output">
-    Export data to Notion pages from your workflow
+    Create or update Notion pages
   </Card>
   <Card title="Outlook Receive" href="/docs/pathways/outlook-receive">
-    Receive emails from Outlook into your workflow
+    Trigger workflows from Outlook emails
   </Card>
   <Card title="Outlook Send" href="/docs/pathways/outlook-send">
-    Send emails using Outlook from your workflow
+    Send emails through Outlook
   </Card>
   <Card title="Output" href="/docs/pathways/output">
-    General output node for various data types
+    Output data from your workflow
   </Card>
   <Card title="Scheduler" href="/docs/pathways/scheduler">
-    Schedule tasks and workflows to run at specific times
+    Schedule workflow executions
   </Card>
   <Card title="Simple Router" href="/docs/pathways/simple-router">
-    Route data to different paths in your workflow
+    Control workflow execution paths
   </Card>
   <Card title="Slack Message Send" href="/docs/pathways/slack-message-send">
-    Send messages to Slack from your workflow
+    Send messages to Slack
   </Card>
   <Card title="Slack Trigger" href="/docs/pathways/slack-trigger">
-    Trigger workflows from Slack messages
+    Trigger workflows from Slack events
   </Card>
   <Card title="Sticky Note" href="/docs/pathways/sticky-note">
-    Add sticky notes to your workflow for annotations
+    Add notes and documentation to your workflow
   </Card>
-  <Card title="Structured Output Node" href="/docs/pathways/structured-output-node">
-    Generate structured outputs from unstructured text using defined schemas
+  <Card title="Structured Output" href="/docs/pathways/structured-output">
+    Generate structured data from text
   </Card>
   <Card title="Summarizer" href="/docs/pathways/summarizer">
-    Summarize text content within your workflow
+    Create summaries of text content
   </Card>
   <Card title="Text Variable" href="/docs/pathways/text-variable">
-    Manage text variables within your workflow
+    Manage text data in your workflow
   </Card>
   <Card title="Text to Image" href="/docs/pathways/text2image">
-    Convert text descriptions into images
+    Generate images from text descriptions
   </Card>
   <Card title="Video Input" href="/docs/pathways/video-input">
-    Import video files into your workflow
+    Process video files in your workflow
   </Card>
   <Card title="Web Extract" href="/docs/pathways/web-extract">
-    Extract data from web pages into your workflow
+    Extract data from web pages
   </Card>
   <Card title="Web Search" href="/docs/pathways/web-search">
-    Perform web searches and import results into your workflow
+    Search the web within your workflow
   </Card>
-  <Card
-    title="Workflow Batch Invocation"
-    href="/docs/pathways/workflow-batch-invocation"
-  >
-    Invoke multiple instances of workflows in batches
+  <Card title="Workflow Batch Invocation" href="/docs/pathways/workflow-batch-invocation">
+    Run multiple workflow instances in parallel
   </Card>
   <Card title="Workflow Invocation" href="/docs/pathways/workflow-invocation">
-    Invoke another workflow from within your workflow
+    Call other workflows from your workflow
   </Card>
 </CardGroup>

@@ -1,0 +1,94 @@
+---
+title: 'Google Search Node'
+description: 'Perform Google searches and integrate results directly into your workflows'
+---
+
+## Overview
+The Google Search Node enables your Pathlit workflows to perform Google searches programmatically. It leverages the [Serper API](https://serper.dev/) to fetch search results, allowing you to integrate real-time web data directly into your automated processes.
+
+## Configuration Parameters
+To configure the Google Search Node, you must provide the following parameters:
+
+- **Query**:
+  
+  Specify the search query. You can use dynamic placeholders to incorporate data from previous nodes in your workflow. For example:
+  ```
+  What is the latest news on {topic}?
+  ```
+
+- **Date Range**:
+
+  Specify the timeframe for the search results. Available options are:
+  - Any time
+  - Past hour
+  - Past 24 hours
+  - Past week
+  - Past month
+  - Past year
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - **input**: This node accepts input from other nodes, allowing you to dynamically populate your search query. Use placeholders in the query configuration to insert values from the input data.
+
+- **Outputs**:
+  - **organic**: Organic search results returned by Google.
+  - **people_also_ask**: Questions that users commonly ask related to the search query.
+  - **related_searches**: Related search queries suggested by Google.
+  - **top_stories**: Top news stories relevant to the search query.
+
+## Use Case Examples
+1. **Market Research**:
+    Automatically gather competitor information, product reviews, or market trends by integrating real-time search results into your workflow.
+
+2. **Content Creation**:
+    Generate up-to-date content or blog posts based on trending topics and popular questions from Google search results.
+
+3. **News Monitoring**:
+    Monitor news stories or trending topics and trigger notifications to your team when relevant news emerges.
+
+4. **Customer Support Automation**:
+    Enhance customer support workflows by automatically retrieving relevant troubleshooting guides or help articles based on customer inquiries.
+
+## Error Handling and Troubleshooting
+- **API Key Issues**:
+    If you encounter authentication errors, ensure that your Serper API key is correctly configured in your Pathlit settings.
+
+- **Empty or Unexpected Results**:
+    Verify the search query and date range settings. If the issue persists, check the Serper API documentation for any limitations or changes in their response structure.
+
+If you experience further issues with the Google Search Node, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Webpage Data Node"
+    href="/docs/nodes/webpage-data"
+  >
+    Extract structured data from web pages
+  </Card>
+
+  <Card
+    title="Summarizer Node"
+    href="/docs/nodes/summarizer"
+  >
+    Summarize text content from search results
+  </Card>
+
+  <Card
+    title="Gmail Send Node"
+    href="/docs/nodes/gmail-send"
+  >
+    Automate sending emails based on search results
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
+
+## Relevant Resources
+- [Serper API Documentation](https://serper.dev/docs)
+- [Pathlit Support](mailto:dev@pathlit.ai)

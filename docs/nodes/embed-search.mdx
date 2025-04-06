@@ -1,0 +1,87 @@
+---
+title: "Embedding Search Node"
+description: "Search for similar data chunks using embeddings"
+---
+
+## Overview
+
+The Embedding Search Node is a robust feature in the Pathlit workflow builder that enables users to supply context from a [Knowledge Base](/guides/knowledge-base) to LLM nodes. [Knowledge Bases](/guides/knowledge-base) consist of user-uploaded documents or scraped web content that enhance the LLM’s ability to generate relevant and precise responses. This technique, commonly referred to as Retrieval Augmented Generation (RAG), is an effective way to elevate the quality of generated text by providing the model with additional context.
+
+This node connects to a specified knowledge base and retrieves the most relevant data based on a search query. It is particularly useful for extracting insights or relevant information from large sets of documents.
+
+## Configuration Parameters
+
+To configure the Embedding Search Node, you need to set up the following parameters:
+
+- **Knowledge Base**
+  Provide the context to the search by selecting a knowledge base. If you haven't created one yet, you can do so by navigating to the Knowledge Base page.
+
+- **Search String**
+  The query string used for embedding search.
+  Example: "What are the benefits of AI?"
+
+- **Include Document Metadata for Citations**
+  A checkbox option to include XML formatted metadata for citations in the output.
+
+### Advanced Settings
+
+- **\[VectorDB] Search Type**
+  Choose the search type for the retriever. Options include "Similarity" and "MMR".
+
+- **\[VectorDB] Retrieve Top-N Chunks**
+  Specify the number of most similar data chunks to extract. Range: 0 to 100.
+
+- **\[VectorDB] Similarity Score Threshold**
+  Set a minimal score threshold for the results. Range: 0.0 to 1.0.
+
+- **\[Reranker] Rerank Model**
+  Select the reranker model. Options include "Cohere Rerank-v3.5", "Cohere Rerank-English-v3.0", and "Cohere Rerank-Multilingual-v3.0".
+
+- **\[Reranker] Return Top-N Chunks**
+  Specify the number of chunks the reranker returns. Range: 0 to 100.
+
+- **\[Advanced RAG] Max Continuation Radius**
+  Define the maximum number of neighboring continuation chunks to add to the returned chunks. Range: 0 to 20.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  - This node expects input data in the form of a query string to perform the search.
+
+- **Outputs**:
+
+  - The output is a string containing the retrieved data chunks based on the search query. If the metadata option is enabled, the output will include formatted citations.
+
+## Use Case Examples
+
+1. **Research Analysis**
+   Use this node to quickly find specific information or references within a large collection of research documents, streamlining your research workflow.
+
+2. **Content Recommendation**
+   Content creators can use this node to identify similar articles or documents, aiding in the development of well-researched and informed content.
+
+3. **Customer Support**
+   Enhance customer support by enabling chatbots to search and retrieve relevant knowledge base articles, providing quick and accurate responses to customer inquiries.
+
+4. **Data Insights Extraction**
+   Extract specific insights from large datasets by setting a relevant search string, allowing for efficient data analysis without manual data sifting.
+
+## Error Handling and Troubleshooting
+
+- **Missing Knowledge Base**
+  If you encounter an error stating "A knowledge base must be selected," ensure that you have selected a knowledge base from the dropdown menu.
+
+If you experience any other issues with the Embedding Search Node not covered here, please contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Document Data Node" href="/docs/nodes/document-data">
+    Extract and manage data from various document types
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>

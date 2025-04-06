@@ -1,0 +1,110 @@
+---
+title: 'Agent Node'
+description: 'Execute tasks using a single AI agent with configurable tools and capabilities'
+---
+
+## Overview
+The Agent Node is a versatile component that allows you to run a single AI agent with specific tools and capabilities. This node enables:
+- Execution of complex queries with customizable tools
+- Integration with other workflows and nodes
+- Flexible configuration of model parameters and system prompts
+- Detailed conversation tracking and output management
+
+## Configuration Parameters
+
+The Agent Node requires configuration of the agent's behavior, tools, and model settings to effectively process queries.
+
+### Node Configuration
+
+- **Query**:
+  
+  Define the task or question for the agent to handle.
+
+- **Tools**
+
+  Select tools that the agent can use to accomplish its tasks. Tools can be of two types:
+  - **Workflow Tools**: Existing workflows that the agent can execute
+  - **Node Tools**: Individual nodes that the agent can utilize
+
+  <Tip>Choose tools carefully as they define the capabilities available to the agent. The agent can only perform actions using the tools provided.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Define the agent's persona and behavior guidelines with a custom system prompt.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model to power the agent. Note that the model must support function calling.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Configure the maximum number of steps (1-50) the agent can take to complete the task.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data that can be referenced in the query using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result produced by the agent
+  - **conversation**: A detailed log of the agent's thought process and actions taken
+
+## Use Case Examples
+1. **Web Search**:
+
+    Configure the node with Google Search tool and Web Content Extraction tool. Prompt the agent to do research anything from company information to finding contact information from name.
+
+2. **Workflow Orchastrator**:
+
+    Setup an agent that has access to your workflows as tools so that it launches workflow to complete tasks given by the user.
+
+## Error Handling and Troubleshooting
+- **Model Compatibility**:
+
+    Ensure the selected model supports function calling. If you receive a compatibility error, switch to a supported model.
+
+- **Tool Configuration**:
+
+    Verify that all configured workflow and node tools exist and are accessible to the agent.
+
+- **Max Steps Limitation**:
+
+    If the agent isn't completing tasks, consider increasing the max_steps parameter (up to 50) or breaking down the task into smaller components.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Swarm Node"
+    href="/docs/nodes/agent-swarm"
+  >
+    Orchestrate multiple agents for complex tasks
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Direct access to language models without agent framework
+  </Card>
+
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Agent that interact with Gmail
+  </Card>
+
+  <Card
+    title="Google Calendar Agent Node"
+    href="/docs/nodes/gcal-agent"
+  >
+    Agent that interact with Google Calendar
+  </Card>
+</CardGroup>

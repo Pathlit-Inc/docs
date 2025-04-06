@@ -1,0 +1,73 @@
+---
+title: 'Google Calendar Agent Node'
+description: 'Manage Google Calendar events and schedules using an AI agent'
+---
+
+## Overview
+The Google Calendar Agent Node is an AI agent designed to manage and interact with your Google Calendar events and schedules. This node can handle various calendar operations, from scheduling meetings to managing events, all through simple prompts.
+
+## Configuration Parameters
+To set up the Google Calendar Agent Node, you need to configure the following parameters:
+* **Prompt**:
+    This is where you instruct the agent on what actions to take with your Google Calendar. The prompt should clearly describe the task, such as scheduling a meeting or updating an event.
+    Example:
+
+    > *Schedule a meeting with John on Friday at 2pm...*
+
+    > *List all meetings for next week...*
+
+* **Model**:
+    Choose the language model that the agent will use to process the prompt. Different models offer varying capabilities for handling complex tasks.
+
+* **Max Steps**:
+    Define the maximum number of steps the agent can take to complete the task. This parameter controls the depth of processing the agent can perform.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+  - The node accepts input data through a specified input port, which can include any relevant data needed for the prompt.
+
+- **Outputs**:
+  - **Output**: The result of the Google Calendar operation, such as confirmation of an event being scheduled.
+  - **Conversation**: A detailed log of the conversation or steps the agent took to complete the task.
+
+## Use Case Examples
+
+1. **Meeting Scheduling**:
+    Use the node to automate meeting scheduling by simply prompting the agent with details like participants, date, and time. The agent will handle the rest, including sending invites.
+2. **Event Management**:
+    Manage and update existing events with ease. Whether it's changing the time, adding attendees, or canceling an event, the agent can perform these tasks efficiently.
+3. **Calendar Queries**:
+    Query your calendar for free slots, event details, or upcoming appointments. The agent can provide quick and accurate responses based on your calendar data.
+
+## Error Handling and Troubleshooting
+
+- **Permission Issues**:
+    If the agent encounters permission errors, ensure that your Google account is properly authenticated and that the necessary calendar permissions are granted. Re-authenticate if needed.
+
+- **Prompt Clarity**:
+    Ensure that the prompt is clear and specific to avoid any ambiguity in the agent's actions. If the agent fails to perform the task as expected, consider refining the prompt.
+
+If you encounter any issues with the Google Calendar Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/nodes/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/nodes/slack-message-send"
+  >
+    Send messages to your Slack channels based on email triggers
+  </Card>
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>

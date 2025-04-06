@@ -1,0 +1,122 @@
+---
+title: 'Google Task Agent Node'
+description: 'Manage and organize Google Tasks using a specialized AI agent'
+---
+
+## Overview
+The Google Task Agent Node is a dedicated agent for managing Google Tasks. This node enables:
+- Creating and managing task lists
+- Adding and updating tasks
+- Managing task completion status
+- Organizing tasks with notes and due dates
+- Natural language interaction with your task management system
+
+## Configuration Parameters
+
+The Google Task Agent Node requires Google authentication and operates with a simple configuration interface.
+
+### Node Configuration
+
+- **Prompt**:
+  
+  Tell the agent what you want to do with your tasks. For example,
+
+  > *Add the following to my TODO list: Schedule team meeting for next week, Review Q1 reports, Update project timeline.*
+
+  > *Create a new task list for my vacation planning and add items for accommodation, flights, and activities.*
+
+  > *Mark all completed tasks in my work list as done and clear them.*
+
+  > *Find all tasks due this week.*
+
+## Available Tools
+The agent comes with the following built-in tools for Google Tasks manipulation:
+
+| Tool | Description |
+|------|-------------|
+| list_task_lists | Get all available task lists |
+| create_task_list | Create a new task list |
+| delete_task_list | Remove a task list |
+| list_tasks | View tasks in a specific list |
+| create_task | Add a new task with optional notes and due date |
+| update_task | Modify existing task details or status |
+| delete_task | Remove a specific task |
+| clear_tasks | Remove all completed tasks from a list |
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result of the agent's actions
+  - **conversation**: A detailed log of the agent's thought process and actions taken
+
+## Use Case Examples
+1. **Project Management**:
+
+    Create task lists for different projects and manage deliverables with due dates and detailed notes.
+
+2. **Personal Organization**:
+
+    Maintain multiple task lists for different aspects of life (work, personal, shopping, etc.) and manage them through natural language commands.
+
+3. **Team Coordination**:
+
+    Create and update shared task lists for team projects, with the ability to track progress and clear completed items.
+
+## Best Practices
+1. Check existing tasks before adding new ones to avoid duplicates
+2. Use the default task list when no specific list is mentioned
+3. Include due dates for time-sensitive tasks
+4. Add descriptive notes to tasks when needed
+5. Regularly clear completed tasks to maintain organization
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If you encounter authentication errors, disconnect and reconnect your Google account, ensuring you grant Tasks permissions when prompted.
+
+- **Access Rights**:
+
+    Ensure you have appropriate access rights to the task lists you're trying to modify.
+
+- **Task List Management**:
+
+    When deleting task lists or clearing tasks, double-check that you're working with the correct list to avoid accidental deletions.
+
+<Note>
+The agent uses Claude 3 Sonnet by default to ensure optimal performance and understanding of task management contexts.
+</Note>
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Swarm Node"
+    href="/docs/nodes/agent-swarm"
+  >
+    Orchestrate multiple agents for complex tasks
+  </Card>
+
+  <Card
+    title="Google Calendar Agent"
+    href="/docs/nodes/google-calendar-agent"
+  >
+    Manage calendar events and scheduling
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Agent that interact with Gmail
+  </Card>
+
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for various tasks
+  </Card>
+</CardGroup>
