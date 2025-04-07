@@ -1,0 +1,104 @@
+---
+title: 'LinkedIn Scraper Agent Node'
+description: 'Utilize an agent to scrape LinkedIn posts, profiles, and companies'
+---
+
+## Overview
+The LinkedIn Scraper Agent Node is a powerful tool within the Pathlit workflow builder that enables automated scraping of LinkedIn data. By leveraging this node, users can extract information from LinkedIn posts, profiles, and companies, facilitating data collection and analysis for various applications.
+
+## Configuration Parameters
+
+To effectively utilize the LinkedIn Scraper Agent Node, configure the following parameters:
+
+* **Prompt**:
+
+    Define the task for the agent using a clear and concise prompt. This will guide the agent's actions on LinkedIn.
+
+    Example:
+    ```
+    Search for companies in finance
+    ```
+
+* **Tools**:
+
+    Select the tools available for the LinkedIn Agent to use. These tools enable specific actions within LinkedIn, such as searching for profiles or scraping posts.
+
+### Advanced Settings
+
+Access advanced settings by expanding the settings panel. Configure these parameters for enhanced control:
+
+* **Model**:
+
+    Choose the language model that the agent will use. This influences the agent's decision-making and response generation.
+
+* **Max Steps**:
+
+    Set the maximum number of steps the agent can take during its operation. This limits the extent of the agent's activity to prevent excessive actions.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  - The node accepts input data through a specified input port, which may include parameters or data necessary for the agent's task.
+
+- **Outputs**:
+
+  - **Output**: The final result of the agent's scraping activity on LinkedIn.
+  - **Conversation**: A formatted log of the agent's interactions and decisions during the scraping process.
+
+## Use Case Examples
+
+1. **Market Research**:
+
+    Use the LinkedIn Scraper Agent to gather data on companies within a specific industry. This can inform market analysis and competitive intelligence efforts.
+
+2. **Talent Acquisition**:
+
+    Automate the process of identifying potential candidates by scraping LinkedIn profiles that match certain criteria, streamlining recruitment workflows.
+
+3. **Content Aggregation**:
+
+    Collect posts and updates related to specific topics or industries, enabling content curation and trend analysis for marketing or strategic planning.
+
+## Error Handling and Troubleshooting
+
+- **Invalid Prompts**:
+
+    Ensure that the prompt is correctly formatted and relevant to the task. An unclear prompt may lead to unexpected or ineffective agent behavior.
+
+- **Tool Selection**:
+
+    Verify that the selected tools are appropriate for the desired scraping task. Inappropriate tool selection may limit the agent's capabilities.
+
+If you encounter any issues with the LinkedIn Scraper Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="LinkedIn Output Node"
+    href="/docs/pathways/linkedin-output"
+  >
+    Automate actions on LinkedIn based on scraped data
+  </Card>
+
+  <Card
+    title="Google Search Node"
+    href="/docs/pathways/google-search"
+  >
+    Perform web searches and gather information
+  </Card>
+
+  <Card
+    title="Airtable Input Node"
+    href="/docs/pathways/airtable-input"
+  >
+    Import data from Airtable into your workflow
+  </Card>
+
+  <Card
+    title="Slack Trigger Node"
+    href="/docs/pathways/slack-trigger"
+  >
+    Trigger workflows based on Slack messages
+  </Card>
+</CardGroup>
