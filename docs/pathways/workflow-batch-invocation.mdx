@@ -1,0 +1,84 @@
+---
+title: 'Workflow Batch Invocation Node'
+description: 'Invoke multiple workflows in a batch process'
+---
+
+## Overview
+The Workflow Batch Invocation Node is a powerful tool within the Pathlit workflow builder that allows users to execute multiple workflows simultaneously. This node is designed to streamline processes that require batch operations, making it ideal for scenarios where large volumes of data or tasks need to be processed concurrently.
+
+## Configuration Parameters
+
+To set up the Workflow Batch Invocation Node, you need to configure the following parameters:
+
+* **Target Workflows**:
+
+    Specify the list of workflows that need to be invoked in a batch. You can select multiple workflows that will be triggered simultaneously.
+
+* **Batch Size**:
+
+    Define the number of workflows to be processed in each batch. This parameter helps manage system resources effectively by controlling the load on the system.
+
+    <Tip>
+    Adjust the batch size based on your system's capacity to handle concurrent processes. A smaller batch size may result in longer processing times, while a larger batch size may require more resources.
+    </Tip>
+
+* **Error Handling Strategy**:
+
+    Choose how errors should be handled during batch processing. Options include continuing with the next batch, retrying failed workflows, or stopping the entire batch process.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node does not require any specific inputs from other nodes in the workflow. It operates independently to invoke the specified workflows.
+
+- **Outputs**:
+
+  - The node outputs a summary of the batch process, including the status of each workflow (e.g., successful, failed, pending).
+
+## Use Case Examples
+1. **Data Processing**:
+
+    Use the Workflow Batch Invocation Node to process large datasets by dividing them into smaller chunks and invoking separate workflows to handle each chunk. This approach can significantly reduce processing time and improve efficiency.
+
+2. **Automated Testing**:
+
+    In software development, you can automate the testing of multiple features or modules by invoking test workflows in parallel. This ensures thorough testing coverage and accelerates the development cycle.
+
+3. **Email Campaigns**:
+
+    For marketing purposes, you can use this node to send out personalized email campaigns to different segments of your audience simultaneously, ensuring timely and efficient communication.
+
+## Error Handling and Troubleshooting
+- **Batch Processing Failures**:
+
+    If a batch process fails, review the error handling strategy to determine the best course of action. You may need to adjust the batch size or modify the workflows to address specific issues.
+
+- **Resource Limitations**:
+
+    Ensure that your system has sufficient resources to handle the batch processing load. If you encounter performance issues, consider optimizing the workflows or increasing system capacity.
+
+If you encounter any issues with the Workflow Batch Invocation Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Workflow Invocation Node"
+    href="/docs/pathways/workflow-invocation"
+  >
+    Invoke a single workflow within your process
+  </Card>
+
+  <Card
+    title="Scheduler Node"
+    href="/docs/pathways/scheduler"
+  >
+    Schedule workflows for execution at specific times
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
