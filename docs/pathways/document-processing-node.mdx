@@ -1,0 +1,84 @@
+---
+title: 'Document Processing Node'
+description: 'Extract text content from documents for further processing'
+---
+
+## Overview
+The Document Processing Node is a powerful component of the Pathlit workflow builder that enables users to extract and process text content from various document types. This node is ideal for workflows that require text analysis, information extraction, or data transformation from document files.
+
+## Configuration Parameters
+
+To set up the Document Processing Node, you need to configure the following parameters:
+
+* **Document Type**:
+
+    Specify the type of document you want to process. Supported document types include PDF, DOCX, TXT, and more. This ensures the node uses the appropriate method for text extraction.
+
+    <Tip>
+    Ensure the document type matches the file format you intend to process for accurate text extraction.
+    </Tip>
+
+* **Extraction Method**:
+
+    Choose the method for extracting text from the document. Options may include OCR for scanned documents or native extraction for text-based files.
+
+    <Info>
+    Use OCR for image-based PDFs or scanned documents to convert them into machine-readable text.
+    </Info>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node requires a document file as input. The file should be accessible within the workflow environment for processing.
+
+- **Outputs**:
+
+  - The output will be the extracted text content from the document, ready for further processing or analysis in subsequent workflow steps.
+
+## Use Case Examples
+1. **Automated Data Entry**:
+
+    Use the Document Processing Node to extract data from invoices or forms and automatically populate fields in a database or spreadsheet, reducing manual data entry efforts.
+
+2. **Content Analysis**:
+
+    For research or content curation, extract text from articles or reports to perform sentiment analysis, keyword extraction, or summarization.
+
+3. **Compliance and Audit**:
+
+    Extract and analyze text from legal documents or contracts to ensure compliance with regulations or identify critical clauses and terms.
+
+## Error Handling and Troubleshooting
+- **Unsupported Document Type**:
+
+    If you encounter issues with document processing, ensure that the document type is supported and correctly specified in the configuration.
+
+- **Extraction Errors**:
+
+    If the text extraction is incomplete or inaccurate, verify the quality and format of the document. For scanned documents, ensure they are clear and legible for OCR processing.
+
+If you encounter any issues with the Document Processing Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Text Analysis Node"
+    href="/docs/pathways/text-analysis"
+  >
+    Perform advanced text analysis on extracted content
+  </Card>
+
+  <Card
+    title="Data Transformation Node"
+    href="/docs/pathways/data-transformation"
+  >
+    Transform extracted data into desired formats
+  </Card>
+
+  <Card
+    title="OCR Node"
+    href="/docs/pathways/ocr"
+  >
+    Convert scanned documents into machine-readable text
+  </Card>
+</CardGroup>
