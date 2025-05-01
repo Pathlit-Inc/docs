@@ -1,0 +1,76 @@
+---
+title: 'Code Node'
+description: 'Execute Python code within an isolated environment'
+---
+
+## Overview
+The Code Node is a powerful component of the Pathlit workflow builder that allows users to execute Python code in a controlled environment. This node is designed for advanced users who need to incorporate custom logic or data processing that goes beyond standard node capabilities. It provides an isolated environment where you can run Python scripts, install packages, and access document collections.
+
+## Configuration Parameters
+
+To set up the Code Node, you need to configure the following parameters:
+
+* **Session ID**:
+
+    A unique identifier for the session in which the code will be executed. If not provided, a new session will be created. To maintain the same environment across executions, use the same session ID.
+
+* **Python Code**:
+
+    The Python code to execute. This code runs in an IPython notebook environment, allowing you to install packages with `!pip install <package>`. Ensure you use the same session ID when running the code again to maintain the environment.
+
+* **Document Collection IDs**:
+
+    A list of document collection IDs to use in the code. Files from each collection are made available at `documents/{collection_id}/{file_name}` for code execution. You can list the documents in the directory to see available files.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **Session**: The session ID to use for the code execution.
+  - **Input**: Inputs to the Python block.
+  - **Documents**: Document collection(s) to use.
+
+- **Outputs**:
+
+  - **Output**: The output from the Python block execution.
+  - **Session**: The session ID used for the code execution.
+
+## Use Case Examples
+1. **Data Analysis and Transformation**:
+
+    Use the Code Node to perform complex data analysis or transformation that is not possible with standard nodes. For example, you can read data from document collections, process it using Python libraries like Pandas, and output the results for further use in the workflow.
+
+2. **Custom Machine Learning Models**:
+
+    Deploy custom machine learning models within your workflow. You can load pre-trained models or train new ones using data from document collections, then use them to make predictions or classifications as part of the workflow.
+
+3. **Integration with External APIs**:
+
+    Execute Python scripts that interact with external APIs, allowing you to fetch or send data as part of your workflow. This is particularly useful for integrating third-party services that are not natively supported by Pathlit.
+
+## Error Handling and Troubleshooting
+- **Session Expiry**:
+
+    If your session expires, a new session will be created automatically. However, this means any installed packages or session-specific data will be lost. To avoid this, ensure you use the same session ID for subsequent executions.
+
+- **Execution Errors**:
+
+    If there is an error in the Python code execution, the node will raise an exception with the error message and session ID. Review the error message to debug and correct the code.
+
+If you encounter any issues with the Code Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+</CardGroup>
