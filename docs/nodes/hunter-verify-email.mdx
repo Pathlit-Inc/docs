@@ -1,0 +1,80 @@
+---
+title: 'Hunter Verify Email Node'
+description: 'Verify the deliverability and validity of an email address using Hunter.io'
+---
+
+## Overview
+
+The Hunter Verify Email Node is a powerful tool in the Pathlit workflow builder that allows you to check the deliverability and validity of an email address using the Hunter.io service. This node is particularly useful for ensuring that email addresses in your database are correct and can receive emails, which is crucial for email marketing campaigns, customer communication, and maintaining a clean contact list.
+
+## Configuration Parameters
+
+To configure the Hunter Verify Email Node, you need to set the following parameter:
+
+* **Email**:
+
+    The email address you want to verify. This field can be a direct input or a template that pulls email addresses from previous nodes in your workflow.
+
+    Example value: "patrick@stripe.com"
+
+    This is the primary input for the node, and it is required to perform the verification.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * **Email address**: A valid email address
+
+* **Outputs**:
+
+  * **Hunter response JSON**: The output is a JSON string containing the verification results from Hunter.io. It includes details about the email's deliverability and validity.
+
+## Use Case Examples
+
+1. **Email List Cleaning**:
+
+    Before launching an email marketing campaign, use the Hunter Verify Email Node to clean your email list. This ensures that you only send emails to valid addresses, improving delivery rates and reducing bounce rates.
+
+2. **Customer Signup Verification**:
+
+    When a new customer signs up on your platform, use this node to verify their email address immediately. This helps in maintaining a database of valid and reachable contacts, enhancing customer communication.
+
+3. **Sales Lead Validation**:
+
+    For sales teams, verifying the email addresses of potential leads can be crucial. By integrating this node into your workflow, you can ensure that the contact information for leads is accurate and actionable.
+
+## Error Handling and Troubleshooting
+
+* **Email is required**:
+
+    If you encounter an error stating "Email is required," ensure that you have provided a valid email address in the configuration.
+
+* **Invalid Hunter API key**:
+
+    If you receive an error about an invalid API key, check your Hunter.io API key settings and ensure it is correctly configured in the Pathlit platform.
+
+* **Hunter rate-limit exceeded**:
+
+    If you hit a rate-limit error, you may need to upgrade your Hunter.io plan or adjust your workflow to reduce the number of verification requests.
+
+* **Email not found**:
+
+    If the email is not found in the Hunter database, the output will indicate this, which may suggest that the email is not valid or not widely used.
+
+If you encounter any issues not covered here, please contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Gmail Receive Node" href="/pathways/gmail-receive">
+    Receive emails from your Gmail account into your workflow
+  </Card>
+
+  <Card title="Gmail Send Node" href="/pathways/gmail-send">
+    Send emails using your Gmail account from your workflow
+  </Card>
+
+  <Card title="Slack Message Send Node" href="/pathways/slack-message-send">
+    Send messages to Slack channels or users from your workflow
+  </Card>
+</CardGroup>

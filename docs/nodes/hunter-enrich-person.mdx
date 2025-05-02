@@ -1,0 +1,86 @@
+---
+title: 'Hunter Enrich Person Node'
+description: 'Enrich a person by email using Hunter.io'
+---
+
+## Overview
+
+The Hunter Enrich Person Node is a powerful tool within the Pathlit workflow builder that allows users to enrich contact information using Hunter.io. By providing an email address, this node connects to the Hunter.io API to retrieve additional information about the person associated with that email. This can be incredibly useful for sales teams, recruiters, or anyone needing to gather more details about a contact quickly and efficiently.
+
+## Configuration Parameters
+
+To set up the Hunter Enrich Person Node, you need to configure the following parameter:
+
+* **Email**:
+  
+    The email address of the person you wish to enrich. You can enter a specific email or use a template input to dynamically provide the email from other nodes in your workflow.
+
+    Example value: "patrick@stripe.com"
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * **Email address (optional template input)**: 
+      
+      You can provide an email address directly or use a template input from previous nodes in your workflow to dynamically fill this field.
+
+* **Outputs**:
+
+  * **Hunter response JSON**: 
+      
+      The output will be a JSON string containing the enriched information retrieved from Hunter.io for the specified email address.
+
+## Use Case Examples
+
+1. **Sales Lead Enrichment**:
+
+    Sales teams can use this node to gather more information about potential leads. By inputting a lead's email address, the node retrieves additional details such as the person's full name, position, and company, which can be instrumental in personalizing sales pitches.
+
+2. **Recruitment**:
+
+    Recruiters can benefit from this node by enriching candidate profiles. By providing a candidate's email, recruiters can obtain more comprehensive information that may not be available on a resume, aiding in the hiring decision process.
+
+3. **Networking**:
+
+    Professionals looking to expand their network can use this node to learn more about new contacts. By enriching email addresses collected from business cards or networking events, users can gain insights that facilitate meaningful connections.
+
+## Error Handling and Troubleshooting
+
+* **Email is required**:
+
+    If you encounter an error stating "Email is required," ensure that you have provided a valid email address in the configuration.
+
+* **Invalid Hunter API key**:
+
+    If you receive an error about an invalid API key, check your Hunter.io API key and ensure it is correctly configured in your settings.
+
+* **Hunter rate-limit exceeded**:
+
+    If you hit the rate limit, you may need to wait before making additional requests or upgrade your Hunter.io plan for higher limits.
+
+* **Email not found**:
+
+    If the email address cannot be found in the Hunter database, the output will indicate that the email could not be found.
+
+For any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/pathways/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+
+  <Card title="Airtable Output Node" href="/pathways/airtable-out">
+    Export your workflow data back to Airtable
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card title="Document Data Node" href="/pathways/document-data">
+    Extract and manage data from various document types
+  </Card>
+</CardGroup>

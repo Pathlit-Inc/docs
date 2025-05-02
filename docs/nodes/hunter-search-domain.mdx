@@ -1,0 +1,82 @@
+---
+title: 'Hunter Domain Search Node'
+description: 'Search all email addresses found for a given domain using Hunter.io'
+---
+
+## Overview
+
+The Hunter Domain Search Node is a useful tool in the Pathlit workflow builder that allows users to search for all email addresses associated with a specific domain using the Hunter.io service. This node is ideal for businesses looking to gather contact information from a company's domain, streamlining the process of lead generation or outreach.
+
+## Configuration Parameters
+
+To configure the Hunter Domain Search Node, you need to set the following parameter:
+
+* **Company Domain**: 
+
+    Enter the domain of the company you want to search for, without the protocol (e.g., "intercom.com"). This field is essential for the node to perform the search.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * **Company Domain**: 
+      
+      This is an optional template input where you can specify the company domain you wish to search.
+
+* **Outputs**:
+
+  * The output will be a JSON formatted string containing the Hunter.io response, which includes the email addresses found for the specified domain.
+
+## Use Case Examples
+
+1. **Lead Generation**:
+
+    Marketing teams can use this node to gather email addresses from potential client domains, aiding in the creation of targeted outreach campaigns.
+
+2. **Business Development**:
+
+    Business development professionals can quickly find contact information for companies they are interested in partnering with, speeding up the networking process.
+
+3. **Recruitment**:
+
+    Recruiters can use the node to locate contact details for potential candidates working at specific companies, improving the efficiency of their recruitment process.
+
+## Error Handling and Troubleshooting
+
+* **Domain is required**:
+
+    If the domain is not provided, you will encounter an error stating "Domain is required." Ensure that you have entered a valid domain.
+
+* **Invalid Hunter API key**:
+
+    If you receive an error indicating an invalid API key, verify that your API key is correctly set in the system settings.
+
+* **Hunter rate-limit exceeded**:
+
+    If you hit the rate limit for Hunter.io, you will need to wait before making additional requests or consider upgrading your Hunter.io plan.
+
+* **Domain not found**:
+
+    If the specified domain is not found in the Hunter database, the output will inform you with a message like "Could not find [domain] in the Hunter database."
+
+If you encounter any issues with the Hunter Domain Search Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/pathways/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+
+  <Card title="Airtable Output Node" href="/pathways/airtable-out">
+    Export your workflow data back to Airtable
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card title="Document Data Node" href="/pathways/document-data">
+    Extract and manage data from various document types
+  </Card>
+</CardGroup>

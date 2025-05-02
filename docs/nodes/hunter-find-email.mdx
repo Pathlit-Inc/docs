@@ -1,0 +1,98 @@
+---
+title: 'Hunter Find Email Node'
+description: 'Find a professional email address using Hunter.io'
+---
+
+## Overview
+
+The Hunter Find Email Node is a powerful tool within the Pathlit workflow builder that allows users to locate professional email addresses using the Hunter.io service. This node is particularly useful for businesses and professionals who need to connect with potential clients or partners by finding their email addresses based on their name and company domain.
+
+This node queries the Hunter.io database to find and return the email address associated with the given person and company information.
+
+## Configuration Parameters
+
+To configure the Hunter Find Email Node, you need to provide the following parameters:
+
+* **First Name**: 
+
+    The person's first name.
+
+    Example value: "Alexis"
+
+* **Last Name**: 
+
+    The person's last name.
+
+    Example value: "Ohanian"
+
+* **Company Domain**: 
+
+    The domain of the company (without protocol).
+
+    Example value: "reddit.com"
+
+These fields are essential to perform a successful search on Hunter.io's database.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * Optional template inputs for first name, last name, and company domain. These inputs can be filled manually or dynamically from other nodes in the workflow.
+
+* **Outputs**:
+
+  * The output will be a JSON response from Hunter.io containing the found email address and other related information.
+
+## Use Case Examples
+
+1. **Sales Prospecting**:
+
+    Sales teams can use this node to find the email addresses of potential leads by providing their names and associated company domains. This helps in reaching out to prospects directly and efficiently.
+
+2. **Networking**:
+
+    Professionals looking to expand their network can utilize this node to find and connect with individuals in their industry by obtaining their contact information.
+
+3. **Recruitment**:
+
+    Recruiters can leverage this node to find the contact details of potential candidates by searching for their names and the companies they work for.
+
+## Error Handling and Troubleshooting
+
+* **Missing Information**:
+
+    If you encounter an error stating "First name, last name, domain, and API key are all required," ensure that all fields are filled out correctly.
+
+* **Invalid API Key**:
+
+    If you receive an "Invalid Hunter API key" error, verify that your API key is correct and active.
+
+* **Rate Limit Exceeded**:
+
+    If you encounter a "Hunter rate-limit exceeded" error, consider waiting for a while before making further requests, or check your Hunter.io plan for rate limits.
+
+* **Not Found**:
+
+    If the response indicates that the email could not be found, double-check the spelling of the name and domain, and ensure that the person is likely to be in the Hunter.io database.
+
+If any issues persist, please contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/pathways/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+
+  <Card title="Airtable Output Node" href="/pathways/airtable-out">
+    Export your workflow data back to Airtable
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card title="Document Data Node" href="/pathways/document-data">
+    Extract and manage data from various document types
+  </Card>
+</CardGroup>

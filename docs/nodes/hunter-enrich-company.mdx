@@ -1,0 +1,78 @@
+---
+title: 'Hunter Enrich Company Node'
+description: 'Retrieve enriched company data using Hunter.io by domain'
+---
+
+## Overview
+
+The Hunter Enrich Company Node is a powerful tool in the Pathlit workflow builder that allows users to obtain detailed information about a company using its domain name. By leveraging Hunter.io's API, this node fetches enriched data, which can be useful for various business applications such as lead generation, market research, and competitive analysis.
+
+This node is particularly beneficial for users who need to gather company information quickly and efficiently without manually searching through multiple sources.
+
+## Configuration Parameters
+
+To set up the Hunter Enrich Company Node, you need to configure the following parameter:
+
+* **Company Domain**:  
+    The domain of the company you wish to enrich, entered without the protocol (e.g., "stripe.com"). This field is required to perform the search.
+
+    Example value: "example.com"
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * **Domain**:  
+    An optional template input that allows you to dynamically specify the company domain from previous nodes in your workflow.
+
+* **Outputs**:
+
+  * **Hunter Response JSON**:  
+    The output is a JSON string containing the enriched data retrieved from Hunter.io for the specified company domain.
+
+## Use Case Examples
+
+1. **Lead Generation**:  
+    Sales teams can use this node to gather detailed information about potential clients by simply entering their domain names. This enriched data can help in tailoring sales pitches and improving conversion rates.
+
+2. **Market Research**:  
+    Researchers can quickly gather data about various companies within an industry to analyze market trends and competitive landscapes. This can provide valuable insights for strategic planning.
+
+3. **Competitive Analysis**:  
+    Businesses can use this node to keep an eye on competitors by obtaining detailed company information. This data can be used to compare offerings, size, and market positioning.
+
+## Error Handling and Troubleshooting
+
+* **Missing Domain**:  
+    If you encounter an error stating "Domain is required," ensure that you have specified a valid company domain in the configuration.
+
+* **Invalid API Key**:  
+    An error message indicating "Invalid Hunter API key" suggests that the API key used is incorrect. Verify your Hunter.io API key settings.
+
+* **Rate Limit Exceeded**:  
+    If you receive a "Hunter rate-limit exceeded" error, you have surpassed the allowed number of API calls. Consider upgrading your Hunter.io plan or reducing the frequency of requests.
+
+* **Company Not Found**:  
+    If the output states "Could not find [domain] in the Hunter database," the specified domain may not exist in Hunter.io's records.
+
+For any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/pathways/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+
+  <Card title="Airtable Output Node" href="/pathways/airtable-out">
+    Export your workflow data back to Airtable
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card title="Document Data Node" href="/pathways/document-data">
+    Extract and manage data from various document types
+  </Card>
+</CardGroup>
