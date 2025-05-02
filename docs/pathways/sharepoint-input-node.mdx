@@ -1,0 +1,66 @@
+---
+title: 'Sharepoint Input Node'
+description: 'Import files from Sharepoint into your workflow'
+---
+
+## Overview
+The Sharepoint Input Node is a powerful integration component within the Pathlit workflow builder that allows you to import files directly from Sharepoint. This node facilitates seamless access to files stored in Sharepoint, enabling you to incorporate them into your automated workflows with ease.
+
+## Configuration Parameters
+
+To utilize the Sharepoint Input Node, you will need to authenticate using Microsoft OAuth2 client credentials. Once authenticated, you can specify the files you wish to import from Sharepoint.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - This node does not require any specific inputs from other nodes in the workflow.
+
+- **Outputs**:
+  - **Output**: The node outputs the content of the imported Sharepoint files as a single concatenated string.
+
+## Use Case Examples
+1. **Document Processing**:
+
+    Automatically import documents from Sharepoint for processing. For instance, you could analyze the content of reports or extract data from spreadsheets for further processing in your workflow.
+
+2. **Content Synchronization**:
+
+    Keep your local systems synchronized with the latest documents from Sharepoint. This is particularly useful for ensuring that your team always has access to the most up-to-date information.
+
+3. **Data Integration**:
+
+    Integrate data from Sharepoint files into other systems or databases. This can be used to automate data entry processes or to consolidate information from multiple sources.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If you encounter authentication errors, ensure that your Microsoft OAuth2 client credentials are correctly configured and that you have the necessary permissions to access Sharepoint files.
+
+- **File Processing Errors**:
+
+    If there are issues with processing specific files, check the logs for detailed error messages. Ensure that the files are accessible and not corrupted.
+
+If you encounter any issues with the Sharepoint Input Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card
+    title="Box Input Node"
+    href="/docs/pathways/box-input"
+  >
+    Retrieve files from Box for processing
+  </Card>
+
+  <Card
+    title="Document Data Node"
+    href="/docs/pathways/document-data"
+  >
+    Process and analyze document content
+  </Card>
+</CardGroup>
