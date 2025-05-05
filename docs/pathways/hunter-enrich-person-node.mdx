@@ -1,0 +1,80 @@
+---
+title: 'Hunter Enrich Person Node'
+description: 'Enrich a person by email using Hunter.io'
+---
+
+## Overview
+The Hunter Enrich Person Node is a powerful integration within the Pathlit workflow builder that allows users to enrich personal data using an email address via Hunter.io. This node leverages the Hunter.io API to retrieve detailed information about a person based on their email address, providing valuable insights for various applications such as lead generation, customer profiling, and more.
+
+## Configuration Parameters
+
+To set up the Hunter Enrich Person Node, you need to provide an email address that you wish to enrich using Hunter.io. Ensure you have a valid Hunter API key set up in your environment settings.
+
+- **Email**:
+
+  The email address of the person you want to enrich. This email will be used to query the Hunter.io database for additional information.
+
+  <Tip>
+  Ensure the email address is correctly formatted to avoid errors during the enrichment process.
+  </Tip>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **Email**: The node accepts an email address as input, which can be provided directly or through a template input.
+
+- **Outputs**:
+
+  - **Hunter Response JSON**: The output is a JSON formatted response from Hunter.io containing the enriched data about the person associated with the provided email address.
+
+## Use Case Examples
+1. **Lead Enrichment**:
+
+   Use the Hunter Enrich Person Node to gather additional information about leads collected from email campaigns. This can help in personalizing follow-up communications and improving lead scoring.
+
+2. **Customer Profiling**:
+
+   Enrich customer data in your CRM system by fetching additional details using their email addresses. This can enhance customer segmentation and targeting strategies.
+
+3. **Recruitment**:
+
+   For recruitment purposes, enrich candidate profiles using their email addresses to gather more information about their professional background and online presence.
+
+## Error Handling and Troubleshooting
+- **Invalid Email**:
+
+  If an invalid email is provided, the node may not return any results. Ensure that the email address is correctly formatted and exists in the Hunter.io database.
+
+- **API Key Issues**:
+
+  If you encounter a 401 error, verify that your Hunter API key is correctly configured in the environment settings. A valid API key is required for the node to function.
+
+- **Rate Limit Exceeded**:
+
+  If you receive a 429 error, it indicates that the Hunter.io rate limit has been exceeded. Consider upgrading your Hunter.io plan or implementing rate limiting in your workflow.
+
+If you encounter any issues with the Hunter Enrich Person Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
