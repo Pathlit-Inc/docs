@@ -1,0 +1,85 @@
+---
+title: 'Hunter Find Email Node'
+description: 'Find a professional email address using Hunter.io'
+---
+
+## Overview
+The Hunter Find Email Node is a powerful tool within the Pathlit workflow builder designed to help users locate professional email addresses using Hunter.io. By providing basic information such as a person's first name, last name, and their company's domain, this node interacts with the Hunter.io API to retrieve potential email addresses. This functionality is particularly useful for sales, marketing, and recruitment teams looking to enhance their outreach capabilities.
+
+## Configuration Parameters
+
+To set up the Hunter Find Email Node, you need to configure the following parameters:
+
+* **First Name**:
+
+    The first name of the person whose email address you are trying to find. This is a required field and should be provided accurately to improve search results.
+
+* **Last Name**:
+
+    The last name of the person. Similar to the first name, this is a required field and essential for narrowing down the search results.
+
+* **Company Domain**:
+
+    The domain of the company where the person works. Ensure that this is entered without any protocol (e.g., "reddit.com").
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - The node accepts the following inputs:
+    - **First Name**: The first name of the person (optional template input).
+    - **Last Name**: The last name of the person (optional template input).
+    - **Domain**: The company domain (optional template input).
+
+- **Outputs**:
+  - The output is a JSON response from Hunter.io containing the email address information.
+
+## Use Case Examples
+1. **Lead Generation**:
+
+    Use the Hunter Find Email Node to gather contact information for potential leads by inputting their names and company domains. This can help sales teams quickly build contact lists for outreach.
+
+2. **Recruitment**:
+
+    Recruiters can leverage this node to find contact details of potential candidates by searching for their professional email addresses using their names and known company domains.
+
+3. **Networking**:
+
+    Enhance your networking efforts by finding the professional email addresses of individuals you wish to connect with, ensuring your communication reaches them directly.
+
+## Error Handling and Troubleshooting
+- **Missing Information**:
+
+    Ensure that all required fields (first name, last name, and domain) are filled out correctly. Missing information will result in an error.
+
+- **Invalid API Key**:
+
+    If the API key for Hunter.io is invalid, you will receive an error message. Double-check your API key and ensure it is correctly configured in the settings.
+
+- **Rate Limit Exceeded**:
+
+    Hunter.io enforces rate limits on API usage. If you exceed these limits, the node will return an error. Consider upgrading your Hunter.io plan if you frequently hit rate limits.
+
+If you encounter any issues with the Hunter Find Email Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Send Node"
+    href="/docs/pathways/gmail-send"
+  >
+    Automate sending emails from your Gmail account
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/pathways/slack-message-send"
+  >
+    Send messages to your Slack channels based on email triggers
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
