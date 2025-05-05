@@ -1,0 +1,70 @@
+---
+title: 'Pull Request Access Node'
+description: 'Handle access issues related to specific commits or branches in a pull request'
+---
+
+## Overview
+The Pull Request Access Node is a crucial component in the Pathlit workflow builder designed to manage and troubleshoot access issues related to specific commits or branches within a pull request. This node helps ensure that you have the necessary permissions and configurations to access the relevant parts of a repository for seamless workflow execution.
+
+## Configuration Parameters
+
+To configure the Pull Request Access Node, ensure you have the necessary repository permissions and settings adjusted to allow access to the pull request and its associated branches. This might involve checking repository settings or ensuring that the pull request and its branches are accessible.
+
+## Trigger Testing Inputs
+
+To test the Pull Request Access Node, you can manually trigger the workflow by clicking the **Run Workflow** button in the editor. This opens a side panel where you can simulate the access scenario and validate the node's functionality.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - This node does not require specific inputs from other nodes in the workflow.
+
+- **Outputs**:
+  - The node outputs a status message indicating whether the access to the pull request and its branches was successful or if there were issues that need addressing.
+
+## Use Case Examples
+1. **Continuous Integration/Continuous Deployment (CI/CD) Pipelines**:
+
+    Use the Pull Request Access Node to ensure that your CI/CD pipelines have the necessary access to pull requests for testing and deployment purposes. This can prevent disruptions in the pipeline due to access issues.
+
+2. **Code Review Automation**:
+
+    Automate code review processes by ensuring that all relevant branches and commits in a pull request are accessible. This node can trigger alerts or actions if access is restricted, allowing for timely resolution.
+
+3. **Repository Management**:
+
+    For repository administrators, this node can be used to automate checks on pull request access permissions, ensuring compliance with organizational policies and preventing unauthorized access.
+
+## Error Handling and Troubleshooting
+- **Access Denied Errors**:
+
+    If you encounter access denied errors, verify that your repository settings permit the necessary access to the pull request and its branches. Adjust permissions as needed.
+
+- **Configuration Issues**:
+
+    Ensure that the node is correctly configured with the appropriate permissions and settings to access the pull request. Double-check repository configurations and permissions.
+
+If you encounter any issues with the Pull Request Access Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Bitbucket PR Input Node"
+    href="/docs/pathways/bitbucket-pr-input"
+  >
+    Manage input from Bitbucket pull requests
+  </Card>
+
+  <Card
+    title="GitHub PR Trigger Node"
+    href="/docs/pathways/github-pr-trigger"
+  >
+    Trigger workflows based on GitHub pull requests
+  </Card>
+
+  <Card
+    title="Jira Issue Input Node"
+    href="/docs/pathways/jira-issue-input"
+  >
+    Integrate Jira issues into your workflow
+  </Card>
+</CardGroup>
