@@ -1,0 +1,78 @@
+---
+title: 'Hunter Enrich Company Node'
+description: 'Enrich a company by domain using Hunter.io'
+---
+
+## Overview
+The Hunter Enrich Company Node is a powerful integration within the Pathlit workflow builder that allows users to enrich company data by leveraging the Hunter.io API. By providing a company's domain, this node fetches detailed information about the company, which can be used to enhance your data-driven workflows.
+
+## Configuration Parameters
+
+To set up the Hunter Enrich Company Node, you need to provide the following parameter:
+
+* **Company Domain**:
+
+    The domain of the company you wish to enrich. This should be provided without any protocol (e.g., `stripe.com`).
+
+    <Note>
+    Ensure that you have a valid Hunter API key configured in your settings to use this node.
+    </Note>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - The node accepts an optional input for the company domain, which can be templated from other nodes in the workflow. If no input is provided, the configured domain will be used.
+
+- **Outputs**:
+  - The node outputs a JSON response from Hunter.io containing enriched company information. This can include data such as company size, industry, and more.
+
+## Use Case Examples
+1. **Lead Enrichment**:
+
+    When capturing leads, use the Hunter Enrich Company Node to automatically fetch additional company details for each lead based on their email domain. This enriched data can help sales teams prioritize and tailor their approach.
+
+2. **Market Research**:
+
+    For market analysis, enrich a list of competitor domains to gather detailed insights about each company, helping you make informed strategic decisions.
+
+3. **Data Validation**:
+
+    Validate and enrich company records in your database by periodically updating them with the latest information from Hunter.io, ensuring your data remains accurate and up-to-date.
+
+## Error Handling and Troubleshooting
+- **Invalid Domain**:
+
+    If the domain is missing or invalid, the node will raise an error. Ensure that a valid domain is provided.
+
+- **API Key Issues**:
+
+    If the Hunter API key is incorrect or missing, the node will not function. Double-check your API key configuration.
+
+- **Rate Limiting**:
+
+    If you encounter rate-limit errors, consider upgrading your Hunter.io plan or implementing retries with delays in your workflow.
+
+If you encounter any issues with the Hunter Enrich Company Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Airtable Input Node"
+    href="/docs/pathways/airtable-input"
+  >
+    Import data from Airtable into your workflow
+  </Card>
+
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
