@@ -1,0 +1,88 @@
+---
+title: 'MySQL Query Node'
+description: 'Connects to a MySQL database and executes a SQL query.'
+---
+
+## Overview
+The MySQL Query Node is a powerful component in Pathlit that allows you to connect to a MySQL database and execute SQL queries. This node is ideal for integrating database operations into your workflows, enabling data retrieval, manipulation, and management directly from your Pathlit environment.
+
+## Configuration Parameters
+
+To set up the MySQL Query Node, you need to configure the following parameters:
+
+* **Host**:
+
+    The hostname or IP address of the MySQL server you wish to connect to. Note that `localhost` is not allowed for security reasons.
+
+* **User**:
+
+    The username used to authenticate with the MySQL server. This should have the necessary permissions to execute the desired queries.
+
+* **Password**:
+
+    The password associated with the specified MySQL username. This is required for authentication.
+
+* **Database**:
+
+    The name of the MySQL database where the query will be executed.
+
+* **SQL Query**:
+
+    The SQL query you wish to execute. You can use parameterized inputs by referencing them in the format `{input_name}`.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  - **Query**: An optional input port for dynamic query parameters. You can pass data here to format the SQL query dynamically.
+
+- **Outputs**:
+
+  - **Output**: The result of the SQL query execution. For `SELECT` queries, this will contain the rows fetched. For other queries, it will provide the execution status including the number of rows affected.
+
+## Use Case Examples
+
+1. **Data Retrieval**:
+
+    Use the MySQL Query Node to fetch data from your database for reporting or analysis purposes. For example, retrieve customer records to generate a sales report.
+
+2. **Data Manipulation**:
+
+    Execute `INSERT`, `UPDATE`, or `DELETE` operations to modify your database records as part of an automated workflow, such as updating inventory levels after a sale.
+
+3. **Data Integration**:
+
+    Integrate data from your MySQL database with other systems by combining this node with other Pathlit nodes, such as sending query results via email or logging them to a file.
+
+## Error Handling and Troubleshooting
+
+- **Localhost Error**:
+
+    If you attempt to use `localhost` as the host, you will receive an error. Ensure that you use a valid hostname or IP address for your MySQL server.
+
+- **MySQL Errors**:
+
+    Any errors encountered during the execution of the SQL query will be returned in the output. Check the error message for details and ensure your query and connection details are correct.
+
+- **Result Truncation**:
+
+    Query results are limited to 256 KB. If your query returns more data, it will be truncated. Consider refining your query to return smaller result sets if necessary.
+
+If you encounter any issues with the MySQL Query Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="PostgreSQL Query Node"
+    href="/docs/pathways/postgresql-query"
+  >
+    Connects to a PostgreSQL database and executes a SQL query.
+  </Card>
+
+  <Card
+    title="SQLite Query Node"
+    href="/docs/pathways/sqlite-query"
+  >
+    Connects to a SQLite database and executes a SQL query.
+  </Card>
+</CardGroup>
