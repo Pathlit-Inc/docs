@@ -1,0 +1,74 @@
+---
+title: "Typeform Trigger Node"
+description: "Automatically start workflows when a new response is submitted to a Typeform."
+---
+
+## Overview
+
+The Typeform Trigger Node allows you to automatically initiate a workflow whenever a new response is submitted to a Typeform. This node is perfect for users who want to seamlessly integrate Typeform responses into their workflows without needing to manually check for new submissions.
+
+## Configuration Parameters
+
+To set up the Typeform Trigger Node, you need to configure the following parameter:
+
+- **Form URL**:
+
+  The URL of the Typeform you wish to monitor. This URL is necessary to identify which Typeform responses should trigger the workflow.
+
+  Example: `https://example.typeform.com/to/abcd1234`
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  No direct inputs are required for this node to function as it acts as a trigger based on new Typeform submissions.
+
+- **Outputs**:
+
+  The output is a JSON object containing the form responses. This includes all the answers submitted in the Typeform, structured in a way that can be easily used in subsequent workflow steps.
+
+## Use Case Examples
+
+1. **Customer Feedback Collection**:
+
+   Automatically trigger a workflow to analyze customer feedback every time a new response is submitted to a feedback Typeform.
+
+2. **Event Registration**:
+
+   Use this node to start a workflow that sends a confirmation email to participants whenever they register for an event via Typeform.
+
+3. **Lead Generation**:
+
+   Capture new leads by triggering a workflow that logs the details in your CRM system whenever a potential customer fills out a Typeform.
+
+## Error Handling and Troubleshooting
+
+- **Trigger Not Activated**:
+
+  If the workflow does not trigger as expected, ensure that the Form URL is correct and accessible.
+
+- **Incorrect Form Response Structure**:
+
+  If there are issues with the form response data, verify that the Typeform structure matches the expected format.
+
+For further assistance, please reach out to our [support team](mailto:dev@pathlit.ai).
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Airtable Output Node" href="/docs/nodes/airtable-out">
+    Export workflow data to Airtable
+  </Card>
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+  <Card title="Hunter Enrich Company Node" href="/docs/nodes/hunter-enrich-company">
+    Enhance company data with additional insights
+  </Card>
+</CardGroup>

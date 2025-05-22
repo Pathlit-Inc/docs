@@ -1,0 +1,77 @@
+---
+title: 'Hubspot Input Node'
+description: 'Retrieve data from Hubspot CRM'
+---
+
+## Overview
+
+The Hubspot Input Node in Pathlit allows users to retrieve data from Hubspot CRM, a leading customer relationship management platform. This node is useful for sales, marketing, and customer service teams that need to access and analyze customer data, track deals, and manage customer interactions. By integrating Hubspot data into your workflows, you can enhance customer insights, streamline operations, and improve decision-making processes.
+
+## Configuration Parameters
+
+To configure the Hubspot Input Node, you need to select the following parameter:
+
+* **Object Type**: 
+
+    Choose the type of data you want to retrieve from Hubspot. The options include:
+
+    - Contacts
+    - Companies
+    - Deals
+    - Tickets
+
+    This selection determines the specific dataset that will be fetched from Hubspot.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * No specific inputs are required from other nodes. The node operates based on the selected object type.
+
+* **Outputs**:
+
+  * The output is a JSON response containing the requested data from Hubspot, filtered to exclude any null fields.
+
+## Use Case Examples
+
+1. **Sales Pipeline Management**:
+
+    Sales teams can retrieve deal data to monitor the status of sales opportunities, helping them prioritize efforts and forecast revenue more accurately.
+
+2. **Customer Support Enhancement**:
+
+    Support teams can access ticket data to analyze customer issues, track resolution times, and improve service quality.
+
+3. **Marketing Campaign Analysis**:
+
+    Marketing professionals can use contact and company data to segment audiences, personalize campaigns, and evaluate marketing strategies.
+
+## Error Handling and Troubleshooting
+
+* **Authentication Issues**:
+
+    If you encounter an error stating that the Hubspot access token is not found, ensure you have authenticated with Hubspot and the token is active.
+
+* **Data Retrieval Errors**:
+
+    Should there be issues fetching data, verify your internet connection and ensure the Hubspot API is accessible. Persistent problems may require contacting our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/pathways/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/pathways/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/pathways/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/pathways/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>

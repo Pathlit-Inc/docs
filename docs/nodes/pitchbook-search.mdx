@@ -1,0 +1,73 @@
+---
+title: "Pitchbook Search Node"
+description: "Search for entities on Pitchbook using the PitchBook Developer API."
+---
+
+## Overview
+
+The Pitchbook Search Node allows you to search for entities such as organizations or individuals using the PitchBook Developer API. This node is ideal for users who need to access detailed market data and insights from PitchBook directly within their Pathlit workflows.
+
+## Configuration Parameters
+
+To configure the Pitchbook Search Node, you need to provide the following parameters:
+
+- **Query**:
+
+  The name or identifier of the entity you wish to search for. This could be an organization, person, or any other entity recognized by PitchBook.
+
+- **PitchBook API Key**:
+
+  Your PitchBook Developer API Key, which is required to authenticate requests to the PitchBook API.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  This node requires input data for the search query. The query will be used to perform the search on PitchBook.
+
+- **Outputs**:
+
+  The output will be a JSON string containing the search results from PitchBook. This data will include detailed information about the entities matching your query.
+
+## Use Case Examples
+
+1. **Market Research**:
+
+   Companies can use this node to gather insights about potential investments or competitors by searching for relevant entities on PitchBook.
+
+2. **Lead Generation**:
+
+   Sales teams can integrate this node into their workflows to find detailed information about prospective clients or partners.
+
+3. **Financial Analysis**:
+
+   Financial analysts can use this node to quickly access data on companies or industries for their analysis and reporting.
+
+## Error Handling and Troubleshooting
+
+- **Missing API Key**:
+
+  If the PitchBook API Key is not provided, the node will raise an error. Ensure that you have entered a valid API Key in the configuration.
+
+- **Invalid API Key**:
+
+  If the provided API Key is invalid, the node will return an error indicating that the key is not authorized. Double-check your API Key for accuracy.
+
+If you encounter any issues with the Pitchbook Search Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Airtable Output Node" href="/docs/nodes/airtable-out">
+    Export workflow data to Airtable
+  </Card>
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>

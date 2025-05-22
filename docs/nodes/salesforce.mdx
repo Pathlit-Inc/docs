@@ -1,0 +1,91 @@
+---
+title: "Salesforce Node"
+description: "Integrate Salesforce data into your workflow."
+---
+
+## Overview
+
+The Salesforce Node allows you to seamlessly integrate Salesforce data into your workflow. This node is perfect for users looking to query Salesforce data such as accounts, contacts, leads, and opportunities without writing any code. You can specify the scope of your search, making it versatile for various business needs.
+
+## Configuration Parameters
+
+To set up the Salesforce Node, you need to configure the following parameters:
+
+- **Query**:
+
+  Enter your Salesforce query here. This is the search term you want to use when querying Salesforce data.
+
+  Example: "Acme Corp"
+
+- **Scope**:
+
+  Define the scope of your search. Options include "All fields", "Names", "Emails", "Phone Numbers", and "Sidebar". This helps in narrowing down the search to specific fields.
+
+- **Username**:
+
+  Your Salesforce username required for authentication.
+
+- **Password**:
+
+  The password associated with your Salesforce account.
+
+- **Security Token**:
+
+  A security token from Salesforce to ensure secure access to your data.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  The node expects a dictionary input where the key is "input" and the value is a dictionary containing any variables needed for the query.
+
+- **Outputs**:
+
+  The output is a JSON string containing filtered Salesforce data based on your query. It includes records from accounts, contacts, leads, and opportunities.
+
+## Use Case Examples
+
+1. **Customer Relationship Management**:
+
+   Use this node to pull customer data from Salesforce for better customer relationship management and targeted marketing strategies.
+
+2. **Sales Analysis**:
+
+   Sales teams can utilize this node to retrieve leads and opportunities data, aiding in sales forecasting and performance analysis.
+
+3. **Data Synchronization**:
+
+   Automatically synchronize Salesforce data with other business applications, ensuring your team has the most up-to-date information.
+
+## Error Handling and Troubleshooting
+
+- **Invalid Credentials**:
+
+  Ensure that your Salesforce username, password, and security token are correct. Incorrect credentials will prevent access to Salesforce data.
+
+- **Query Errors**:
+
+  If the query is not returning expected results, verify that the query is correctly formatted and that the inputs match the expected variables.
+
+- **Scope Limitations**:
+
+  If the search scope is too narrow, consider broadening it to include more fields for comprehensive results.
+
+If you encounter any issues, please reach out to our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+  <Card title="Hunter Enrich Company Node" href="/docs/nodes/hunter-enrich-company">
+    Enrich company data with Hunter
+  </Card>
+  <Card title="LinkedIn Scraper Agent" href="/docs/nodes/linkedin-scraper-agent">
+    Scrape LinkedIn profiles for detailed information
+  </Card>
+</CardGroup>

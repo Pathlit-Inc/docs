@@ -1,0 +1,98 @@
+---
+title: "Yahoo Finance Node"
+description: "Download market data from Yahoo! Finance."
+---
+
+## Overview
+
+The Yahoo Finance Node allows you to effortlessly download and analyze market data from Yahoo! Finance. This node is perfect for users who want to access financial data, such as stock prices and company financials, without needing to write any code.
+
+## Configuration Parameters
+
+To set up the Yahoo Finance Node, you'll need to configure the following parameters:
+
+- **Tickers**:
+
+  A space-separated list of stock tickers you wish to fetch data for. For example, "MSFT AAPL".
+
+- **Fields**:
+
+  The fields of data you want to retrieve. Options include financial statements, earnings, and more.
+
+### Advanced Settings
+
+- **Proxy**:
+
+  An optional URL of a proxy server to download data through.
+
+- **History Start**:
+
+  The start date for downloading historical data. 
+
+- **History End**:
+
+  The end date for downloading historical data.
+
+- **Adjust Prices**:
+
+  A checkbox option to adjust historical prices for splits and dividends.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  The node expects a dictionary input where:
+
+  - The key is "tickers" with a value of space-separated ticker symbols.
+  - The key is "fields" with a value of the fields you want to fetch.
+
+- **Outputs**:
+
+  The output is a string containing the requested market data formatted for easy reading.
+
+## Use Case Examples
+
+1. **Investment Analysis**:
+
+   Use this node to gather historical stock data and financial metrics for investment analysis and decision-making.
+
+2. **Financial Reporting**:
+
+   Analysts can fetch up-to-date financial data for creating reports and presentations.
+
+3. **Market Monitoring**:
+
+   Business professionals can set up this node to regularly download and review market trends and stock performance.
+
+## Error Handling and Troubleshooting
+
+- **Ticker Not Found**:
+
+  If a ticker symbol does not exist, ensure that you have entered the correct symbol.
+
+- **Field Not Available**:
+
+  If a specific field is unavailable, check that the field is supported by Yahoo Finance.
+
+- **Proxy Issues**:
+
+  If using a proxy, ensure the URL is correct and the server is accessible.
+
+For further assistance, please contact our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+  <Card title="Hunter Enrich Company Node" href="/docs/nodes/hunter-enrich-company">
+    Enhance company data with additional insights
+  </Card>
+  <Card title="Web Extract Node" href="/docs/nodes/web-extract">
+    Extract information from websites
+  </Card>
+</CardGroup>

@@ -1,0 +1,88 @@
+---
+title: 'Aviato Search Node'
+description: 'Search for entities on Aviato'
+---
+
+## Overview
+
+The Aviato Search Node is an integration tool within the Pathlit workflow builder that enables users to search for companies on Aviato. This node is particularly useful for users who need to quickly gather information about various companies, aiding in tasks such as market research and competitive analysis.
+
+## Configuration Parameters
+
+To configure the Aviato Search Node, you need to set the following parameters:
+
+* **Query**: 
+
+    The name of the company you want to search for. This can be entered manually or dynamically sourced from other nodes.
+
+    Example value: "Acme Corp"
+
+* **Aviato API Key**: 
+
+    Your Aviato Developer API Key, which is necessary to access the Aviato service.
+
+    Example value: "your-api-key"
+
+These parameters are essential for executing a successful search on Aviato.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * Input for the search query, which can be manually entered or dynamically sourced from other nodes within your workflow.
+
+* **Outputs**:
+
+  * The output will be a JSON response containing search results for the specified company, including various details about the company.
+
+## Use Case Examples
+
+1. **Market Research**:
+
+    Businesses can use this node to gather data on potential competitors or partners, helping them understand the market landscape and make informed strategic decisions.
+
+2. **Company Profiling**:
+
+    Analysts can employ this node to compile detailed profiles of companies, which can be used for investment analysis or business development purposes.
+
+3. **Lead Generation**:
+
+    Sales teams can integrate this node into their workflows to identify and gather information about potential leads, enhancing their outreach strategies.
+
+## Error Handling and Troubleshooting
+
+* **Missing API Key**:
+
+    If you encounter an error stating "Aviato API Key is required," ensure that the API Key field is filled out correctly.
+
+* **Invalid API Key**:
+
+    If you receive an "Invalid Aviato API Key" error, double-check that your API key is valid and active.
+
+* **Search Query Error**:
+
+    If the search does not return results, verify that the query is correctly formatted and refers to a valid company name.
+
+* **General Fetching Error**:
+
+    If you experience issues fetching data, check your internet connection and try again. If the problem persists, contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/pathways/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/pathways/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/pathways/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/pathways/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>

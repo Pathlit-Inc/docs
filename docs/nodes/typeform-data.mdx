@@ -1,0 +1,74 @@
+---
+title: "Typeform Response Data Node"
+description: "Fetch response data from a Typeform form."
+---
+
+## Overview
+
+The Typeform Response Data Node enables you to retrieve responses from a Typeform form seamlessly. This node is perfect for users who want to collect and analyze form responses without needing to write any code. Whether you're gathering survey results or customer feedback, this node simplifies the data retrieval process.
+
+## Configuration Parameters
+
+To set up the Typeform Response Data Node, you'll need to provide the following configuration parameters:
+
+- **Form URL**:
+
+  The URL of the Typeform form you wish to access. This should be in the format `https://www.typeform.com/to/abc123`.
+
+- **Include partial responses**:
+
+  A checkbox option that allows you to include partial responses in the output. This can be useful if you want to see responses that were started but not completed.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  This node does not require any inputs to function.
+
+- **Outputs**:
+
+  The output is a string containing the responses from the Typeform form. Each response is matched to its corresponding question, providing a clear and organized view of the data collected.
+
+## Use Case Examples
+
+1. **Customer Feedback Collection**:
+
+   Use this node to gather customer feedback from Typeform surveys. You can easily analyze the responses to improve your products or services.
+
+2. **Event Registration Analysis**:
+
+   If you're using Typeform for event registrations, this node can help you collect and review attendee information, making it easier to manage event logistics.
+
+3. **Market Research Surveys**:
+
+   Conduct market research by collecting survey responses. This node allows you to quickly access and interpret the data for better decision-making.
+
+## Error Handling and Troubleshooting
+
+- **Invalid Typeform URL**:
+
+  If the URL provided is not a valid Typeform URL, an error will occur. Ensure the URL is correctly formatted and includes the Typeform form ID.
+
+- **Typeform Access Token Not Found**:
+
+  If the access token is missing or incorrect, the node will not be able to authenticate with Typeform. Make sure your Typeform integration is set up correctly.
+
+- **Form ID Retrieval Error**:
+
+  If the form ID cannot be extracted from the URL, verify that the URL follows the correct structure and includes a valid form path.
+
+For further assistance, please reach out to our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Airtable Output Node" href="/docs/nodes/airtable-out">
+    Export workflow data to Airtable
+  </Card>
+</CardGroup>

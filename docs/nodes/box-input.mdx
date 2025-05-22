@@ -1,0 +1,76 @@
+---
+title: 'Box Input Node'
+description: 'Retrieve and process files from Box'
+---
+
+## Overview
+
+The Box Input Node in Pathlit allows users to seamlessly retrieve and process files from their Box account. This node is particularly useful for businesses and individuals who need to access and utilize documents stored in Box, integrating them directly into their workflows for further processing or analysis.
+
+## Configuration Parameters
+
+To effectively use the Box Input Node, configure the following parameters:
+
+* **Box User Info**:
+
+    This setting allows you to access Box user information and select files you wish to retrieve. You can select up to 5 files at a time.
+
+* **Include Document Metadata for Citations**:
+
+    This option enables the inclusion of XML formatted metadata for citations, which can be useful for maintaining detailed document records.
+
+These parameters help tailor the node's functionality to meet your specific document retrieval and processing needs.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * There are no direct inputs required for this node. It operates based on the configuration settings provided.
+
+* **Outputs**:
+
+  * The output is a collection of processed file content from Box, optionally including metadata for citations, ready for use in subsequent workflow steps.
+
+## Use Case Examples
+
+1. **Document Management**:
+
+    Companies can streamline document management by integrating Box-stored files into their Pathlit workflows, ensuring easy access and utilization of important documents.
+
+2. **Research and Analysis**:
+
+    Researchers can use this node to gather and process research documents stored in Box, including metadata for thorough citation and referencing.
+
+3. **Collaboration and Sharing**:
+
+    Teams can efficiently share and collaborate on Box documents by integrating them into workflows that facilitate collective editing and feedback processes.
+
+## Error Handling and Troubleshooting
+
+* **Box Access Token Not Found**:
+
+    If you encounter an error stating "Box access token not found," ensure that your Box account is properly connected and authenticated within Pathlit.
+
+* **File Not Found or Access Issues**:
+
+    If a file cannot be found or accessed, verify that the file ID is correct and that you have the necessary permissions to access the file in Box.
+
+* **General Execution Errors**:
+
+    If you experience general errors during execution, check your internet connection and retry. Persistent issues should be reported to our [support team](mailto:dev@pathlit.ai).
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card title="Document Data Node" href="/pathways/document-data">
+    Process and analyze document data from various sources.
+  </Card>
+
+  <Card title="Google Drive Input Node" href="/pathways/google-drive-input">
+    Retrieve and process files from Google Drive.
+  </Card>
+
+  <Card title="Airtable In Node" href="/pathways/airtable-in">
+    Import data from Airtable into your workflow.
+  </Card>
+</CardGroup>

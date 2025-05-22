@@ -1,0 +1,70 @@
+---
+title: "Sharepoint Input Node"
+description: "Import files from Sharepoint into your workflow."
+---
+
+## Overview
+
+The Sharepoint Input Node allows you to seamlessly import files from Sharepoint into your workflow. This node is perfect for users who need to access and process documents stored in Sharepoint without writing any code. Whether you're managing documents for a project or analyzing data stored in Sharepoint, this node simplifies the integration process.
+
+## Configuration Parameters
+
+To set up the Sharepoint Input Node, you need to configure the following parameter:
+
+- **Import from Sharepoint**:
+
+  This parameter specifies the files you wish to import from Sharepoint. You can select multiple files to include in your workflow.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  This node does not require any inputs as it directly fetches files from Sharepoint based on the configuration.
+
+- **Outputs**:
+
+  The output is a string that contains the content of the imported files. Each file's content is concatenated into a single string, separated by new lines.
+
+## Use Case Examples
+
+1. **Project Documentation**:
+
+   If you are managing a project with documentation stored in Sharepoint, use this node to import and consolidate all relevant documents for easy access and review.
+
+2. **Data Analysis**:
+
+   Analysts can use this node to import data files from Sharepoint, facilitating data processing and analysis within their workflows.
+
+3. **Report Generation**:
+
+   Business teams can import necessary files to generate comprehensive reports by integrating data stored in Sharepoint with other data sources.
+
+## Error Handling and Troubleshooting
+
+- **Authentication Error**:
+
+  If you encounter an authentication error, it means the Microsoft access token was not found. Please re-authenticate to ensure your access credentials are up to date.
+
+- **File Download Error**:
+
+  If there is an error downloading a file, verify the file's existence and permissions in Sharepoint. Ensure you have the correct access rights to the files.
+
+- **General Processing Error**:
+
+  If any processing error occurs, check the file format and content for compatibility issues. Contact support if problems persist.
+
+For further assistance, please reach out to our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="OneDrive Input Node" href="/docs/nodes/onedrive-input-node">
+    Import files from OneDrive into your workflow
+  </Card>
+</CardGroup>

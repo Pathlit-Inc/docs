@@ -1,0 +1,88 @@
+---
+title: 'Aviato Retrieve Company Node'
+description: 'Get information about a company from Aviato'
+---
+
+## Overview
+
+The Aviato Retrieve Company Node in Pathlit allows users to obtain detailed information about a company using the Aviato service. This node is ideal for businesses and researchers who need to gather comprehensive company data for analysis, reporting, or strategic decision-making.
+
+## Configuration Parameters
+
+To configure the Aviato Retrieve Company Node, you need to set the following parameters:
+
+* **Company ID**: 
+
+    The Aviato ID of the company you want to look up.
+
+    Example value: "12345"
+
+* **Aviato API Key**: 
+
+    Your Aviato Developer API Key, which enables access to the Aviato service.
+
+    Example value: "your-api-key"
+
+These parameters are crucial for retrieving the company information from Aviato.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * Input for the company lookup, which can be entered manually or sourced dynamically from other nodes in your workflow.
+
+* **Outputs**:
+
+  * The output will be a JSON response containing detailed information about the company, such as its profile, industry, and other relevant data.
+
+## Use Case Examples
+
+1. **Business Analysis**:
+
+    Analysts can use this node to gather detailed company information for evaluating business performance and market position.
+
+2. **Competitive Intelligence**:
+
+    Companies can leverage this node to gather insights on competitors, helping them to strategize effectively and identify market opportunities.
+
+3. **Partnership Evaluation**:
+
+    Business development teams can use this node to assess potential partners by reviewing their company data, ensuring alignment with strategic goals.
+
+## Error Handling and Troubleshooting
+
+* **Missing Information**:
+
+    If you encounter an error stating "Aviato ID is required," ensure that the Company ID field is filled out correctly.
+
+* **Invalid API Key**:
+
+    If you receive an "Invalid Aviato API Key" error, verify that your API key is correct and active.
+
+* **Company Not Found**:
+
+    If the response indicates that the company could not be found, double-check the Company ID for accuracy.
+
+* **General Fetching Error**:
+
+    If you face an error while fetching data, ensure your internet connection is stable and try again. If issues persist, contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/pathways/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/pathways/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/pathways/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/pathways/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>

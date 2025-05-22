@@ -1,0 +1,88 @@
+---
+title: 'Aviato Retrieve Company Funding Node'
+description: 'Get funding rounds information for a company from Aviato'
+---
+
+## Overview
+
+The Aviato Retrieve Company Funding Node is a useful tool in the Pathlit workflow builder that allows users to access detailed funding rounds information for a specific company using the Aviato service. This node is beneficial for businesses and analysts looking to gather insights into a company's financial background and investment history, which can aid in making informed business decisions.
+
+## Configuration Parameters
+
+To set up the Aviato Retrieve Company Funding Node, you need to configure the following parameters:
+
+* **Company ID**: 
+
+    The Aviato ID of the company for which you want to look up funding rounds.
+
+    Example value: "12345"
+
+* **Aviato API Key**: 
+
+    Your Aviato Developer API Key, which allows you to access the Aviato service.
+
+    Example value: "your-api-key"
+
+These parameters are essential to retrieve the relevant funding information from Aviato.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * Input for the company funding lookup, which can be manually entered or dynamically sourced from other nodes within your workflow.
+
+* **Outputs**:
+
+  * The output will be a JSON response containing detailed information about the company's funding rounds, including investors, amounts, and dates.
+
+## Use Case Examples
+
+1. **Investment Analysis**:
+
+    Financial analysts can use this node to gather comprehensive data on a company's funding history, helping them evaluate the company's growth potential and investment attractiveness.
+
+2. **Market Research**:
+
+    Companies conducting market research can leverage this node to understand the funding landscape of competitors or potential partners, aiding in strategic planning and competitive analysis.
+
+3. **Business Development**:
+
+    Business development teams can utilize this node to identify companies with recent funding rounds, which may indicate expansion and partnership opportunities.
+
+## Error Handling and Troubleshooting
+
+* **Missing Information**:
+
+    If you encounter an error stating "Aviato ID is required," make sure that the Company ID field is filled out correctly.
+
+* **Invalid API Key**:
+
+    If you receive an "Invalid Aviato API Key" error, verify that your API key is correct and active.
+
+* **Company or Funding Data Not Found**:
+
+    If the response indicates that the company or funding data could not be found, double-check the Company ID for accuracy.
+
+* **General Fetching Error**:
+
+    If you face an error while fetching data, ensure your internet connection is stable and try again. If issues persist, contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/pathways/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/pathways/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/pathways/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/pathways/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>

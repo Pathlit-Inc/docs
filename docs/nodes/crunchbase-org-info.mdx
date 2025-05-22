@@ -1,0 +1,78 @@
+---
+title: 'Crunchbase Retrieve Organization Node'
+description: 'Get information about an organization from Crunchbase'
+---
+
+## Overview
+
+The Crunchbase Retrieve Organization Node in Pathlit allows users to access comprehensive information about an organization using the Crunchbase service. This node is particularly valuable for businesses, analysts, and researchers who need to gather detailed insights into organizations, such as their funding, acquisitions, and other relevant business data. This can assist in strategic planning, competitive analysis, and investment decision-making.
+
+## Configuration Parameters
+
+To configure the Crunchbase Retrieve Organization Node, you need to provide the following parameter:
+
+* **Entity Permalink**: 
+
+    The permanent link of the organization you want to look up on Crunchbase. This unique identifier helps in retrieving the correct organization's information.
+
+    Example value: "your-company-permalink"
+
+These parameters are necessary to fetch the desired organizational data from Crunchbase.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * An input for the organization lookup, which can be manually entered or dynamically sourced from other nodes in your workflow.
+
+* **Outputs**:
+
+  * The output is a JSON response containing detailed information about the organization, such as acquisitions, funding rounds, investors, and more.
+
+## Use Case Examples
+
+1. **Competitive Analysis**:
+
+    Companies can use this node to gather information about competitors, including their funding history and acquisitions, to better understand the competitive landscape.
+
+2. **Investment Research**:
+
+    Investors can leverage this node to access detailed data about potential investment targets, aiding in the evaluation of a company's growth potential and financial health.
+
+3. **Strategic Partnerships**:
+
+    Business development teams can utilize this node to identify potential partners by analyzing organizational data, including funding and acquisition activities.
+
+## Error Handling and Troubleshooting
+
+* **Invalid Entity Permalink**:
+
+    If you receive an error indicating an invalid permalink, double-check the entity permalink for accuracy.
+
+* **API Key Issues**:
+
+    Ensure that the Crunchbase API Key is correctly configured and active. If you encounter issues, verify the API key settings.
+
+* **Data Fetching Errors**:
+
+    If there are errors while fetching data, ensure your internet connection is stable and try again. Persistent issues may require contacting our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/pathways/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/pathways/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/pathways/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/pathways/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>

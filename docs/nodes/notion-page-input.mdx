@@ -1,0 +1,66 @@
+---
+title: "Notion Page Input Node"
+description: "Fetch content from a Notion page using the page name."
+---
+
+## Overview
+
+The Notion Page Input Node in Pathlit allows users to retrieve content from a specific Notion page by using the page's name. This node integrates seamlessly with your Notion account, enabling you to access and utilize page content within your workflows. It's perfect for automating content retrieval and integrating Notion data into your processes.
+
+## Configuration Parameters
+
+To configure the Notion Page Input Node, you will need to set up the following parameter:
+
+- **Page Name**:
+
+  The name of the Notion page you wish to retrieve. Make sure the name corresponds exactly to the page in your Notion workspace.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  This node does not require any external inputs to function.
+
+- **Outputs**:
+
+  The output is a single string containing the content of the Notion page, formatted in Markdown.
+
+## Use Case Examples
+
+1. **Content Synchronization**:
+
+   Use this node to synchronize content between Notion and other platforms. For instance, automatically fetch and display the latest updates from a Notion page on your website or internal dashboard.
+
+2. **Reporting Automation**:
+
+   Integrate this node into workflows that compile reports. Fetch relevant sections from Notion pages and include them in your automated reports, ensuring that your data is always current.
+
+3. **Knowledge Management**:
+
+   Enhance your organization's knowledge management by pulling information from Notion into other systems. This can help in maintaining a centralized repository of knowledge accessible across different platforms.
+
+## Error Handling and Troubleshooting
+
+- **No Page Found**:
+
+  If the node cannot find a page with the specified name, it will raise an error. Verify that the page name is correct and that the page exists in your Notion workspace.
+
+- **API Access Issues**:
+
+  Ensure that your Notion API key is valid and that the integration is properly authorized. If there are issues, reauthenticate the connection.
+
+If you encounter any issues with the Notion Page Input Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card title="Notion Page Output Node" href="/docs/nodes/notion-page-output">
+    Create a Notion page from the input data
+  </Card>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>

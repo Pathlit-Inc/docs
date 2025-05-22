@@ -1,0 +1,108 @@
+---
+title: 'LinkedIn Scraper Agent Node'
+description: 'Automate LinkedIn data scraping with a specialized AI agent'
+---
+
+## Overview
+
+The LinkedIn Scraper Agent Node is designed to interact with LinkedIn data efficiently. This node allows you to:
+
+- Search for and scrape LinkedIn posts, profiles, and companies.
+- Utilize various tools to enhance data retrieval and processing.
+- Automate LinkedIn data scraping tasks using natural language prompts.
+
+## Configuration Parameters
+
+To set up the LinkedIn Scraper Agent Node, configure the following parameters:
+
+### Node Configuration
+
+- **Prompt**:
+  
+    Define the task the agent should perform on LinkedIn. For example,
+
+    > *Search for companies in finance.*
+
+    > *Find profiles of software engineers in New York.*
+
+- **Tools**:
+  
+    Select the tools available for the LinkedIn Agent to use. These tools help the agent perform specific tasks on LinkedIn.
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Model</strong>: Choose the language model that the agent will use for processing. 
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps (1-20) the agent can take to complete the task.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+    - The node accepts input data that can be referenced within the prompt.
+
+- **Outputs**:
+
+    - **output**: The final result of the agent's operations on LinkedIn.
+    - **conversation**: A detailed log of the agent's process and actions.
+
+## Use Case Examples
+
+1. **Recruitment Automation**:
+
+    Use the agent to find potential candidates by scraping profiles that match specific job criteria.
+
+2. **Market Research**:
+
+    Automate the collection of data about companies in a particular industry to inform business strategies.
+
+## Error Handling and Troubleshooting
+
+- **Prompt Formatting**:
+
+    Ensure that the prompt is correctly formatted and references the input data accurately.
+
+- **Tool Selection**:
+
+    Verify that the appropriate tools are selected for the tasks you want to perform.
+
+If you encounter issues not covered in this documentation, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for various tasks
+  </Card>
+
+  <Card
+    title="Agent Swarm Node"
+    href="/docs/nodes/agent-swarm"
+  >
+    Orchestrate multiple agents for complex tasks
+  </Card>
+
+  <Card
+    title="Google Sheets Agent Node"
+    href="/docs/nodes/gsheets-agent"
+  >
+    Interact with and manipulate Google Sheets using a specialized AI agent
+  </Card>
+
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Agent that interact with Gmail
+  </Card>
+</CardGroup>

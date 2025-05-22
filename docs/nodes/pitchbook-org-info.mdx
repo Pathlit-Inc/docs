@@ -1,0 +1,77 @@
+---
+title: "PitchBook Retrieve Company Node"
+description: "Fetch detailed information about a company from PitchBook."
+---
+
+## Overview
+
+The PitchBook Retrieve Company Node allows you to gather comprehensive information about a company using the PitchBook API. This node is ideal for users who need to access detailed company data, such as industry information, investor details, and recent financing activities, without writing any code.
+
+## Configuration Parameters
+
+To configure the PitchBook Retrieve Company Node, you need to provide the following parameters:
+
+- **Company ID**:
+
+  The PitchBook ID of the company you wish to look up. This ID is essential for retrieving the correct data.
+
+- **PitchBook API Key**:
+
+  Your PitchBook Developer API Key. This key authenticates your requests to the PitchBook API.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  The node requires a dictionary input where the key is "input" and the value is a dictionary containing the "Company ID".
+
+- **Outputs**:
+
+  The output is a JSON string containing detailed information about the company, including bio, industries, investors, and recent financing details.
+
+## Use Case Examples
+
+1. **Investment Research**:
+
+   If you're in the financial sector and need to perform due diligence on potential investment opportunities, this node can help you gather all necessary company data efficiently.
+
+2. **Market Analysis**:
+
+   Analysts can use this node to fetch industry information and investor details, aiding in comprehensive market research and trend analysis.
+
+3. **Business Development**:
+
+   Business development teams can leverage this node to understand potential partners or competitors by retrieving detailed company profiles.
+
+## Error Handling and Troubleshooting
+
+- **Company Not Found**:
+
+  If the company ID provided does not match any company in PitchBook, an error will be raised. Ensure that the Company ID is correct.
+
+- **Invalid PitchBook API Key**:
+
+  If your API Key is incorrect or expired, the node will not be able to authenticate your request. Double-check your API Key.
+
+- **Bad Request**:
+
+  If you encounter a 400 error, verify that the Company ID format is correct and adheres to PitchBook's requirements.
+
+For additional help, please contact our [support team](mailto:dev@pathlit.ai).
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+    Import table data from Airtable into your workflow
+  </Card>
+  <Card title="Airtable Output Node" href="/docs/nodes/airtable-out">
+    Export workflow data to Airtable
+  </Card>
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>

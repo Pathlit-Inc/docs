@@ -1,0 +1,78 @@
+---
+title: 'Crunchbase Search Node'
+description: 'Search for entities on Crunchbase'
+---
+
+## Overview
+
+The Crunchbase Search Node in Pathlit allows users to search for various entities such as organizations or individuals using the Crunchbase platform. This node is ideal for users who need to quickly gather information about potential business partners, competitors, or industry leaders. By leveraging this node, businesses can enhance their research capabilities and make more informed decisions.
+
+## Configuration Parameters
+
+To set up the Crunchbase Search Node, you need to provide the following parameter:
+
+* **Query**: 
+
+    This is the search term for the entity you wish to find on Crunchbase. It can be the name of an organization, person, or any other entity of interest.
+
+    Example value: "Tech Innovations Inc."
+
+These parameters are required to conduct a successful search on the Crunchbase platform.
+
+## Expected Inputs and Outputs
+
+* **Inputs**:
+
+  * An input for the search query, which can be manually entered or dynamically sourced from other nodes in your workflow.
+
+* **Outputs**:
+
+  * The output is a JSON response containing search results from Crunchbase, including details about the entities matching the query.
+
+## Use Case Examples
+
+1. **Market Research**:
+
+    Businesses can use this node to search for new market entrants and gather information about emerging companies in their industry.
+
+2. **Partnership Exploration**:
+
+    Use this node to identify potential partners by searching for companies with complementary products or services.
+
+3. **Talent Acquisition**:
+
+    Recruiters can leverage this node to find information on industry leaders and potential candidates for executive positions.
+
+## Error Handling and Troubleshooting
+
+* **Invalid Query**:
+
+    If the search results are not as expected, ensure that the query is correctly formatted and relevant to the desired entity.
+
+* **API Key Issues**:
+
+    Verify that the Crunchbase API Key is correctly configured and active. Issues with the API key may prevent successful searches.
+
+* **Network Errors**:
+
+    Ensure a stable internet connection when performing searches. Persistent issues may require reaching out to our [support team](mailto:dev@pathlit.ai) for further assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Hunter Enrich Company Node" href="/docs/nodes/hunter-enrich-company">
+    Enrich company data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Enrich Person Node" href="/docs/nodes/hunter-enrich-person">
+    Enrich personal data using Hunter.io
+  </Card>
+
+  <Card title="Hunter Search Domain Node" href="/docs/nodes/hunter-search-domain">
+    Search for domain-related information using Hunter.io
+  </Card>
+
+  <Card title="Hunter Verify Email Node" href="/docs/nodes/hunter-verify-email">
+    Verify email addresses using Hunter.io
+  </Card>
+</CardGroup>
