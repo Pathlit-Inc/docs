@@ -1,0 +1,80 @@
+---
+title: 'Knowledge Base Add Node'
+description: 'Add content to a knowledge base dynamically'
+---
+
+## Overview
+The Knowledge Base Add Node is a powerful component of the Pathlit workflow builder designed to facilitate the dynamic addition of content to a specified knowledge base. This node allows you to store plain-text content as `.txt` documents within a knowledge base, enabling efficient organization and retrieval of information.
+
+## Configuration Parameters
+
+To configure the Knowledge Base Add Node, you need to specify the following parameters:
+
+* **Knowledge Base**:
+
+    Select the knowledge base where the text file will be added. This is crucial as it determines the storage location of the content.
+
+* **File Content**:
+
+    The plain-text content you wish to store in the knowledge base. This content will be saved as a `.txt` document.
+
+* **File Name Prefix**:
+
+    An optional prefix for the file name. If provided, it will be prepended to the automatically generated file name for easier identification.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node accepts input data through a specified input port, which can be used to dynamically format the file content or file name prefix.
+
+- **Outputs**:
+
+  - The output will be a confirmation message indicating that the content has been successfully added to the specified knowledge base. It includes the file name and the knowledge base name.
+
+## Use Case Examples
+1. **Dynamic Content Storage**:
+
+    Use the Knowledge Base Add Node to dynamically store user-generated content, such as feedback or survey responses, in a centralized knowledge base for later analysis and review.
+
+2. **Automated Documentation**:
+
+    Automate the process of saving logs or reports by adding them directly to a knowledge base. This ensures that all documentation is organized and easily accessible.
+
+3. **Knowledge Management**:
+
+    Manage and update internal knowledge bases by adding new information or updates to existing documents, facilitating better knowledge sharing within an organization.
+
+## Error Handling and Troubleshooting
+- **Knowledge Base Not Found**:
+
+    If the specified knowledge base cannot be found, ensure that you have selected a valid knowledge base from the available options.
+
+- **Missing File Content**:
+
+    Ensure that the file content is provided. The node requires this information to create the document.
+
+If you encounter any issues with the Knowledge Base Add Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Knowledge Base Query Node"
+    href="/docs/pathways/knowledge-base-query"
+  >
+    Query content from your knowledge base
+  </Card>
+
+  <Card
+    title="Document Index Node"
+    href="/docs/pathways/document-index"
+  >
+    Manage and organize your documents within the workflow
+  </Card>
+
+  <Card
+    title="Text Variable Node"
+    href="/docs/pathways/text-variable"
+  >
+    Use text variables to dynamically insert content
+  </Card>
+</CardGroup>
