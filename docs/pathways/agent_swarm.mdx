@@ -1,0 +1,43 @@
+# Agent Swarm Node Documentation
+
+## Overview
+The `agent_swarm` node is responsible for managing a group of agents that work together to achieve a common goal. This node is particularly useful in scenarios where multiple agents need to collaborate and share information.
+
+## New Update
+The `agent_swarm.py` file has been updated to include a new `context` parameter in the `Swarm` class initialization. This change is reflected in the `execute` function where the `Swarm` is instantiated. This update allows for more flexible and context-aware agent management.
+
+## Version History
+- **v1.0**: Initial release.
+- **v1.1**: Added support for the `context` parameter in `agent_swarm_v1_0.py` and `agent_swarm_v1_1.py` in the `version_history` directory.
+
+## Usage
+To use the `agent_swarm` node, you need to initialize it with the required parameters, including the new `context` parameter:
+
+```python
+from agent_swarm import Swarm
+
+swarm = Swarm(context=my_context)
+result = swarm.execute()
+```
+
+## Parameters
+- `context`: An optional parameter that provides additional context for the swarm's operation. This can be used to pass configuration settings or other relevant information to the swarm.
+
+## Example
+```python
+# Example of using the agent_swarm node
+from agent_swarm import Swarm
+
+# Define the context
+context = {
+    'setting1': 'value1',
+    'setting2': 'value2'
+}
+
+# Initialize the swarm with context
+swarm = Swarm(context=context)
+
+# Execute the swarm
+result = swarm.execute()
+print(result)
+```
