@@ -1,0 +1,106 @@
+---
+title: 'Router Node'
+description: 'Route input data based on specified prompts and options'
+---
+
+## Overview
+The Router Node is a powerful component of the Pathlit workflow builder that enables users to direct input data based on a specific prompt and a set of dynamic options. This node is ideal for making decisions or routing data based on conditional logic, allowing for more adaptable and responsive workflows.
+
+## Configuration Parameters
+
+To configure the Router Node, you need to set the following parameters:
+
+* **Prompt**:
+
+    The prompt that guides the routing decision. It should be clear and specific to ensure accurate responses. Use option placeholders to reference the options in the prompt.
+
+    Example:
+    ```
+    What language is the text below written in?
+
+    Text: ¡Hola! ¿Cómo estás?
+    ```
+
+* **Options**:
+
+    A dictionary of possible options that the routing decision can select from. These should be clearly defined and correspond to the placeholders in the prompt. Each option should have a name and a description.
+
+### Advanced Settings
+
+Advanced settings can be accessed by expanding the settings panel on the node. The following additional configurations are available:
+
+* **Model**:
+
+    The language model to use for processing the input. Choose from built-in models or custom models based on the complexity of the routing logic.
+
+* **System Prompt**:
+
+    A prompt that defines the behavior of the model and provides context for the routing. It should include the options available for selection.
+
+* **Temperature**:
+
+    Controls the randomness of the model's output. Values range from 0.0 (deterministic) to 2.0 (more random).
+
+    <Tip>
+    Reduce the temperature to 0 for a completely deterministic output.
+    </Tip>
+
+* **Top P**:
+
+    Influences the diversity of the output by limiting the model to a subset of options based on their probabilities.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node accepts input data through a specified input port, which can be any data relevant to the routing decision.
+
+- **Outputs**:
+
+  - The output will be the selected option based on the prompt and the input data, formatted as a JSON object with a reasoning and an answer.
+
+## Use Case Examples
+1. **Language Detection**:
+
+    Use the Router Node to determine the language of a given text input and route it to different processing paths based on the detected language.
+
+2. **Dynamic Content Delivery**:
+
+    In a content management system, the node can be used to decide which type of content to deliver to users based on their preferences or past interactions.
+
+3. **Automated Decision Making**:
+
+    For customer service applications, the node can help route inquiries to the appropriate department based on keywords or phrases in customer messages.
+
+## Limitations
+
+- The Router Node requires models that support response schemas. Ensure the selected model is compatible.
+
+- The node only supports routing based on JSON schema-defined options. Make sure the options are well-defined to prevent ambiguity.
+
+## Error Handling and Troubleshooting
+- **Invalid Model Selection**:
+
+    If the selected model does not support response schemas, an error will be raised. Choose a compatible model.
+
+- **Prompt and Options Clarity**:
+
+    If the prompt or options are unclear, the routing may not work as intended. Review and refine them to ensure they effectively guide the routing logic.
+
+If you encounter any issues with the Router Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on simple prompts and options
+  </Card>
+
+  <Card
+    title="Language Model Node"
+    href="/docs/pathways/llm"
+  >
+    Generate text based on prompts and options
+  </Card>
+</CardGroup>
