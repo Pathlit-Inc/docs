@@ -1,0 +1,103 @@
+---
+title: 'Agent Swarm Input Node'
+description: 'Collect and process data from multiple agents in a swarm environment'
+---
+
+## Overview
+The Agent Swarm Input Node is a powerful component within the Pathlit workflow builder designed to facilitate data collection and processing from multiple agents operating in a swarm environment. This node is ideal for scenarios where data aggregation from various sources is crucial for workflow execution and decision-making.
+
+## Configuration Parameters
+
+To effectively use the Agent Swarm Input Node, you need to configure the following parameters:
+
+* **Agent Identifier**:
+
+    A unique identifier for each agent in the swarm. This ensures that data collected from different agents can be accurately attributed and processed.
+
+* **Data Collection Frequency**:
+
+    The interval at which the node collects data from the agents. This can be adjusted based on the requirements of your workflow and the frequency of data updates from the agents.
+
+    <Tip>
+    Choose a frequency that balances the need for up-to-date data with system performance considerations.
+    </Tip>
+
+* **Data Filters**:
+
+    Define specific criteria or conditions to filter the data collected from agents. This allows you to focus on relevant data and discard unnecessary information.
+
+### Advanced Settings
+
+You can access advanced settings by expanding the settings panel on the top right corner of the node. These configurations include:
+
+* **Error Handling**:
+
+    Specify how the node should handle errors during data collection, such as retry attempts or logging options.
+
+* **Data Transformation**:
+
+    Apply transformation rules to the incoming data to standardize or format it before further processing in the workflow.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This node does not require specific inputs from other nodes, as it independently collects data from the swarm agents.
+
+- **Outputs**:
+
+  - The node outputs aggregated data from the swarm agents, ready for use in subsequent workflow steps. The data is structured according to the defined filters and transformations.
+
+## Use Case Examples
+1. **Environmental Monitoring**:
+
+    Use the Agent Swarm Input Node to gather data from a network of sensors monitoring environmental conditions. The node can aggregate temperature, humidity, and air quality data for analysis and reporting.
+
+2. **Fleet Management**:
+
+    In a logistics operation, this node can collect data from a fleet of vehicles, such as location, speed, and fuel levels, to optimize routing and maintenance schedules.
+
+3. **Distributed Computing**:
+
+    For distributed computing tasks, the node can collect status and performance metrics from various compute nodes, ensuring efficient task distribution and resource utilization.
+
+## Error Handling and Troubleshooting
+- **Data Collection Failures**:
+
+    If the node fails to collect data from some agents, ensure that the agents are correctly configured and reachable. Adjust the error handling settings to manage intermittent connectivity issues.
+
+- **Incorrect Data Output**:
+
+    If the output data does not match expectations, review the data filters and transformation rules to ensure they are correctly applied.
+
+For further assistance with the Agent Swarm Input Node, please contact our [support team](mailto:dev@pathlit.ai).
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Data Aggregator Node"
+    href="/docs/pathways/data-aggregator"
+  >
+    Combine data from multiple sources for unified analysis
+  </Card>
+
+  <Card
+    title="Sensor Data Node"
+    href="/docs/pathways/sensor-data"
+  >
+    Collect and analyze data from individual sensors
+  </Card>
+
+  <Card
+    title="Agent Swarm Input Node"
+    href="/docs/pathways/agent-swarm-input"
+  >
+    Process data from multiple agents in a swarm environment
+  </Card>
+
+  <Card
+    title="Fleet Management Node"
+    href="/docs/pathways/fleet-management"
+  >
+    Optimize fleet operations with real-time data insights
+  </Card>
+</CardGroup>
