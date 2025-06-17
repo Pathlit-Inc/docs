@@ -1,0 +1,93 @@
+---
+title: 'Agent Node'
+description: 'Run an agent using specified tools and models'
+---
+
+## Overview
+The Agent Node is a powerful component of the Pathlit workflow builder that enables users to execute complex tasks by leveraging AI models and various tools. This node facilitates the creation of automated agents capable of performing actions based on provided instructions and available resources.
+
+## Configuration Parameters
+
+To set up the Agent Node, you need to configure the following parameters:
+
+* **Query**:
+
+    This is the main instruction or task you want the agent to perform. It should be clear and concise to ensure the agent understands the task.
+
+* **Tools**:
+
+    A selection of tools the agent can use to accomplish the task. These tools can range from workflows, nodes, or knowledge bases, which the agent will leverage to gather information or perform actions.
+
+### Advanced Settings
+
+Expand the advanced settings panel by clicking on the settings button in the top right corner of the node. The following configurations can be adjusted:
+
+* **System Prompt**:
+
+    A system-level instruction that defines the overall behavior of the agent. This prompt helps set the context and tone for the agent's operations.
+
+* **Model**:
+
+    The AI model to be used by the agent. Choose a model that best suits the complexity and requirements of your task.
+
+* **Max Steps**:
+
+    Specifies the maximum number of steps the agent can take to complete the task. This helps control the depth and breadth of the agent's exploration and actions.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data through a specified input port, which can be any relevant data necessary for the agent to perform its task.
+
+- **Outputs**:
+
+  - **Output**: The final result produced by the agent after executing the task.
+  - **Conversation**: A detailed log of the agent's interactions and thought process during task execution.
+
+## Use Case Examples
+1. **Market Analysis**:
+
+    Use the Agent Node to automate the collection and analysis of market data. The agent can query various data sources and tools to provide a comprehensive market report.
+
+2. **Customer Support Automation**:
+
+    Deploy an agent to handle customer inquiries by integrating it with a knowledge base and predefined workflows. The agent can provide answers or escalate issues as needed.
+
+3. **Research Assistance**:
+
+    The agent can assist in academic or technical research by searching through knowledge bases, compiling data, and generating reports based on specified queries.
+
+## Error Handling and Troubleshooting
+- **Model Compatibility**:
+
+    Ensure the selected model supports the required functionality, such as function calling. If a model does not support necessary features, an error will be raised.
+
+- **Tool Registration**:
+
+    Verify that all specified tools are correctly registered and accessible to the agent. If a tool is missing or incorrectly configured, the agent may not function as expected.
+
+If you encounter any issues with the Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Language Model Node"
+    href="/docs/pathways/llm"
+  >
+    Generate text based on prompts and options
+  </Card>
+
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+</CardGroup>
