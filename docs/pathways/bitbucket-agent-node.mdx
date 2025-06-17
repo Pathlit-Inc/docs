@@ -1,0 +1,92 @@
+---
+title: 'Bitbucket Agent Node'
+description: 'Interact with the Bitbucket Cloud API using an intelligent agent'
+---
+
+## Overview
+The Bitbucket Agent Node is a powerful integration within the Pathlit workflow builder that allows users to interact with the Bitbucket Cloud API. This node leverages an intelligent agent to execute user-defined tasks on a specified Bitbucket repository, providing a seamless way to automate and manage your Bitbucket workflows.
+
+## Configuration Parameters
+
+To configure the Bitbucket Agent Node, you need to provide the following parameters:
+
+* **Repository URL**:
+
+    The URL of the Bitbucket repository you want to interact with. Ensure that the URL is in the format `https://bitbucket.org/{workspace}/{repo}`.
+
+* **Query**:
+
+    A prompt to instruct the agent on what actions to perform. This could be a question or a command, such as "What are the latest pull requests?"
+
+### Advanced Settings
+
+Advanced settings can be accessed by clicking the settings button on the top right corner of the node. The following configurations are available:
+
+* **Model**:
+
+    Select the language model that the agent will use for processing requests. The default model is `openai/gpt-4o`.
+
+* **Max Steps**:
+
+    Define the maximum number of actions the agent can take to fulfill the request. This ensures that the agent doesn't run indefinitely and helps control execution time.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  - This node accepts input data through a specified input port, which can be used to dynamically format the repository URL or the query prompt.
+
+- **Outputs**:
+
+  - **Output**: The result of the agent's actions, providing the final output of the executed task.
+  - **Conversation**: The conversation history of the agent, detailing the steps taken to reach the result.
+
+## Use Case Examples
+
+1. **Pull Request Management**:
+
+    Use the Bitbucket Agent Node to automatically list, create, or manage pull requests in your repository. This can streamline your code review process and keep your team informed of changes.
+
+2. **Repository Insights**:
+
+    Gather insights about your repository, such as recent commits, active branches, or contributor activity. Automate the retrieval of this information to keep stakeholders updated.
+
+3. **Automated Code Analysis**:
+
+    Integrate the Bitbucket Agent Node to trigger code analysis tools or CI/CD pipelines based on repository events. This ensures code quality and compliance with development standards.
+
+## Error Handling and Troubleshooting
+
+- **Invalid URL Errors**:
+
+    Ensure that the repository URL is correctly formatted and points to a valid Bitbucket repository. The URL must be a `bitbucket.org` URL.
+
+- **Authentication Issues**:
+
+    If you encounter authentication errors, ensure that your Bitbucket credentials are up-to-date and re-authenticate if necessary.
+
+If you encounter any issues with the Bitbucket Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Bitbucket PR Input Node"
+    href="/docs/pathways/bitbucket-pr-input"
+  >
+    Retrieve pull request information from Bitbucket
+  </Card>
+
+  <Card
+    title="Jira Issue Input Node"
+    href="/docs/pathways/jira-issue-input"
+  >
+    Integrate Jira issues into your workflow
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/pathways/slack-message-send"
+  >
+    Send messages to your Slack channels based on Bitbucket events
+  </Card>
+</CardGroup>
