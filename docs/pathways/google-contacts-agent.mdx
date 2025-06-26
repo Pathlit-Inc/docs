@@ -1,0 +1,85 @@
+---
+title: 'Google Contacts Agent Node'
+description: 'Use this node to interact with Google Contacts API'
+---
+
+## Overview
+The Google Contacts Agent Node is a powerful integration within the Pathlit workflow builder that allows users to interact with their Google Contacts. This node provides read-only access to the Google Contacts API, enabling you to manage and find contacts efficiently. With this node, you can automate the retrieval and searching of contacts, offering a streamlined solution for contact management tasks.
+
+## Configuration Parameters
+
+To set up the Google Contacts Agent Node, configure the following parameters:
+
+* **Prompt**:
+
+    This is the instruction you provide to the agent, guiding it on what actions to perform. For example, "What are my contacts?" to retrieve your contacts.
+
+* **Model**:
+
+    Select the language model that the agent will use to process the prompt. Ensure that the chosen model supports function calling.
+
+* **Max Steps**:
+
+    Define the maximum number of steps the agent can take to fulfill the prompt. This controls the complexity and depth of the agent's actions.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts input data through a specified input port, which can be any data relevant to the agent's task.
+
+- **Outputs**:
+
+  - **Output**: The final output from the Google Contacts Agent.
+  - **Conversation**: The conversation history detailing the interactions of the Google Contacts Agent.
+
+## Use Case Examples
+1. **Contact Retrieval**:
+
+    Use the Google Contacts Agent Node to fetch all your contacts, both primary and other contacts, in a single action. This can be used to compile a comprehensive list of your contacts.
+
+2. **Contact Search**:
+
+    Automate the search for specific contacts by name or email. The node will search both primary and other contacts, ensuring no contact is missed.
+
+3. **Contact Management Reporting**:
+
+    Generate reports on your contacts by retrieving and formatting contact information. The node provides a structured output that can be used for further processing or analysis.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If you encounter authentication errors, ensure that your Google account is properly authenticated with Pathlit. Re-authenticate if necessary.
+
+- **Invalid Model Selection**:
+
+    Ensure the selected language model supports function calling. If an unsupported model is chosen, the node will raise an error.
+
+- **Prompt Formatting**:
+
+    If the prompt does not produce the expected results, review the prompt's clarity and specificity. Adjust the prompt to better guide the agent's actions.
+
+If you encounter any issues with the Google Contacts Agent Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/pathways/gmail-receive"
+  >
+    Trigger workflows based on incoming emails
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card
+    title="Simple Router Node"
+    href="/docs/pathways/simple-router"
+  >
+    Route input data based on specified prompts and options
+  </Card>
+</CardGroup>
