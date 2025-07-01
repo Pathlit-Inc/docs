@@ -1,0 +1,96 @@
+---
+title: 'PostgreSQL Query Node'
+description: 'Connects to a PostgreSQL database and executes a SQL query.'
+---
+
+## Overview
+The PostgreSQL Query Node is a powerful integration component in the Pathlit workflow builder that allows you to connect to a PostgreSQL database and execute SQL queries. This node is ideal for automating database interactions, retrieving data, and performing database updates directly within your workflow.
+
+## Configuration Parameters
+
+To set up the PostgreSQL Query Node, you need to configure the following parameters:
+
+* **Host**:
+
+    The hostname of your PostgreSQL server. This should be the address where your database is hosted. Note that "localhost" is not allowed for security reasons.
+
+* **Port**:
+
+    The port number on which your PostgreSQL server is listening. The default port is usually 5432.
+
+* **User**:
+
+    The username used to authenticate with the PostgreSQL server.
+
+* **Password**:
+
+    The password for the PostgreSQL user account.
+
+* **Database**:
+
+    The name of the PostgreSQL database you want to connect to.
+
+* **SQL Query**:
+
+    The SQL query to execute. This can be any valid SQL statement, such as SELECT, INSERT, UPDATE, or DELETE.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - The node accepts an optional input for the SQL query through a specified input port. This can be used to dynamically provide or modify the query using data from other nodes.
+
+- **Outputs**:
+  - The node outputs the results of the SQL query or the execution status:
+    - For SELECT queries, it returns the fetched rows as a JSON object. Note that there is a 256 KB limit for query results, beyond which the results will be truncated.
+    - For INSERT, UPDATE, or DELETE queries, it returns the number of affected rows.
+
+## Use Case Examples
+1. **Data Retrieval**:
+
+    Use the PostgreSQL Query Node to fetch data from your database and use it in subsequent nodes for processing, analysis, or reporting.
+
+2. **Database Updates**:
+
+    Automate updates to your database by executing INSERT, UPDATE, or DELETE queries based on conditions met within your workflow.
+
+3. **Data Integration**:
+
+    Integrate data from your PostgreSQL database into other systems or workflows, enabling seamless data flow across your organization.
+
+## Error Handling and Troubleshooting
+- **Localhost Restriction**:
+
+    Attempting to use "localhost" as the host will result in an error. Ensure you use a valid hostname for your PostgreSQL server.
+
+- **Query Execution Errors**:
+
+    If there are issues executing the SQL query, the node will return an error message. Verify the syntax and logic of your SQL query.
+
+- **Connection Issues**:
+
+    Ensure that your database credentials and connection details are correct. Any issues with authentication or connectivity will prevent the node from executing successfully.
+
+If you encounter any issues with the PostgreSQL Query Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Airtable Input Node"
+    href="/docs/pathways/airtable-input"
+  >
+    Import data from Airtable into your workflow
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+
+  <Card
+    title="JSON Node"
+    href="/docs/pathways/json"
+  >
+    Work with JSON data within your workflow
+  </Card>
+</CardGroup>
