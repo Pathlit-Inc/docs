@@ -55,3 +55,7 @@ except:
 
 a * 2
 ```
+
+## Session Management
+
+The `execute` function now includes a check for valid DNS labels for `session_id`. This ensures that session IDs are valid and conform to DNS label standards. Additionally, improved error handling has been implemented for invalid or expired session IDs, providing clearer error messages and handling scenarios where session IDs are not valid or have expired.
