@@ -1,0 +1,84 @@
+---
+title: 'Salesforce Node'
+description: 'Integrate Salesforce data into your workflows seamlessly'
+---
+
+## Overview
+The Salesforce Node is a powerful component of the Pathlit workflow builder designed to facilitate seamless integration with Salesforce. This node allows you to automate data retrieval and updates within your Salesforce account, making it easier to manage customer relationships and business processes.
+
+## Configuration Parameters
+
+To set up the Salesforce Node, you need to authenticate your Salesforce account. Once authenticated, you can configure the node to perform various operations such as fetching data, updating records, or creating new entries in your Salesforce database.
+
+## Trigger Testing Inputs
+
+To test the Salesforce Node within the editor, you can manually run the workflow by clicking the **Run Workflow** button. This will open a side panel where you can specify test inputs to simulate real-world data interactions with Salesforce.
+
+* **Test Record ID**:
+
+    A mock Salesforce record ID used to simulate data retrieval or update operations. This helps in verifying the node's functionality without affecting actual data.
+
+* **Test Object Type**:
+
+    Specify the type of Salesforce object (e.g., Account, Contact) you wish to interact with during testing.
+
+* **Test Field Values**:
+
+    Provide sample field values to simulate data updates or creations within Salesforce.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+  - The node can accept various inputs depending on the operation being performed, such as record IDs, object types, and field values.
+
+- **Outputs**:
+  - The node outputs the results of the Salesforce operation, which could include fetched data, confirmation of updates, or error messages if the operation fails.
+
+## Use Case Examples
+1. **Customer Data Synchronization**:
+
+    Keep your Salesforce customer data in sync with other systems by using the Salesforce Node to automatically update records based on changes detected in other workflows.
+
+2. **Automated Lead Management**:
+
+    Capture new leads from various sources and automatically create corresponding records in Salesforce, streamlining your sales process.
+
+3. **Sales Performance Reporting**:
+
+    Retrieve and aggregate sales data from Salesforce to generate performance reports, providing insights into sales trends and team productivity.
+
+## Error Handling and Troubleshooting
+- **Authentication Errors**:
+
+    If you encounter issues with authentication, ensure that your Salesforce credentials are correct and have the necessary permissions for the operations you intend to perform.
+
+- **Operation Failures**:
+
+    If an operation fails, check the error messages for details on what went wrong. Common issues include incorrect record IDs, missing fields, or insufficient permissions.
+
+If you encounter any issues with the Salesforce Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Send Node"
+    href="/docs/pathways/gmail-send"
+  >
+    Automate sending emails from your Gmail account
+  </Card>
+
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/pathways/slack-message-send"
+  >
+    Send messages to your Slack channels based on email triggers
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/pathways/google-drive-input"
+  >
+    Import files from Google Drive into your workflow
+  </Card>
+</CardGroup>
+
+This documentation provides a comprehensive guide on how to use the Salesforce Node within Pathlit, detailing configuration parameters, expected inputs and outputs, use case examples, and troubleshooting tips.
