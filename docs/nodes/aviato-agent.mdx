@@ -1,0 +1,120 @@
+---
+title: 'Aviato Agent Node'
+description: 'Research companies and funding data using the Aviato AI agent'
+---
+
+## Overview
+The Aviato Agent Node is a comprehensive company research agent that provides access to Aviato's company data and funding information. This node allows you to:
+- Search for companies by name
+- Retrieve detailed company profiles
+- Access funding round history
+- Research company metrics and information
+
+## Configuration Parameters
+
+To set up the Aviato Agent Node, you need to authenticate with your Aviato API key.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Tell the agent what company research to perform.
+
+  > *Search for "Acme Corp" and get their full company profile and funding history*
+
+  > *Find companies in the AI/ML space with Series A funding in 2024*
+
+  > *Get the latest funding round for company ID av_12345*
+
+- **Tools**
+
+  Select which tools the Aviato Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search | Search for companies by name |
+  | Retrieve Company | Get detailed company information |
+  | Retrieve Company Funding | Get funding rounds and investment history |
+
+  <Tip>Always start with search to get the correct company ID before retrieving detailed data.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's research approach.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt.
+
+- **Outputs**:
+
+  - **output**: Company research results and data
+  - **conversation**: Agent's research process and findings
+
+## Use Case Examples
+1. **Company Due Diligence**:
+
+    Use the agent to research target companies for investment or partnership decisions, gathering comprehensive profiles and funding history.
+
+2. **Market Research**:
+
+    Configure the agent to research multiple companies in a specific industry or sector to understand market trends.
+
+3. **Funding Analysis**:
+
+    Let the agent analyze funding patterns and investor relationships across multiple funding rounds.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure your Aviato API key is correctly configured and has not expired.
+
+- **Company Not Found**:
+
+    If a company is not found, try alternative search terms or verify the company exists in Aviato's database.
+
+- **Rate Limits**:
+
+    Be mindful of API rate limits when performing multiple searches or retrievals.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Aviato Search Node"
+    href="/docs/nodes/aviato-search"
+  >
+    Direct search for companies on Aviato
+  </Card>
+
+  <Card
+    title="Aviato Retrieve Company Node"
+    href="/docs/nodes/aviato-retrieve-company"
+  >
+    Get detailed company information
+  </Card>
+
+  <Card
+    title="Crunchbase Agent Node"
+    href="/docs/nodes/crunchbase-agent"
+  >
+    Research companies using Crunchbase
+  </Card>
+</CardGroup>

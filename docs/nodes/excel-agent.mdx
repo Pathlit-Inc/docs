@@ -1,0 +1,115 @@
+---
+title: 'Microsoft Excel Agent Node'
+description: 'Read and modify Excel workbooks using an AI agent'
+---
+
+## Overview
+The Microsoft Excel Agent Node provides a powerful agent for working with Excel workbooks in OneDrive. This node enables you to:
+- Read workbook structure, worksheets, and cell data
+- Update, append, and clear cell values
+- Create new workbooks and worksheets
+- Search for specific data within workbooks
+- Apply formatting (fonts, colors, borders, alignment)
+- Adjust column widths and row heights
+- Perform batch operations efficiently
+
+## Configuration Parameters
+
+To set up the Excel Agent Node, you need to authenticate with your Microsoft account and select Excel workbooks from OneDrive.
+
+### Node Configuration
+
+- **Select Workbook**:
+
+  Choose one or more Excel workbooks from your OneDrive to work with. The agent will default to using the first selected workbook.
+
+- **Prompt**:
+
+  Tell the agent what to do with the selected workbook.
+
+  > *Create a new worksheet called "Summary" and populate it with totals from Sheet1*
+
+  > *Find all cells in Sheet1 where the value is greater than 1000 and highlight them in yellow*
+
+  > *Read the data from the "Expenses" worksheet and calculate the total for each category*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-50).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Report Generation**:
+
+    Create summary worksheets from raw data, apply formatting, and generate professional-looking reports automatically.
+
+2. **Data Validation and Cleanup**:
+
+    Search for specific patterns or errors in spreadsheet data, then update or highlight cells that need attention.
+
+3. **Multi-Sheet Operations**:
+
+    Consolidate data from multiple worksheets, perform calculations, and create cross-references between sheets.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted Files.ReadWrite permissions for OneDrive.
+
+- **Workbook Not Found**:
+
+    Verify that the selected workbook still exists in your OneDrive and hasn't been moved or deleted.
+
+- **Formatting Errors**:
+
+    When applying cell formatting, use valid hex color codes (e.g., "#FF0000" for red) and ensure number formats follow Excel conventions.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Sheets Agent"
+    href="/docs/nodes/gsheets-agent"
+  >
+    Work with Google Sheets spreadsheets
+  </Card>
+
+  <Card
+    title="OneDrive Agent"
+    href="/docs/nodes/onedrive-agent"
+  >
+    Manage files in Microsoft OneDrive
+  </Card>
+
+  <Card
+    title="Airtable Agent"
+    href="/docs/nodes/airtable-agent"
+  >
+    Interact with Airtable databases
+  </Card>
+</CardGroup>

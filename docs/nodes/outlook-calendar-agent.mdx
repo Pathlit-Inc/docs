@@ -1,0 +1,132 @@
+---
+title: 'Outlook Calendar Agent Node'
+description: 'Manage Outlook Calendar events and schedules using an AI agent'
+---
+
+## Overview
+The Outlook Calendar Agent Node provides an intelligent agent for managing your Outlook Calendar. This node enables you to:
+- List and search calendar events
+- Create new calendar events with attendees
+- Update and modify existing events
+- Delete calendar events
+- Check free/busy availability for attendees
+- Manage multiple calendars
+- Automatically include Microsoft Teams links in meetings
+
+## Configuration Parameters
+
+To set up the Outlook Calendar Agent Node, you need to authenticate with your Microsoft account. Once authenticated, configure the agent to manage your calendar.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with your calendar.
+
+  > *Schedule a meeting with John on Friday at 2pm with subject "Project Review"*
+
+  > *Find all meetings next week and list them with their Teams links*
+
+  > *Delete the meeting called "Team Sync" scheduled for tomorrow*
+
+  > *Check if Sarah and Mike are available tomorrow between 2pm and 4pm*
+
+- **Tools**
+
+  Select which tools the Outlook Calendar Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Calendars | View all available calendars |
+  | Get Calendar | Get calendar metadata |
+  | List Events | List events in a date range |
+  | Get Event | Get specific event details |
+  | Create Event | Create new calendar events |
+  | Update Event | Modify existing events |
+  | Patch Event | Partially update events |
+  | Delete Event | Remove calendar events |
+  | Create Calendar | Create new calendars |
+  | Get Free Busy | Check attendee availability |
+
+  <Tip>All created events automatically include Microsoft Teams meeting links</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Meeting Scheduling**:
+
+    Automatically create calendar events based on workflow triggers, such as scheduling follow-ups after form submissions.
+
+2. **Meeting Management**:
+
+    Update meeting details, add or remove attendees, or reschedule events based on availability checks.
+
+3. **Calendar Reporting**:
+
+    Generate reports of upcoming meetings, analyze calendar usage, or identify scheduling conflicts.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted Calendars.ReadWrite permissions.
+
+- **Time Zone Handling**:
+
+    The agent automatically uses your account's configured timezone. Times are displayed in your local timezone.
+
+- **Event Not Found**:
+
+    Verify that event IDs are still valid. Use List Events to find the correct event ID before deleting or updating.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Calendar Agent"
+    href="/docs/nodes/gcal-agent"
+  >
+    Manage Google Calendar events
+  </Card>
+
+  <Card
+    title="Outlook Agent"
+    href="/docs/nodes/outlook-agent"
+  >
+    Manage Outlook emails
+  </Card>
+
+  <Card
+    title="Scheduler Node"
+    href="/docs/nodes/scheduler"
+  >
+    Trigger workflows on a schedule
+  </Card>
+</CardGroup>

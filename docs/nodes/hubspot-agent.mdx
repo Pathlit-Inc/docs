@@ -1,0 +1,124 @@
+---
+title: 'HubSpot Contact Management Agent Node'
+description: 'Manage HubSpot CRM contacts with comprehensive CRUD operations'
+---
+
+## Overview
+The HubSpot Contact Management Agent Node provides an AI agent for managing contacts in HubSpot CRM. This node enables:
+- Retrieve and search contacts with pagination
+- Create new contacts with custom properties
+- Update existing contact information
+- Get detailed contact profiles
+- Archive (delete) contacts with 90-day recovery
+- Filter contacts by properties and criteria
+
+## Configuration Parameters
+
+To set up the HubSpot Agent Node, authenticate with your HubSpot account and select the tools the agent can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with HubSpot contacts.
+
+  > *Find all contacts from Acme Corp and show their email addresses*
+
+  > *Create a new contact for John Doe with email john@example.com*
+
+  > *Update contact 12345 to change their company to "New Company Inc"*
+
+- **Tools**
+
+  Select which tools the HubSpot Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Retrieve Contacts | Get all contacts with pagination and property filtering |
+  | Create Contact | Add new contacts (email required) |
+  | Retrieve Contact | Get specific contact by ID |
+  | Update Contact | Modify existing contact properties |
+  | Archive Contact | Delete contacts (reversible for 90 days) |
+
+  <Tip>Use selective property updates to only change specific fields without affecting others.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's contact management behavior.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's contact operations
+  - **conversation**: Detailed log of the agent's HubSpot API interactions
+
+## Use Case Examples
+1. **Contact Import**:
+
+    Use the agent to create multiple contacts in HubSpot from external data sources, automatically mapping fields and properties.
+
+2. **Contact Enrichment**:
+
+    Configure the agent to update existing contacts with new information from other systems or data sources.
+
+3. **Contact Cleanup**:
+
+    Let the agent identify and archive duplicate or outdated contacts based on specific criteria.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your HubSpot account with the necessary permissions.
+
+- **Email Required**:
+
+    When creating contacts, an email address is required. The agent will prompt for this information if missing.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Google Contacts Agent Node"
+    href="/docs/nodes/google-contacts-agent"
+  >
+    Manage contacts in Google Contacts
+  </Card>
+
+  <Card
+    title="Hunter Agent Node"
+    href="/docs/nodes/hunter-agent"
+  >
+    Find and verify email addresses
+  </Card>
+</CardGroup>

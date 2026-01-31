@@ -1,0 +1,114 @@
+---
+title: 'Router Node'
+description: 'Route workflow execution using AI-powered decision making'
+---
+
+## Overview
+The Router Node uses AI to intelligently route workflow execution to different branches. This node enables you to:
+- Make routing decisions based on natural language analysis
+- Define multiple output branches with descriptions
+- Let AI determine the best path based on input content
+- Create dynamic workflows that adapt to different scenarios
+- Replace complex conditional logic with intelligent routing
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Prompt**:
+
+  The input or question that the router should analyze to make a routing decision.
+
+  > *What language is this text written in? Text: \{input\}*
+
+  > *What category does this support ticket belong to? Ticket: \{ticket_content\}*
+
+  > *Based on this customer feedback, what action should we take?*
+
+- **Options**:
+
+  Define the possible routing branches. Each option has:
+  - **Name**: The branch identifier
+  - **Description**: Explanation of when this route should be taken
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Model</strong>: Select the language model for decision making
+      </li>
+      <li>
+        <strong>System Prompt</strong>: Customize how the AI makes routing decisions
+      </li>
+      <li>
+        <strong>Temperature</strong>: Controls randomness (0.0-2.0, default 0.1 for consistent routing)
+      </li>
+      <li>
+        <strong>Top P</strong>: Controls diversity (0.0-1.0, default 0.01 for deterministic routing)
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt
+
+- **Outputs**:
+
+  - **reasoning**: AI's explanation for the chosen route
+  - **selected_option**: The name of the selected branch
+  - Dynamic output ports for each defined option (only the selected branch activates)
+
+## Use Case Examples
+1. **Language-Based Routing**:
+
+    Automatically route customer messages to language-specific support teams based on detected language.
+
+2. **Priority Triage**:
+
+    Analyze support tickets and route them to appropriate departments or priority queues based on urgency and topic.
+
+3. **Content Classification**:
+
+    Classify incoming documents and route them to different processing pipelines based on their type or category.
+
+## Error Handling and Troubleshooting
+- **Unclear Routing**:
+
+    If the AI cannot confidently choose a route, provide clearer option descriptions or more specific prompts.
+
+- **Model Selection**:
+
+    Use models with strong reasoning capabilities for complex routing decisions. Lower temperatures ensure consistent routing.
+
+- **Option Descriptions**:
+
+    Write clear, distinct descriptions for each option to help the AI make accurate routing decisions.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Conditional Node"
+    href="/docs/nodes/conditional"
+  >
+    Route based on rules and comparisons
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process content before routing
+  </Card>
+
+  <Card
+    title="Human Input Node"
+    href="/docs/nodes/human-input"
+  >
+    Let humans make routing decisions
+  </Card>
+</CardGroup>

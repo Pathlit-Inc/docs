@@ -1,20 +1,43 @@
 {
   "$schema": "https://mintlify.com/schema.json",
   "name": "Pathlit",
-  "logo": { "dark": "/logo/logo.svg", "light": "/logo/logo-long.svg" },
+  "logo": {
+    "dark": "/logo/logo.svg",
+    "light": "/logo/logo-long.svg"
+  },
   "favicon": "/logo/logo.svg",
   "colors": {
     "primary": "#1A2024",
     "light": "#FFFFFF",
     "dark": "#1A2024",
-    "anchors": { "from": "#475C6D", "to": "#475C6D" }
+    "anchors": {
+      "from": "#475C6D",
+      "to": "#475C6D"
+    }
   },
-  "modeToggle": { "default": "light", "isHidden": false },
-  "topbarLinks": [{ "name": "Sign In", "url": "https://pathlit.com/" }],
-  "topbarCtaButton": { "name": "Get Started", "url": "https://pathlit.com" },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": false
+  },
+  "topbarLinks": [
+    {
+      "name": "Sign In",
+      "url": "https://pathlit.com/"
+    }
+  ],
+  "topbarCtaButton": {
+    "name": "Get Started",
+    "url": "https://pathlit.com"
+  },
   "tabs": [
-    { "name": "Documentation", "url": "docs" },
-    { "name": "Changelog", "url": "docs/changelog" }
+    {
+      "name": "Documentation",
+      "url": "docs"
+    },
+    {
+      "name": "Changelog",
+      "url": "docs/changelog"
+    }
   ],
   "navigation": [
     {
@@ -26,79 +49,137 @@
       ]
     },
     {
+      "group": "Guides",
+      "pages": [
+        "docs/guides/knowledge-base",
+        "docs/guides/files-in-workflows"
+      ]
+    },
+    {
       "group": "Nodes",
       "pages": [
         "docs/nodes/agent",
         "docs/nodes/agent-swarm",
-        "docs/nodes/airtable-in",
-        "docs/nodes/airtable-out",
-        "docs/nodes/audio-transcribe",
+        "docs/nodes/airtable-agent",
+        "docs/nodes/airtable-input",
+        "docs/nodes/airtable-output",
+        "docs/nodes/algolia-agent",
+        "docs/nodes/asana-agent",
+        "docs/nodes/audio-transcription",
+        "docs/nodes/aviato-agent",
+        "docs/nodes/aviato-retrieve-company-funding",
+        "docs/nodes/aviato-retrieve-company",
+        "docs/nodes/aviato-search",
         "docs/nodes/bitbucket-agent",
         "docs/nodes/bitbucket-event-receive",
         "docs/nodes/bitbucket-pr-input",
+        "docs/nodes/box-input",
+        "docs/nodes/browser-agent",
         "docs/nodes/code",
+        "docs/nodes/codeact-agent",
+        "docs/nodes/crunchbase-agent",
+        "docs/nodes/crunchbase-org-info",
+        "docs/nodes/crunchbase-search",
+        "docs/nodes/databricks-agent",
         "docs/nodes/document-data",
+        "docs/nodes/document-reader",
+        "docs/nodes/dropbox-agent",
+        "docs/nodes/egnyte-agent",
         "docs/nodes/embed-search",
+        "docs/nodes/excel-agent",
         "docs/nodes/gcal-agent",
         "docs/nodes/gmail-agent",
+        "docs/nodes/gmail-label-modify",
         "docs/nodes/gmail-receive",
+        "docs/nodes/gmail-reply",
+        "docs/nodes/gmail-search",
         "docs/nodes/gmail-send",
         "docs/nodes/global-variable",
+        "docs/nodes/google-contacts-agent",
+        "docs/nodes/google-docs-agent",
+        "docs/nodes/google-drive-agent",
         "docs/nodes/google-drive-input",
+        "docs/nodes/google-drive-trigger",
         "docs/nodes/google-search",
         "docs/nodes/google-task-agent",
         "docs/nodes/gsheets-agent",
+        "docs/nodes/hubspot-agent",
+        "docs/nodes/hubspot-input",
+        "docs/nodes/human-input",
+        "docs/nodes/hunter-agent",
         "docs/nodes/hunter-enrich-company",
         "docs/nodes/hunter-enrich-person",
         "docs/nodes/hunter-find-email",
         "docs/nodes/hunter-search-domain",
         "docs/nodes/hunter-verify-email",
         "docs/nodes/input",
+        "docs/nodes/jira-agent",
         "docs/nodes/jira-issue-input",
         "docs/nodes/jira-issue-output",
         "docs/nodes/jira-issue-receive",
         "docs/nodes/json",
-        "docs/nodes/linkedin-output",
+        "docs/nodes/knowledge-base-add",
         "docs/nodes/linkedin-agent",
+        "docs/nodes/linkedin-output",
         "docs/nodes/llm",
+        "docs/nodes/mailchimp-agent",
+        "docs/nodes/mcp",
+        "docs/nodes/mysql-query",
+        "docs/nodes/notion-agent",
+        "docs/nodes/notion-page-input",
         "docs/nodes/notion-page-output",
-        "docs/nodes/onedrive-input-node",
+        "docs/nodes/onedrive-agent",
+        "docs/nodes/onedrive-input",
+        "docs/nodes/outlook-agent",
+        "docs/nodes/outlook-calendar-agent",
         "docs/nodes/outlook-receive",
+        "docs/nodes/outlook-reply",
         "docs/nodes/outlook-send",
         "docs/nodes/output",
+        "docs/nodes/pii-anonymizer",
+        "docs/nodes/pii-deanonymizer",
+        "docs/nodes/pitchbook-agent",
+        "docs/nodes/pitchbook-org-info",
+        "docs/nodes/pitchbook-search",
+        "docs/nodes/postgresql-query",
+        "docs/nodes/quickbooks-agent",
+        "docs/nodes/reddit-scrape-agent",
+        "docs/nodes/rest-api",
+        "docs/nodes/router",
+        "docs/nodes/salesforce",
         "docs/nodes/scheduler",
+        "docs/nodes/sharepoint-input",
         "docs/nodes/simple-router",
+        "docs/nodes/slack-agent",
         "docs/nodes/slack-message-send",
         "docs/nodes/slack-trigger",
+        "docs/nodes/snowflake-agent",
+        "docs/nodes/spider-scrape",
         "docs/nodes/sticky-note",
         "docs/nodes/structured-output",
         "docs/nodes/summarizer",
         "docs/nodes/text-variable",
         "docs/nodes/text2image",
-        "docs/nodes/video-input",
-        "docs/nodes/web-extract",
-        "docs/nodes/web-search",
-        "docs/nodes/workflow-batch-invocation",
-        "docs/nodes/workflow-invocation",
-        "docs/nodes/aviato-retrieve-company-funding",
-        "docs/nodes/aviato-retrieve-company",
-        "docs/nodes/aviato-search",
-        "docs/nodes/box-input",
-        "docs/nodes/crunchbase-org-info",
-        "docs/nodes/crunchbase-search",
-        "docs/nodes/hubspot-input",
-        "docs/nodes/linkedin-agent",
-        "docs/nodes/notion-page-input",
-        "docs/nodes/pitchbook-org-info",
-        "docs/nodes/pitchbook-search",
-        "docs/nodes/salesforce",
-        "docs/nodes/sharepoint-input",
         "docs/nodes/typeform-data",
         "docs/nodes/typeform-trigger",
+        "docs/nodes/video-input",
+        "docs/nodes/vlm-document-extraction",
+        "docs/nodes/web-extract",
+        "docs/nodes/web-search",
+        "docs/nodes/word-agent",
+        "docs/nodes/workflow-batch-invocation",
+        "docs/nodes/workflow-copilot-agent",
+        "docs/nodes/workflow-invocation",
+        "docs/nodes/workflow-invocation-delayed",
         "docs/nodes/yahoo-finance"
       ]
     },
-    { "group": "Changelog", "pages": ["docs/changelog/overview"] }
+    {
+      "group": "Changelog",
+      "pages": [
+        "docs/changelog/overview"
+      ]
+    }
   ],
   "footerSocials": {
     "x": "https://x.com/pathlit_ai",

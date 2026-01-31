@@ -1,0 +1,128 @@
+---
+title: 'Slack Agent Node'
+description: 'Manage Slack conversations and messages using an AI agent'
+---
+
+## Overview
+The Slack Agent Node provides an intelligent agent for interacting with Slack workspaces. This node enables you to:
+- Read conversation history from channels and DMs
+- Send messages to channels or users
+- Search messages across your workspace
+- Get channel and user information
+- Post threaded replies
+- Manage message formatting with blocks
+
+## Configuration Parameters
+
+To set up the Slack Agent Node, you need to authenticate with your Slack workspace. Once authenticated, configure the agent to perform messaging operations.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Slack.
+
+  > *Get the last 20 messages from #general channel and summarize the discussion*
+
+  > *Send a message to #announcements channel with project update*
+
+  > *Search for messages mentioning "bug fix" in the past week*
+
+  > *Read messages from channel \{channel_id\} and reply to the most recent one*
+
+- **Tools**
+
+  Select which tools the Slack Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Get Conversation History | Read messages from channels/DMs |
+  | Post Message | Send messages to channels or users |
+  | Get Channel Info | Get channel details and metadata |
+  | List Channels | List all available channels |
+  | Get User Info | Get user profile information |
+  | Search Messages | Search across workspace messages |
+  | Post Reply | Reply to messages in threads |
+
+  <Tip>Be careful with Post Message - enable only when the agent should send messages</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt, typically channel IDs or message content.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Notifications**:
+
+    Send workflow results, alerts, or reports to specific Slack channels automatically.
+
+2. **Message Analysis**:
+
+    Read and analyze channel conversations, extract action items, or summarize discussions.
+
+3. **Interactive Workflows**:
+
+    Create workflows that respond to Slack messages, answer questions, or provide information on demand.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Slack workspace and granted the necessary bot permissions (channels:read, chat:write, etc.).
+
+- **Channel Not Found**:
+
+    Verify channel IDs are correct and the bot has been invited to private channels.
+
+- **Permission Errors**:
+
+    Check that your Slack bot has the required scopes for the operations you're performing.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Slack Message Send Node"
+    href="/docs/nodes/slack-message-send"
+  >
+    Send simple messages to Slack
+  </Card>
+
+  <Card
+    title="Slack Trigger Node"
+    href="/docs/nodes/slack-trigger"
+  >
+    Trigger workflows from Slack messages
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Integrate with email workflows
+  </Card>
+</CardGroup>

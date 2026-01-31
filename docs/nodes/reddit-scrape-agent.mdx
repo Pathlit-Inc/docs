@@ -1,0 +1,118 @@
+---
+title: 'Reddit Scrape Agent Node'
+description: 'Search and extract content from Reddit using an AI agent'
+---
+
+## Overview
+The Reddit Scrape Agent Node provides an intelligent agent for searching and extracting content from Reddit. This node enables you to:
+- Search for posts across subreddits
+- Filter posts by relevance, recency, or popularity
+- Extract post titles, content, and metadata
+- Access comments and discussions
+- Sort results by different criteria (hot, new, top, rising)
+- Aggregate data from multiple subreddits
+
+## Configuration Parameters
+
+The Reddit Scrape Agent uses Pathlit's Reddit API credentials and does not require individual authentication.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the search task for the agent to perform.
+
+  > *Search r/technology for posts about artificial intelligence from the past week*
+
+  > *Find the top 10 posts in r/stocks about Tesla and summarize the sentiment*
+
+  > *Get hot posts from r/programming related to Python*
+
+- **Tools**
+
+  Select which tools the Reddit Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search Posts | Search and filter Reddit posts |
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Market Research**:
+
+    Monitor relevant subreddits for discussions about your product, industry trends, or competitor mentions.
+
+2. **Content Aggregation**:
+
+    Collect popular posts from multiple subreddits on specific topics to create curated content or newsletters.
+
+3. **Sentiment Analysis**:
+
+    Extract posts and comments about specific subjects to analyze community sentiment and opinions.
+
+## Error Handling and Troubleshooting
+- **Rate Limiting**:
+
+    Reddit API has rate limits. If you encounter errors, reduce the number of requests or increase delays between calls.
+
+- **Subreddit Not Found**:
+
+    Verify that subreddit names are spelled correctly without the "r/" prefix in the subreddit parameter.
+
+- **Empty Results**:
+
+    Try adjusting search criteria, using broader keywords, or different sort methods if no posts are found.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Web Search Node"
+    href="/docs/nodes/web-search"
+  >
+    Search the web for information
+  </Card>
+
+  <Card
+    title="Web Extract Node"
+    href="/docs/nodes/web-extract"
+  >
+    Extract content from web pages
+  </Card>
+
+  <Card
+    title="Browser Agent"
+    href="/docs/nodes/browser-agent"
+  >
+    Navigate and scrape websites with AI
+  </Card>
+</CardGroup>

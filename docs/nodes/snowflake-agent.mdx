@@ -1,0 +1,122 @@
+---
+title: 'Snowflake Agent Node'
+description: 'Execute SQL queries on Snowflake data warehouse using an AI agent'
+---
+
+## Overview
+The Snowflake Agent Node provides an intelligent agent for querying Snowflake data warehouses. This node enables you to:
+- Execute SQL queries on Snowflake tables
+- Retrieve data from multiple databases and schemas
+- Perform complex data analysis and aggregations
+- Run synchronous or asynchronous queries
+- Configure warehouse, database, schema, and role
+- Handle query results and errors
+
+## Configuration Parameters
+
+To set up the Snowflake Agent Node, you need to authenticate with your Snowflake account and provide your account URL. Once authenticated, configure the agent to execute SQL operations.
+
+### Node Configuration
+
+- **Account URL**:
+
+  Your Snowflake account URL (e.g., https://myaccount.snowflakecomputing.com)
+
+- **Prompt**:
+
+  Describe **what you want** (your intent) in natural language. The agent figures out how to translate that into SQL—you don't need to write the query yourself.
+
+  > *Total revenue by region in 2024*
+
+  > *Top 10 customers by order volume*
+
+  > *All products with inventory below 100 units*
+
+- **Tools**
+
+  Select which tools the Snowflake Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Execute SQL | Run SQL statements on Snowflake |
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and SQL guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and SQL queries
+
+## Use Case Examples
+1. **Automated Reporting**:
+
+    Execute scheduled SQL queries to generate reports and distribute insights to stakeholders.
+
+2. **Data Analysis**:
+
+    Query large datasets for specific patterns, trends, or anomalies and process the results in workflows.
+
+3. **Data Integration**:
+
+    Extract data from Snowflake for use in other workflow nodes or export to different systems.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've provided valid Snowflake credentials and your account URL is correct.
+
+- **SQL Errors**:
+
+    Verify SQL syntax is correct and tables/columns exist in the specified database and schema.
+
+- **Permission Errors**:
+
+    Check that your Snowflake role has the necessary permissions to access the requested data.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="PostgreSQL Query Node"
+    href="/docs/nodes/postgresql-query"
+  >
+    Query PostgreSQL databases
+  </Card>
+
+  <Card
+    title="MySQL Query Node"
+    href="/docs/nodes/mysql-query"
+  >
+    Query MySQL databases
+  </Card>
+
+  <Card
+    title="Google Sheets Agent"
+    href="/docs/nodes/gsheets-agent"
+  >
+    Export query results to spreadsheets
+  </Card>
+</CardGroup>

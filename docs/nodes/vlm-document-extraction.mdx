@@ -1,0 +1,117 @@
+---
+title: 'VLM Document Extraction Node'
+description: 'Extract structured data from PDF documents using vision language models'
+---
+
+## Overview
+The VLM Document Extraction Node uses vision language models to extract content from PDF documents. This node enables you to:
+- Extract text, tables, and structured data from PDFs
+- Process multiple PDF pages using configurable chunking (pages per chunk and page overlap)
+- Customize extraction prompts for specific data formats
+- Handle large documents by tuning chunk size and overlap
+- Support various vision-capable models
+
+<Note>
+This node is best for **deterministic data extraction** (invoices, forms, structured fields). For more consistent results, use **Temperature 0** in Advanced Settings.
+</Note>
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Upload PDF**:
+
+  Upload one or more PDF documents to extract content from
+
+- **Extraction Prompt**:
+
+  Describe what to extract and the desired output format
+
+  > *Extract all text content from this document. Format the output as markdown with proper headings and sections.*
+
+  > *Extract the table data from this invoice and return it as CSV format*
+
+  > *Find all dates, amounts, and vendor names in this receipt*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Vision Model</strong>: Select the vision language model to use (e.g., GPT-4o, Gemini Pro Vision)
+      </li>
+      <li>
+        <strong>Temperature</strong>: Controls randomness in extraction (0.0-2.0). **Recommended: 0** for deterministic, repeatable extraction (invoices, forms, structured data).
+      </li>
+      <li>
+        <strong>Max Tokens</strong>: Maximum output tokens per chunk (1000-100000)
+      </li>
+      <li>
+        <strong>Pages per Chunk</strong>: Number of pages to process together in each chunk (1-20). Chunking is fixed by this value—there is no automatic or semantic chunking.
+      </li>
+      <li>
+        <strong>Overlap</strong>: Number of pages that overlap between consecutive chunks (0-10). Use to preserve context across chunk boundaries (e.g. tables or paragraphs that span pages).
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts PDF file uploads from the file upload input
+
+- **Outputs**:
+
+  - **content**: Extracted content in the requested format
+
+## Use Case Examples
+1. **Invoice Processing**:
+
+    Extract structured data from invoice PDFs including vendor names, amounts, dates, and line items.
+
+2. **Document Digitization**:
+
+    Convert scanned documents or images in PDFs to searchable, structured markdown or JSON.
+
+3. **Form Data Extraction**:
+
+    Extract filled form data from PDF forms for database entry or further processing.
+
+## Error Handling and Troubleshooting
+- **Large Documents**:
+
+    For very large PDFs, adjust **Pages per Chunk** and **Overlap** to balance context (e.g. overlap 1–2 for continuity) with processing speed and token usage.
+
+- **Poor Image Quality**:
+
+    Low-quality scans may produce poor extraction results. Ensure PDF pages are readable before processing.
+
+- **Model Selection**:
+
+    Different vision models have varying capabilities. Experiment with models if extraction quality is unsatisfactory.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Read text from various document formats
+  </Card>
+
+  <Card
+    title="Raw LLM Node"
+    href="/docs/nodes/raw-llm"
+  >
+    Direct LLM interface with file uploads
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process extracted content with LLMs
+  </Card>
+</CardGroup>

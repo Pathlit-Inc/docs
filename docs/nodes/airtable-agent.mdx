@@ -1,0 +1,125 @@
+---
+title: 'Airtable Agent Node'
+description: 'Interact with Airtable bases, tables, and records using an AI agent'
+---
+
+## Overview
+The Airtable Agent Node provides an intelligent agent for managing Airtable bases, tables, and records. This node enables you to:
+- List and explore available bases and their schemas
+- Read, create, update, and delete records
+- Search records and filter by various criteria
+- Perform bulk operations on multiple records
+
+## Configuration Parameters
+
+To set up the Airtable Agent Node, you need to authenticate with your Airtable account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Airtable.
+
+  > *List all my bases and show me the schema for the first one*
+
+  > *Create a new record in the "Contacts" table with name "John Doe" and email "john@example.com"*
+
+  > *Search for all records in the "Projects" table where status is "In Progress"*
+
+- **Tools**
+
+  Select which tools the Airtable Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Bases | Get all accessible bases |
+  | Get Base Schema | Retrieve table structure and field types |
+  | List Records | List records from a table |
+  | Get Record | Retrieve a specific record |
+  | Create Record | Add new records to tables |
+  | Update Record | Modify existing records |
+  | Delete Record | Remove records from tables |
+  | Search Records | Find records matching criteria |
+
+  <Tip>Only enable tools that the agent should be allowed to use. Be especially careful with Delete Record.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Data Entry**:
+
+    Use the agent to automatically populate Airtable tables based on data from other workflow nodes or external sources.
+
+2. **Data Synchronization**:
+
+    Configure the agent to sync data between different Airtable bases or keep external systems in sync with Airtable.
+
+3. **Smart Record Management**:
+
+    Let the agent intelligently search, filter, and update records based on complex business logic and conditions.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Airtable account and granted the necessary permissions.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+- **Record Operations**:
+
+    When creating or updating records, ensure field values match the expected data types defined in your base schema.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Airtable Input Node"
+    href="/docs/nodes/airtable-input"
+  >
+    Trigger workflows from Airtable changes
+  </Card>
+
+  <Card
+    title="Airtable Output Node"
+    href="/docs/nodes/airtable-output"
+  >
+    Write data to Airtable tables
+  </Card>
+</CardGroup>

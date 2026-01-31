@@ -1,0 +1,105 @@
+---
+title: 'Knowledge Base Add Node'
+description: 'Add text content to knowledge bases for semantic search and retrieval'
+---
+
+## Overview
+The Knowledge Base Add Node adds text content to knowledge bases (document indexes) where it will be processed, embedded, and made available for semantic search. This node enables you to:
+- Add plain text content to knowledge bases
+- Create searchable documents from workflow data
+- Build dynamic knowledge bases from processed information
+- Index content for later retrieval by AI agents
+- Optionally wait for indexing to complete
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Knowledge Base**:
+
+  Select the knowledge base (document index) to add the content to. Knowledge bases must be created beforehand in your account.
+
+- **File Content**:
+
+  The plain text content to add to the knowledge base. Supports format strings from workflow inputs.
+
+  > *\{extracted_text\}*
+
+  > *Summary: \{llm_output\}*
+
+  > *Customer feedback received on \{date\}: \{feedback_content\}*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>File Name Prefix</strong>: Optional prefix for the generated filename (timestamp will be appended automatically)
+      </li>
+      <li>
+        <strong>Wait for indexing to complete</strong>: When enabled, the node waits until the content is fully indexed before continuing (may take longer)
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the file content
+
+- **Outputs**:
+
+  - **result**: Status message confirming the content was added
+  - **item_id**: The ID of the created document item in the knowledge base
+
+## Use Case Examples
+1. **Dynamic Knowledge Building**:
+
+    Automatically add processed information, summaries, or extracted data to knowledge bases for later AI-powered retrieval.
+
+2. **Customer Feedback Indexing**:
+
+    Index customer feedback and support tickets into knowledge bases for semantic search and analysis.
+
+3. **Documentation Generation**:
+
+    Create searchable documentation by adding generated content or processed information to knowledge bases.
+
+## Error Handling and Troubleshooting
+- **Knowledge Base Not Found**:
+
+    Ensure the selected knowledge base exists and you have permission to add content to it.
+
+- **Indexing Timeout**:
+
+    If waiting for indexing, very large content may take time to process. Consider breaking content into smaller chunks.
+
+- **Content Size**:
+
+    Extremely large text content may need to be split into multiple documents for optimal search performance.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Knowledge Base Search Node"
+    href="/docs/nodes/knowledge-base-search"
+  >
+    Search knowledge bases for relevant content
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract text from files to add to knowledge bases
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process content before adding to knowledge bases
+  </Card>
+</CardGroup>

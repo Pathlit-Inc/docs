@@ -5,19 +5,43 @@ description: "Load and process document data for your workflows"
 
 ## Overview
 
-The Document Data Node is a key component of the Pathlit workflow builder that allows users to upload and process document files. This node can extract content from a single uploaded document and optionally include metadata formatted for citations. This makes it useful for various applications, including research, reporting, and content generation.
+The Document Data Node lets you upload and process one or more document files and extract content for use in workflows. You can choose how PDFs and images are processed (OCR, vision-language model, or hybrid) and optionally include XML-formatted metadata for citations. Useful for research, reporting, and feeding content into LLM or extraction nodes.
 
 ## Configuration Parameters
 
-To set up the Document Data Node, you need to configure the following parameters:
-
 - **Upload Files**:
 
-  Upload the document file that you want to process. Currently supported file types include `.pdf`, `.docx`, `.txt`, `.md` and more. The maximum file size allowed for upload is 10MB.
+  Upload one or more documents to process. Supported types include `.pdf`, `.docx`, `.txt`, `.md`, images, and other formats supported by the loaders.
+
+- **Method**:
+
+  How to process PDFs and images:
+  - **OCR with layout detection**: Fast; best for text-heavy documents.
+  - **Vision-language models (VLMs)**: Best for complex layouts, images, and diagrams.
+  - **Hybrid**: Combines OCR and VLM; good default when you are unsure.
 
 - **Include Document Metadata for Citations**:
 
-  A checkbox option that allows you to include XML formatted metadata for citations in the output.
+  When enabled, output includes XML-formatted metadata for citations.
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>[OCR] Strategy</strong>: For OCR method—Auto, Fast, or High resolution. Use High resolution for small text or dense layouts.
+      </li>
+      <li>
+        <strong>[VLM] Vision model</strong>: Vision model used when Method is VLM or Hybrid (e.g. GPT-4o).
+      </li>
+      <li>
+        <strong>Temperature</strong>: Only affects VLM-based extraction. **Recommendation: use 0 or low (e.g. 0.2)** for consistent, repeatable extraction.
+      </li>
+      <li>
+        <strong>Max Tokens</strong>: Maximum output length per page when using VLM (1–100000).
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
 
 ## Expected Inputs and Outputs
 
@@ -57,19 +81,16 @@ If you encounter any issues with the Document Data Node that are not covered in 
 ## Relevant Nodes
 
 <CardGroup>
-  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
-    Import data from Airtable into your workflow
+  <Card title="Document Reader Node" href="/docs/nodes/document-reader">
+    Read text from documents with pagination
   </Card>
-  <Card title="Airtable Output Node" href="/docs/nodes/airtable-out">
-    Explore the possibilities of Pathlit
+  <Card title="VLM Document Extraction Node" href="/docs/nodes/vlm-document-extraction">
+    Extract structured data from PDFs with custom prompts
   </Card>
-  <Card title="Gmail Send Node" href="/docs/nodes/gmail-send">
-    Send emails directly from your workflow
+  <Card title="LLM Node" href="/docs/nodes/llm">
+    Process extracted content with a language model
   </Card>
-  <Card
-    title="Google Drive Input Node"
-    href="/docs/nodes/google-drive-input"
-  >
+  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
     Import files from Google Drive into your workflow
   </Card>
 </CardGroup>

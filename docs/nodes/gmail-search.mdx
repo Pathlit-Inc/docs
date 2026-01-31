@@ -1,0 +1,88 @@
+---
+title: 'Gmail Search Node'
+description: 'Search for emails in Gmail using queries'
+---
+
+## Overview
+The Gmail Search Node allows you to search your Gmail inbox using Gmail's powerful search syntax. This node returns matching emails and their metadata for further processing in your workflow.
+
+## Configuration Parameters
+
+To set up the Gmail Search Node, you need to authenticate with your Google account and configure the search criteria.
+
+### Node Configuration
+
+- **Search Query**:
+
+  The Gmail search query to find specific emails. Supports Gmail search operators such as:
+  - `from:sender@example.com` - Emails from specific sender
+  - `subject:meeting` - Emails with "meeting" in subject
+  - `is:unread` - Only unread emails
+  - `has:attachment` - Emails with attachments
+  - `after:2024/01/01` - Emails after a specific date
+  - `label:important` - Emails with specific label
+
+- **Max Results**:
+
+  The maximum number of emails to return (1-20)
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be used to format the search query dynamically
+
+- **Outputs**:
+
+  - **emails**: Array of matching email messages with their metadata (message ID, subject, sender, date, etc.)
+
+## Use Case Examples
+1. **Email Monitoring**:
+
+    Regularly search for emails from specific senders or containing certain keywords to trigger automated workflows.
+
+2. **Inbox Cleanup**:
+
+    Find old or unread emails matching specific criteria and process them in bulk.
+
+3. **Data Extraction**:
+
+    Search for emails containing specific information (like invoices or reports) and extract data from them.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Gmail account and granted the necessary permissions.
+
+- **Empty Results**:
+
+    If no emails are found, verify your search query syntax and ensure matching emails exist in your account.
+
+- **Query Syntax Errors**:
+
+    Use Gmail's search operators correctly. Refer to Gmail's search documentation for advanced query syntax.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/nodes/gmail-receive"
+  >
+    Trigger workflows from incoming Gmail messages
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Advanced Gmail operations with AI
+  </Card>
+
+  <Card
+    title="Gmail Label Modify Node"
+    href="/docs/nodes/gmail-label-modify"
+  >
+    Add or remove labels from emails
+  </Card>
+</CardGroup>

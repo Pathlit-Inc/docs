@@ -1,0 +1,90 @@
+---
+title: 'Gmail Reply Node'
+description: 'Send replies to Gmail messages automatically'
+---
+
+## Overview
+The Gmail Reply Node allows you to send replies or reply-all responses to existing Gmail messages. This node is typically used with the Gmail Receive trigger to automatically respond to incoming emails.
+
+## Configuration Parameters
+
+To set up the Gmail Reply Node, you need to authenticate with your Google account and configure the reply settings.
+
+### Node Configuration
+
+- **Message ID**:
+
+  The Gmail message ID of the email to reply to (typically from the Gmail Receive trigger)
+
+- **Reply Type**:
+
+  Choose between "Reply" (reply to sender only) or "Reply All" (reply to all recipients)
+
+- **Body**:
+
+  The content of your reply message. Supports plain text and format strings from workflow inputs.
+
+- **Draft**:
+
+  When enabled, saves the reply as a draft instead of sending it immediately
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input, typically including the message ID and any dynamic content for the reply body
+
+- **Outputs**:
+
+  - **result**: Confirmation that the reply was sent or saved as draft
+
+## Use Case Examples
+1. **Automated Acknowledgments**:
+
+    Automatically send confirmation emails when requests are received, acknowledging receipt and providing estimated response times.
+
+2. **Smart Auto-Responders**:
+
+    Create intelligent auto-reply systems that analyze incoming emails and send contextual responses based on email content.
+
+3. **Draft Generation**:
+
+    Generate draft replies for review before sending, allowing human oversight of automated responses.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Gmail account and granted the necessary Mail.Send permissions.
+
+- **Message Not Found**:
+
+    Verify the message ID is still valid and the original email exists in your account.
+
+- **Send Failures**:
+
+    If sending fails, check that your Gmail account is in good standing and not rate-limited.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/nodes/gmail-receive"
+  >
+    Trigger workflows from incoming Gmail messages
+  </Card>
+
+  <Card
+    title="Gmail Send Node"
+    href="/docs/nodes/gmail-send"
+  >
+    Send new emails via Gmail
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Comprehensive Gmail management with AI
+  </Card>
+</CardGroup>

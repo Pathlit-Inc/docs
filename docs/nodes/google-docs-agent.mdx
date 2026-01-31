@@ -1,0 +1,138 @@
+---
+title: 'Google Docs Agent Node'
+description: 'Create, edit, and manage Google Docs with rich text formatting'
+---
+
+## Overview
+The Google Docs Agent Node provides an AI agent for comprehensive Google Docs document management. This node enables:
+- Create new Google Docs documents
+- Read documents in text, JSON, or markdown format
+- Insert, append, replace, and delete text
+- Apply rich text styles (bold, italic, underline, colors, links)
+- Apply paragraph styles (headings, alignment, spacing)
+- Manage tables and insert page breaks
+- Add, list, and manage comments
+
+## Configuration Parameters
+
+To set up the Google Docs Agent Node, authenticate with your Google account and select the tools the agent can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Google Docs.
+
+  > *Create a doc titled 'Project Plan', insert a bold heading and add a comment*
+
+  > *Read the document with ID abc123 and summarize its content*
+
+  > *Update the document to make all section headings bold and blue*
+
+- **Tools**
+
+  Select which tools the Google Docs Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Create Document | Create a new Google Doc |
+  | Read Document | Read document content in text, JSON, or markdown |
+  | Insert Text | Insert text at start, end, or specific index |
+  | Append Text | Append text to the end of the document |
+  | Replace Text | Find and replace text |
+  | Delete Range | Delete content within a specified range |
+  | Apply Text Style | Apply bold, italic, underline, colors, links |
+  | Apply Text Style By Text | Style specific text by finding it |
+  | Apply Paragraph Style | Apply heading styles, alignment, spacing |
+  | List Tables | List all tables in the document |
+  | Set Table Cell Text | Update text in table cells |
+  | Insert Page Break | Insert a page break |
+  | Add Comment | Add comments to the document |
+  | List Comments | List all comments |
+  | Reply To Comment | Reply to comment threads |
+  | Resolve Comment | Mark comments as resolved |
+  | Delete Comment | Delete comments |
+  | Batch Update | Execute raw Docs API batch updates |
+
+  <Tip>The agent can combine multiple operations to perform complex document editing tasks.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's document editing behavior.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's document operations
+  - **conversation**: Detailed log of the agent's editing actions
+
+## Use Case Examples
+1. **Document Creation**:
+
+    Use the agent to create formatted documents with headings, styled text, and structured content automatically.
+
+2. **Document Editing**:
+
+    Configure the agent to update existing documents, apply formatting changes, and manage document structure.
+
+3. **Collaborative Review**:
+
+    Let the agent add comments, manage comment threads, and facilitate document review workflows.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Google account and granted Google Docs permissions.
+
+- **Document Access**:
+
+    Make sure you have permission to edit the documents you're trying to modify.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Drive Agent Node"
+    href="/docs/nodes/google-drive-agent"
+  >
+    Manage files in Google Drive
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract text from various document formats
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Generate or analyze document content with AI
+  </Card>
+</CardGroup>

@@ -1,0 +1,124 @@
+---
+title: 'Google Drive Agent Node'
+description: 'Manage files and folders in Google Drive with comprehensive operations'
+---
+
+## Overview
+The Google Drive Agent Node provides an AI agent for managing files in Google Drive. This node enables:
+- List and search for files and folders
+- Download files from Google Drive with text extraction
+- Upload files from workflows to Google Drive
+- Create folders and organize files
+- Get detailed file metadata and properties
+- Export Google Workspace files to standard formats
+
+## Configuration Parameters
+
+To set up the Google Drive Agent Node, authenticate with your Google account and select the tools the agent can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Google Drive.
+
+  > *List files in my Google Drive and download the most recent document*
+
+  > *Search for files containing "report" in the name and show their metadata*
+
+  > *Create a folder called "Q1 Reports" and upload files to it*
+
+- **Tools**
+
+  Select which tools the Google Drive Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Files | List files from Google Drive with optional search |
+  | Download File | Download and optionally extract text from files |
+  | Upload File From Service | Upload files from workflow to Google Drive |
+  | Create Folder | Create new folders |
+  | Get File Metadata | Get detailed file information |
+
+  <Tip>When downloading Google Workspace files (Docs, Sheets), they are automatically exported to PDF for text extraction.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's file management behavior.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's file operations
+  - **conversation**: Detailed log of the agent's actions
+
+## Use Case Examples
+1. **Document Search and Retrieval**:
+
+    Use the agent to find specific documents in your Google Drive and extract their content for processing in workflows.
+
+2. **File Organization**:
+
+    Configure the agent to organize files into folders, rename files, and maintain a structured Drive organization.
+
+3. **Automated Backups**:
+
+    Let the agent download important files from Google Drive for backup or archival purposes.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Google account and granted Google Drive permissions.
+
+- **File Access Errors**:
+
+    Make sure you have permission to access the files and folders you're trying to manage.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Docs Agent Node"
+    href="/docs/nodes/google-docs-agent"
+  >
+    Create and edit Google Docs
+  </Card>
+
+  <Card
+    title="Google Drive Trigger Node"
+    href="/docs/nodes/google-drive-trigger"
+  >
+    Trigger workflows from Google Drive changes
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract text from various document formats
+  </Card>
+</CardGroup>

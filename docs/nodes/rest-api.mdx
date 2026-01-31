@@ -1,0 +1,89 @@
+---
+title: 'REST API Node'
+description: 'Make HTTP requests to REST APIs with OpenAPI specification support'
+---
+
+## Overview
+The REST API Node allows you to make HTTP requests to any REST API endpoint. This node enables you to:
+- Make GET, POST, PUT, DELETE, and other HTTP requests
+- Configure headers and request bodies
+- Import API configurations from OpenAPI specifications
+- Use dynamic values from workflow inputs
+- Handle JSON and other content types
+- Integrate with external services and APIs
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **REST API Configuration**:
+
+  Configure your API request using:
+  - **Endpoint URL**: The target API endpoint (supports format strings)
+  - **HTTP Method**: GET, POST, PUT, DELETE, PATCH, etc.
+  - **Headers**: Key-value pairs for request headers
+  - **Request Body**: Data to send (for POST/PUT/PATCH requests)
+  - **Content Type**: Format of request body (JSON, form data, etc.)
+
+  You can also import configuration from an OpenAPI specification URL for automatic setup.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in URLs, headers, and request bodies using format strings
+
+- **Outputs**:
+
+  - **output**: The response body from the API (typically JSON)
+
+## Use Case Examples
+1. **Third-Party Integration**:
+
+    Call external APIs to send data, retrieve information, or trigger actions in other systems.
+
+2. **Webhook Notifications**:
+
+    Send webhook notifications to external services when workflow events occur.
+
+3. **Data Fetching**:
+
+    Retrieve data from REST APIs for processing in your workflow, such as fetching prices, weather data, or user information.
+
+## Error Handling and Troubleshooting
+- **Connection Errors**:
+
+    Verify the endpoint URL is correct and the API is accessible from Pathlit's servers.
+
+- **Authentication Issues**:
+
+    Include necessary authentication headers (API keys, bearer tokens) in the headers configuration.
+
+- **Response Parsing**:
+
+    Ensure the API returns valid JSON if you're processing the response in downstream nodes.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Webhook Trigger"
+    href="/docs/nodes/webhook-trigger"
+  >
+    Receive HTTP requests to trigger workflows
+  </Card>
+
+  <Card
+    title="HTTP Request Node"
+    href="/docs/nodes/http-request"
+  >
+    Alternative HTTP request node
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process API responses with AI
+  </Card>
+</CardGroup>

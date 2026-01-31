@@ -1,0 +1,222 @@
+---
+title: 'Files in Workflows'
+description: 'How to move files between nodes and what you need to know about file storage'
+---
+
+## Overview
+
+When a workflow works with files—PDFs, spreadsheets, images, and so on—Pathlit doesn’t send the actual file content from node to node. Instead, each file is **stored once**, and nodes pass a **reference** to it (an ID plus the file name and type). The next node uses that reference to open the file when it runs. That keeps workflows fast and lets you chain steps like “get attachment from Gmail” → “extract text” → “upload to OneDrive” without moving big blobs of data yourself.
+
+This guide explains:
+
+- **How file references work** — what gets stored and how nodes use it  
+- **Where files come from** — uploads vs nodes that produce files  
+- **Reading files** — recommended: Agent with Document Reader (serial or swarm)  
+- **Passing files between nodes** — direct connections, agent → file-consuming nodes, moving files with agents  
+- **How long files are kept** — temporary storage and best practices  
+
+---
+
+## How file references work
+
+### What Pathlit stores
+
+When Pathlit stores a file (from an upload, or from a node that downloaded or created it), it keeps:
+
+- An **ID** that uniquely identifies the file  
+- The **file name** (e.g. `report.pdf`)  
+- The **file type** (e.g. PDF, Excel)  
+
+### What you do
+
+Nodes that *produce* files give you back this reference. Nodes that *use* files expect to receive it—either from a workflow input (e.g. “file from the start”) or from another node’s output. You don’t need to handle the ID yourself unless you’re writing prompts for agents (see below); usually you just **connect the output of the node that has the file to the input of the node that needs the file**.
+
+<Info>
+**If you’re connecting nodes in the UI:** Drag a connection from the node that produced or received the file to the node that should use it. The receiving node will typically let you choose which input port gets the file (e.g. “Upload PDF” or “Files”). You don’t need to copy IDs or JSON.
+</Info>
+
+## Where files come from
+
+### You upload them at the start
+
+If your workflow has a **file** (or files) **input**, the person running the workflow uploads one or more files. Those are stored and passed into the workflow as file references. Any downstream node that accepts files can use them—for example [VLM Document Extraction](/docs/nodes/vlm-document-extraction), [Document Data](/docs/nodes/document-data), or [Document Reader](/docs/nodes/document-reader).
+
+### A node downloads or creates them
+
+Many nodes **produce** a file reference when they download or generate a file:
+
+- **Gmail Agent** — When it downloads an email attachment, it stores the file and outputs a reference you can pass to the next node.  
+- **Google Drive Agent** — When it downloads a file from Drive, it can store it and output a reference.  
+- **OneDrive Agent** — Same for files downloaded from OneDrive.  
+- **Outlook Agent** — Can download attachments and output file references.  
+- **Dropbox Agent** — Can download files and output references.  
+- **QuickBooks Agent** — When it saves a report as a file, it outputs a reference.  
+- **Code Node** / **CodeAct Agent** — Can create files and output references.  
+
+So whenever a node “has” a file (because you uploaded it or because another node downloaded/created it), that node’s **output** can be connected to a node that **accepts** files.
+
+### Nodes that accept files
+
+These nodes take one or more file references (from workflow input or from another node):
+
+- **[VLM Document Extraction](/docs/nodes/vlm-document-extraction)** — Extract text or data from PDFs. Give it a list of files (e.g. from Input or from Gmail/Drive).  
+- **[Document Data](/docs/nodes/document-data)** — Process documents (PDF, Word, etc.). Accepts a list of files.  
+- **[Document Reader](/docs/nodes/document-reader)** — Read a single document.  
+- **[Summarizer](/docs/nodes/summarizer)** — Summarize one or more documents.  
+- **OneDrive / Google Drive / Dropbox agents** — Their *upload* tools can take a file that was produced earlier in the workflow (e.g. after Gmail downloaded an attachment).  
+
+So the pattern is: **node that has the file → connect its output → node that uses the file**.
+
+---
+
+## Reading files: Agent with Document Reader
+
+To **read** file content and use it with an LLM (summarize, answer questions, extract), we recommend using the **Agent node** with the **Document Reader** tool. The agent receives the file reference and can call the Document Reader tool to get the text, then reason over it.
+
+You can wire this in two ways:
+
+### Serial connection
+
+When the node that **produces** the file is **not** an agent (e.g. a file **Input**, or a node that outputs a file reference):
+
+1. Connect that node's output to the **Agent** node's input.  
+2. Configure the Agent with the **Document Reader** tool.  
+3. In the Agent's prompt, ask it to read the file (e.g. *Summarize the attached document* or *Answer questions using the document*). The agent will use the Document Reader tool on the file it received.
+
+**Example:** File Input → Agent (Document Reader tool) → the agent reads the PDF and summarizes it.
+
+### Agent Swarm
+
+When the node that **produces** the file **is** an agent (e.g. **Gmail Agent** downloads an attachment):
+
+1. Use an **Agent Swarm** that includes both the producer agent and an agent that has the **Document Reader** tool.  
+2. The first agent gets the file (e.g. downloads the attachment); the second agent can use Document Reader to read it and then reason over the content.
+
+**Example:** Agent Swarm: Gmail Agent (gets attachment) + Agent with Document Reader → the second agent reads the attachment and answers questions about it.
+
+---
+
+## Passing files between nodes
+
+### Same workflow, step by step
+
+1. **Run the node that gets or creates the file**  
+   For example: run the Gmail Agent and ask it to get the attachment from an email. Its output will include a reference to that file (often inside the agent's reply text).
+
+2. **Connect that output to the node that should use the file**  
+   - **If the producer outputs a file reference (or list) directly** (e.g. workflow **Input**, or **Structured Output**): In the workflow editor, drag a connection from the producer's output to the receiving node. On the receiving node, assign that connection to the file input (e.g. "Upload PDF" or "Files"). When you run the workflow, the receiving node gets the file reference and fetches the file.  
+   - **If the producer is an agent** (e.g. Gmail Agent): The agent's output is usually **text** with file refs mentioned in prose, not a clean file list—you can't simply "map" that to a file input. See **When the next node is VLM, Document Reader, or Document Data** below for the exact steps (JSON output, Structured Output, or Agent with Document Reader).
+
+3. **Run the next node**  
+   When that node runs and receives a proper file reference (or list), it fetches the file automatically.
+
+### Example: Upload a PDF, then extract text (direct connection)
+
+When the file comes from a **workflow Input**, the connection is straightforward:
+
+1. Add an **Input** node and configure it so the workflow accepts a **file** (e.g. a PDF).  
+2. Add **VLM Document Extraction** (or Document Data).  
+3. In the workflow editor, **drag a connection** from the Input node's output to the VLM node.  
+4. On the VLM node, **assign that connection** to the file input (e.g. "Upload PDF" or "Files").  
+5. When you run the workflow, you upload a PDF; the VLM node receives the file reference and extracts content.
+
+### Example: Gmail attachment → extract or summarize (agent in the middle)
+
+When the file is **produced by an agent** (e.g. Gmail Agent downloads an attachment), the agent's output is text—so you can't just connect it to Document Data / VLM / Summarizer like a file input. Do this instead:
+
+1. Use **Gmail Receive** (or similar) so the workflow has the email (e.g. message ID).  
+2. Add **Gmail Agent** and in the prompt ask it to get the attachment (e.g. *Get the attachment from the latest email in this thread*). The agent downloads the attachment; its reply will mention the file, but as text, not as a file list.  
+3. **To use that file with Document Data, VLM Document Extraction, or Summarizer**, use one of the approaches in the **next section** (see below):
+
+   - **Read the file with an LLM** (summarize, Q&A): Use an **Agent** with the **Document Reader** tool—connect the Gmail Agent's output to that Agent, or use an **Agent Swarm** (Gmail Agent + Agent with Document Reader). See [Reading files: Agent with Document Reader](#reading-files-agent-with-document-reader).  
+   - **Pass a clean file list** to VLM / Document Data / Summarizer: Either **(a)** ask the Gmail Agent to output **only** a JSON array of file references and connect its output to the file node, or **(b)** use a **Structured Output** node to extract that list from the agent's text, then connect Structured Output → file node. Step-by-step instructions are in **When the next node is VLM, Document Reader, or Document Data** below.
+
+<Warning>
+**Why this is different:** Agent nodes (Gmail, Drive, etc.) return file references **inside their reply text** (e.g. "I downloaded the file. The file_id is abc-123."). Nodes like **VLM Document Extraction**, **Document Reader**, and **Document Data** expect a **structured list** of file references, not prose. So you must either get that list from the agent (JSON or Structured Output) or use an Agent with Document Reader to read the file.
+</Warning>
+
+### When the next node is VLM, Document Reader, or Document Data
+
+If an **agent** produced the file(s) and the **next** step is a node that expects a list of files (e.g. [VLM Document Extraction](/docs/nodes/vlm-document-extraction), [Document Reader](/docs/nodes/document-reader), [Document Data](/docs/nodes/document-data)), you need the file references in a **structured form**, not buried in text. Two options:
+
+#### Option 1: Ask the agent to output a JSON list
+
+Prompt the agent so that, after doing its work, it outputs a **JSON array** of file references—one object per file, with exactly these keys: `file_id`, `filename`, `mime_type`.
+
+**JSON structure** (one file):
+
+```json
+{
+  "file_id": "the-file-id-returned-by-the-tool",
+  "filename": "report.pdf",
+  "mime_type": "application/pdf"
+}
+```
+
+**Multiple files** — an array of such objects:
+
+```json
+[
+  { "file_id": "...", "filename": "report.pdf", "mime_type": "application/pdf" },
+  { "file_id": "...", "filename": "sheet.xlsx", "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" }
+]
+```
+
+**Prompt snippet** you can add to the end of your agent prompt so it outputs this format:
+
+> After you have finished and listed any file references, output a JSON array of those files and nothing else. Each item must have exactly: `"file_id"`, `"filename"`, `"mime_type"`. Example: `[ { "file_id": "abc-123", "filename": "doc.pdf", "mime_type": "application/pdf" } ]`. Do not add any text before or after the array.
+
+Then connect the agent’s output to the VLM (or Document Data / Document Reader) node. If the agent’s reply contains only that JSON array (or the workflow can use the part that is the array), the receiving node can parse it and use the files.
+
+#### Option 2: Use the Structured Output node
+
+Use the [Structured Output](/docs/nodes/structured-output) node to **extract** the file references from the agent’s text. Define a schema that describes a list of objects with `file_id`, `filename`, and `mime_type`, and prompt the Structured Output node to pull those out of the agent’s reply. Connect **Agent → Structured Output → VLM** (or Document Reader / Document Data). The Structured Output node’s result is a clean list of file references that those nodes can use.
+
+### Moving files with agents (e.g. Gmail → OneDrive)
+
+When the *next* step is an **agent** that uploads to cloud storage (OneDrive, Google Drive, etc.), you still connect the node that has the file to that agent. The agent then needs to know *which* file to upload. You do that by **passing the file reference into the agent's input** and **referencing it in the prompt** using the workflow's placeholder syntax.
+
+**Example: Download attachment from Gmail and upload to OneDrive**
+
+1. **Gmail Agent** — Give it a display ID (e.g. `gmail-agent`). Prompt: *Get the attachment from the latest email in this thread and save it.* The agent downloads the attachment; its output includes the file reference.  
+2. **Connect** the Gmail Agent's output to the **OneDrive Agent**'s input.  
+3. **OneDrive Agent** — In the prompt, tell it to upload the file from the previous step and reference the Gmail output so the agent receives the data. For example:  
+   - *Upload the file to the folder "Invoices". The file came from the previous step: `{gmail-agent output}`*  
+   The placeholder `{gmail-agent output}` is replaced with the Gmail Agent's output when the workflow runs.
+
+So: **Gmail Agent (gets attachment) → connect output to OneDrive Agent → OneDrive Agent prompt: "Upload this file…" and use `{gmail-agent output}` (or your Gmail node's display ID + output port) so the agent gets the file reference.**
+
+### Example prompts (when using agents)
+
+- **Gmail** (when the message ID comes from workflow input):  
+  *Get the attachment from the email with id `{gmail-receive-0 message_id}` and save it.*
+
+- **OneDrive (when the file comes from the previous node):**  
+  *Upload the file to the folder "Invoices". File from previous step: `{gmail-agent output}`*  
+  (Use the **display ID** of the node that produces the file and its **output port name**, e.g. `{gmail-agent output}`.)
+
+- **Google Drive → then use in VLM or Document Data:**  
+  Use the Google Drive Agent to download a file; connect its output to the VLM or Document Data node's file input so that node receives the file and can process it.
+
+## How long are files kept?
+
+Files that workflows use (uploads, or files downloaded/created by nodes) are **temporary**. Pathlit stores them and may delete them once nothing references the file and an expiration time has passed.
+
+- **When files are removed:** When no workflow run (or other resource) references a file anymore, it gets an **expiration date** (30 days from that time). A scheduled cleanup job deletes files that have passed that expiration and have zero references.  
+- **Best practice:** Use the file **in the same workflow run** when you can. For example: “Download attachment from Gmail and upload to OneDrive” in one run, so the file is used right away.  
+- **If you need the file long term:** Have the workflow **save a copy** somewhere permanent—e.g. upload it to OneDrive, Google Drive, or your own storage. Then you’re not relying on Pathlit’s temporary storage.
+
+If a run fails or is delayed, a file might be removed before a later run uses it. For anything important, design the workflow so the file is used in the same run or copied to your own storage.
+
+## Summary
+
+| What you need to know | In short |
+|-----------------------|----------|
+| **How files move** | Pathlit stores each file once. Nodes pass a **reference** (ID + name + type), not the file itself. |
+| **Getting files into the workflow** | Upload at the start (file input), or use a node that downloads/creates files (Gmail, Drive, OneDrive, Outlook, Dropbox, QuickBooks, Code, etc.). |
+| **Using files in the next node** | Connect the **output** of the node that has the file to the **input** of the node that uses it (VLM, Document Data, Document Reader, Summarizer, or an agent that uploads to Drive/OneDrive/Dropbox). |
+| **Agent → VLM / Document Reader / Document Data** | Agent output is often text with file refs embedded. Those nodes need a clear list. Either prompt the agent to output a JSON array of `{ "file_id", "filename", "mime_type" }` (see above), or use the **Structured Output** node to extract that list from the agent’s text, then connect to VLM/Document node. For **reading** files with an LLM, prefer the **Agent with Document Reader** (serial or swarm)—see [Reading files: Agent with Document Reader](#reading-files-agent-with-document-reader). |
+| **Agents (e.g. Gmail → OneDrive)** | Connect the Gmail Agent output to the OneDrive Agent input. In the OneDrive prompt, reference the previous node's output with **`{sourceNodeDisplayId outputPortName}`** (e.g. `{gmail-agent output}`). |
+| **How long files last** | Temporary. When nothing references a file, it gets an expiration (30 days from then) and may be deleted after that. Use files in the same run when possible, or save a copy to your own storage if you need them longer. |
+
+For details on a specific node, see its doc: [Agent](/docs/nodes/agent), [Document Reader](/docs/nodes/document-reader), [VLM Document Extraction](/docs/nodes/vlm-document-extraction), [Document Data](/docs/nodes/document-data), [Structured Output](/docs/nodes/structured-output), [Gmail Agent](/docs/nodes/gmail-agent), [OneDrive Agent](/docs/nodes/onedrive-agent), [Google Drive Agent](/docs/nodes/google-drive-agent).

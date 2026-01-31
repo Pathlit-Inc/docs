@@ -1,0 +1,135 @@
+---
+title: 'OneDrive Agent Node'
+description: 'Manage files in Microsoft OneDrive using an AI agent'
+---
+
+## Overview
+The OneDrive Agent Node provides an intelligent agent for managing files in Microsoft OneDrive. This node enables you to:
+- List and search files across your OneDrive
+- Download files for processing
+- Upload files from workflows to OneDrive
+- Create folders and organize files
+- Move, copy, and delete files
+- Get detailed file metadata and properties
+
+## Configuration Parameters
+
+To set up the OneDrive Agent Node, you need to authenticate with your Microsoft account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with OneDrive.
+
+  > *List all files in my OneDrive and download the most recent document*
+
+  > *Search for files containing "budget" in the name and move them to the Finance folder*
+
+  > *Create a folder called "Q4 Reports" and upload these files to it*
+
+- **Tools**
+
+  Select which tools the OneDrive Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Files | List files in a folder |
+  | Search Files | Search for files by name or content |
+  | Download File | Download files for processing |
+  | Upload File From Service | Upload files to OneDrive |
+  | Create Folder | Create new folders |
+  | Get File Metadata | Get detailed file information |
+  | Move File | Move files to different folders |
+  | Copy File | Copy files to different locations |
+  | Delete File | Remove files or folders |
+
+  <Tip>Be careful with Delete File - enable only when necessary</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated File Organization**:
+
+    Automatically organize uploaded files into appropriate OneDrive folders based on their content, type, or naming patterns.
+
+2. **Document Processing Pipeline**:
+
+    Search for specific documents in OneDrive, download them for processing, and save results back to OneDrive.
+
+3. **Backup and Archiving**:
+
+    Copy important files to archive folders or move old files to specific locations based on their age or metadata.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted OneDrive permissions (Files.ReadWrite).
+
+- **File Not Found**:
+
+    Verify that file IDs are still valid and files haven't been moved or deleted since they were referenced.
+
+- **Permission Errors**:
+
+    Check that your account has the necessary permissions to perform the requested operations on the files or folders.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="OneDrive Input Node"
+    href="/docs/nodes/onedrive-input"
+  >
+    Import files from OneDrive
+  </Card>
+
+  <Card
+    title="SharePoint Input Node"
+    href="/docs/nodes/sharepoint-input"
+  >
+    Access files from SharePoint
+  </Card>
+
+  <Card
+    title="Excel Agent"
+    href="/docs/nodes/excel-agent"
+  >
+    Work with Excel workbooks in OneDrive
+  </Card>
+
+  <Card
+    title="Google Drive Agent"
+    href="/docs/nodes/google-drive-agent"
+  >
+    Manage files in Google Drive
+  </Card>
+</CardGroup>

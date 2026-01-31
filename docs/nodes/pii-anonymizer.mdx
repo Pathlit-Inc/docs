@@ -1,0 +1,106 @@
+---
+title: 'PII Anonymizer Node'
+description: 'Protect personally identifiable information by anonymizing sensitive data'
+---
+
+## Overview
+The PII Anonymizer Node detects and anonymizes personally identifiable information (PII) in text. This node enables you to:
+- Automatically detect and redact sensitive information
+- Support multiple entity types (SSN, credit cards, emails, names, etc.)
+- Use typed placeholders or generic redactions
+- Generate deanonymization keys for later restoration
+- Comply with privacy regulations like GDPR and CCPA
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **PII Entities**:
+
+  Select which types of personally identifiable information to anonymize:
+
+  **Global Entities:**
+  - Credit card numbers
+  - Cryptocurrency wallet addresses
+  - Dates and times
+  - Email addresses
+  - IBAN codes
+  - IP addresses
+  - Names and locations
+  - Phone numbers
+  - URLs
+
+  **US-Specific:**
+  - Bank account numbers
+  - Driver licenses
+  - ITIN numbers
+  - Passport numbers
+  - Social Security Numbers
+
+  **Other Regions:**
+  - UK NHS/NINO
+  - Australian ABN/TFN/Medicare
+  - Indian PAN/Aadhaar
+  - Singapore NRIC
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input containing potentially sensitive information
+
+- **Outputs**:
+
+  - **output**: Anonymized text with PII replaced by placeholders
+  - **secrets**: JSON object containing deanonymization information (encryption key, entity mappings, placeholders)
+
+## Use Case Examples
+1. **Secure Data Processing**:
+
+    Anonymize customer data before sending it to external APIs or third-party services for analysis.
+
+2. **Compliance Workflows**:
+
+    Ensure GDPR/CCPA compliance by automatically redacting PII from documents and communications.
+
+3. **Safe Testing**:
+
+    Create anonymized datasets from production data for testing and development environments.
+
+## Error Handling and Troubleshooting
+- **Detection Accuracy**:
+
+    The node uses AI-powered detection which may occasionally miss or incorrectly identify PII. Review critical outputs.
+
+- **Language Support**:
+
+    Currently optimized for English text. Other languages may have reduced accuracy.
+
+- **Deanonymization**:
+
+    Store the "secrets" output securely if you need to restore original data later using the PII Deanonymizer node.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="PII Deanonymizer Node"
+    href="/docs/nodes/pii-deanonymizer"
+  >
+    Restore original data from anonymized text
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process anonymized text safely with AI
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract text before anonymization
+  </Card>
+</CardGroup>

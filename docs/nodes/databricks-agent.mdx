@@ -1,0 +1,132 @@
+---
+title: 'Databricks Agent Node'
+description: 'Execute SQL queries and vector searches against Databricks'
+---
+
+## Overview
+The Databricks Agent Node provides an AI agent for interacting with Databricks SQL Warehouses and Vector Search indexes. This node enables:
+- Execute SQL statements against Databricks SQL Warehouses
+- Perform similarity searches using Databricks Vector Search
+- Query and analyze data stored in Databricks
+- Access Delta Lake tables and unified analytics platform
+- Support for both inline results and external links for large datasets
+
+## Configuration Parameters
+
+To set up the Databricks Agent Node, authenticate with your Databricks workspace and configure the agent's capabilities.
+
+### Node Configuration
+
+- **Workspace URL**:
+
+  Your Databricks workspace base URL (e.g., https://dbc-xxxx.cloud.databricks.com).
+
+- **Prompt**:
+
+  Describe **what you want** (your intent) in natural language. The agent figures out how to translate that into SQL or vector search—you don't need to write the query yourself.
+
+  **Intent-based (recommended):**
+
+  > *Show me the top 10 customers by revenue*
+
+  > *What were total sales in the West region last quarter?*
+
+  > *Find documents in the knowledge base that are similar to "machine learning model deployment"*
+
+  You can also give a raw SQL statement or specific instructions if you already know the exact query, but for most use cases describing the goal is enough.
+
+<Tip>
+**Prompt by intent.** Describe the analysis or data you want (e.g. "top 10 customers by revenue", "documents similar to X"). The agent will choose and run the right SQL or vector search—no need to write queries yourself unless you have a fixed query.
+</Tip>
+
+- **Tools**
+
+  Select which tools the Databricks Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Execute SQL | Run SQL statements against SQL Warehouses |
+  | Search Vector Index | Perform similarity searches against vector indexes |
+
+  <Tip>For large result sets, the agent can use EXTERNAL_LINKS disposition to avoid memory issues.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and query guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's SQL queries or vector searches
+  - **conversation**: Detailed log of the agent's operations
+
+## Use Case Examples
+1. **Data Analytics**:
+
+    Use the agent to query Databricks tables, perform aggregations, and generate analytical insights from your data warehouse.
+
+2. **Vector Search**:
+
+    Configure the agent to perform semantic searches across your vector indexes, finding similar documents or content based on meaning.
+
+3. **Automated Reporting**:
+
+    Let the agent extract data from Databricks and prepare it for reporting, handling complex joins and transformations.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Databricks account with OAuth and provided the correct workspace URL.
+
+- **Warehouse Configuration**:
+
+    Make sure the warehouse ID you're querying exists and is accessible to your account.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="PostgreSQL Query Node"
+    href="/docs/nodes/postgresql-query"
+  >
+    Execute SQL queries against PostgreSQL databases
+  </Card>
+
+  <Card
+    title="MySQL Query Node"
+    href="/docs/nodes/mysql-query"
+  >
+    Execute SQL queries against MySQL databases
+  </Card>
+</CardGroup>

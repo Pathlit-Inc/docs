@@ -1,0 +1,94 @@
+---
+title: 'Google Drive Trigger Node'
+description: 'Trigger workflows when files are created or updated in Google Drive folders'
+---
+
+## Overview
+The Google Drive Trigger Node starts workflows automatically when files are created or updated in monitored Google Drive folders. This node enables you to:
+- Monitor specific Google Drive folders for changes
+- Trigger workflows on file creation events
+- Trigger workflows on file update events
+- Process new or modified files automatically
+- Build event-driven automation for Google Drive
+
+## Configuration Parameters
+
+To set up the Google Drive Trigger Node, you need to authenticate with your Google account and select a folder to monitor.
+
+### Node Configuration
+
+- **Select Folder to Watch**:
+
+  Choose the Google Drive folder to monitor for file changes. You can browse your Drive folders using the picker interface.
+
+- **Event Types**:
+
+  Select which events should trigger the workflow:
+  - **File Created**: Triggers when new files are added to the watched folder
+  - **File Updated**: Triggers when existing files in the watched folder are modified
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - This is a trigger node and does not accept manual inputs. For testing, you can provide:
+    - **test_file_id**: File ID for testing
+    - **test_resource_id**: Folder ID for testing
+    - **test_event_type**: Event type for testing (created/updated)
+
+- **Outputs**:
+
+  - **file_id**: The ID of the file that triggered the workflow
+  - **resource_id**: The Google Drive resource ID
+  - **event_type**: The type of event (created or updated)
+
+## Use Case Examples
+1. **Document Processing**:
+
+    Automatically process new documents uploaded to a shared Google Drive folder, extracting data or generating summaries.
+
+2. **File Synchronization**:
+
+    Trigger workflows to sync files from Google Drive to other storage systems or databases when files are created or updated.
+
+3. **Notification System**:
+
+    Send notifications when important files are added or updated in specific Google Drive folders.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Google account and granted Drive permissions.
+
+- **Folder Access**:
+
+    Verify you have access to the folder you're trying to monitor and that it hasn't been deleted or moved.
+
+- **Webhook Setup**:
+
+    Google Drive webhooks have expiration times. Pathlit automatically renews them, but temporary issues may occur.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Drive Agent"
+    href="/docs/nodes/google-drive-agent"
+  >
+    Read and manage Google Drive files
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract content from triggered files
+  </Card>
+
+  <Card
+    title="Google Drive Input Node"
+    href="/docs/nodes/google-drive-input"
+  >
+    Manually select Drive files
+  </Card>
+</CardGroup>

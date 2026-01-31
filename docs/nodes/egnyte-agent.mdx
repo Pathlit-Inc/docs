@@ -1,0 +1,129 @@
+---
+title: 'Egnyte Agent Node'
+description: 'Manage enterprise files and folders in Egnyte using an AI agent'
+---
+
+## Overview
+The Egnyte Agent Node provides an intelligent agent for managing files and folders in Egnyte. This node enables you to:
+- List and search files across your Egnyte folders
+- Download files for processing
+- Upload files to Egnyte from workflows
+- Rename, move, and organize files and folders
+- Create and manage folder structures
+- Add notes and comments to files
+
+## Configuration Parameters
+
+To set up the Egnyte Agent Node, you need to authenticate with your Egnyte account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Egnyte.
+
+  > *Search for all PDF files in /Shared/Reports and download the ones from this month*
+
+  > *Create a folder called "Q4 2024" in /Shared/Projects and upload these files to it*
+
+  > *Find the file named "Budget.xlsx" and add a note saying "Reviewed by finance team"*
+
+- **Tools**
+
+  Select which tools the Egnyte Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Folder | List files and folders in a directory |
+  | Search Files | Search for files by name or type |
+  | Download File | Download files for processing |
+  | Upload File | Upload files from the workflow |
+  | Rename File | Rename files or folders |
+  | Move Path | Move files to different locations |
+  | Delete File | Remove files from Egnyte |
+  | Create Folder | Create new folders |
+  | Delete Folder | Remove empty folders |
+  | Add File Note | Add comments to files |
+
+  <Tip>Be careful with Delete File and Delete Folder tools - enable them only when necessary</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Document Organization**:
+
+    Automatically organize uploaded files into appropriate folders based on their content, type, or metadata.
+
+2. **File Distribution**:
+
+    Upload workflow-generated reports to specific Egnyte folders and notify relevant team members via notes.
+
+3. **Content Management**:
+
+    Search for and process specific files, then update them or move them to archive folders based on workflow logic.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Egnyte account and provided the correct subdomain.
+
+- **Permission Errors**:
+
+    Verify that your Egnyte account has the necessary permissions to perform the requested operations.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Dropbox Agent"
+    href="/docs/nodes/dropbox-agent"
+  >
+    Manage files in Dropbox with an AI agent
+  </Card>
+
+  <Card
+    title="SharePoint Input Node"
+    href="/docs/nodes/sharepoint-input"
+  >
+    Access files from SharePoint
+  </Card>
+
+  <Card
+    title="OneDrive Agent"
+    href="/docs/nodes/onedrive-agent"
+  >
+    Work with Microsoft OneDrive files
+  </Card>
+</CardGroup>

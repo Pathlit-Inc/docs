@@ -1,0 +1,114 @@
+---
+title: 'MCP Node'
+description: 'Use Model Context Protocol servers to extend AI capabilities'
+---
+
+## Overview
+The MCP (Model Context Protocol) Node enables AI agents to use tools from MCP servers. This node enables you to:
+- Connect to MCP-compliant tool servers
+- Use external tools and APIs through standardized interfaces
+- Extend AI capabilities with specialized functions
+- Integrate with services that provide MCP servers
+- Access resources and tools from various providers
+
+<Warning>
+This node is experimental and may be unreliable. Use with caution in production workflows.
+</Warning>
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **MCP Server**:
+
+  Select which MCP server to connect to. Available options include:
+  - GitHub MCP Server (for GitHub operations)
+  - Other configured MCP servers
+
+- **Query**:
+
+  The task or question for the agent to accomplish using the MCP server's tools
+
+  > *What tools can you use?*
+
+  > *Create a new issue in the repository*
+
+  > *Search for pull requests related to bug fixes*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize how the agent uses MCP tools
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model (must support function calling)
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Maximum number of reasoning and tool-use iterations (1-50)
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the query
+
+- **Outputs**:
+
+  - **output**: The agent's final response after using MCP tools
+  - **conversation**: Detailed log of tool calls and reasoning
+
+## Use Case Examples
+1. **GitHub Automation**:
+
+    Use the GitHub MCP server to automate repository operations like creating issues, managing pull requests, or updating code.
+
+2. **External Service Integration**:
+
+    Connect to MCP servers provided by third-party services for specialized functionality.
+
+3. **Tool Discovery**:
+
+    Query MCP servers to discover available tools and capabilities, then use them dynamically.
+
+## Error Handling and Troubleshooting
+- **MCP Server Connection**:
+
+    Ensure the MCP server is accessible and properly configured with any required authentication.
+
+- **Tool Compatibility**:
+
+    Not all MCP tools may work as expected. This is an experimental feature with ongoing improvements.
+
+- **Model Selection**:
+
+    Use models with strong function-calling capabilities for reliable MCP tool usage.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Standard LLM operations
+  </Card>
+
+  <Card
+    title="GitHub Agent"
+    href="/docs/nodes/github-agent"
+  >
+    Direct GitHub integration
+  </Card>
+
+  <Card
+    title="REST API Node"
+    href="/docs/nodes/rest-api"
+  >
+    Call REST APIs directly
+  </Card>
+</CardGroup>

@@ -1,0 +1,154 @@
+---
+title: 'Browser Agent Node'
+description: 'Automate web browsing tasks using an AI agent with Browserbase'
+---
+
+## Overview
+The Browser Agent Node provides intelligent web browser automation through Browserbase with Playwright and Stagehand tools. This node enables you to:
+- Navigate websites and interact with web elements
+- Extract data from web pages
+- Perform complex browsing workflows
+- Handle authentication and forms automatically
+- Solve captchas and avoid detection
+
+## Configuration Parameters
+
+The Browser Agent uses Browserbase for remote browser sessions with advanced stealth and automation capabilities.
+
+### Node Configuration
+
+- **Task Instructions**:
+
+  Describe the browsing task for the agent to accomplish.
+
+  > *Search for Browserbase tutorials and summarize the first result*
+
+  > *Login to the dashboard, navigate to settings, and extract the API key*
+
+  > *Go to the pricing page and extract all plan details*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Keep Session Running</strong>: Leave the browser session running after completion for reuse.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent.
+      </li>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's browsing behavior.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Maximum reasoning steps the agent can take (1-50).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic model fallbacks if needed.
+      </li>
+    </ul>
+  </Accordion>
+
+  <Accordion title="Browserbase Configuration">
+    <ul>
+      <li>
+        <strong>Region</strong>: Preferred Browserbase region for new sessions.
+      </li>
+      <li>
+        <strong>Session Timeout</strong>: Override session timeout in seconds (minimum 30s).
+      </li>
+      <li>
+        <strong>Browser Context ID</strong>: Reuse a saved browser context.
+      </li>
+      <li>
+        <strong>Viewport Size</strong>: Set viewport width and height in pixels.
+      </li>
+      <li>
+        <strong>Log/Record Sessions</strong>: Enable session logging and rrweb recording.
+      </li>
+      <li>
+        <strong>Solve Captchas</strong>: Toggle built-in captcha solver.
+      </li>
+      <li>
+        <strong>Block Ads</strong>: Enable ad blocking.
+      </li>
+      <li>
+        <strong>Advanced Stealth Mode</strong>: Control stealth protections.
+      </li>
+      <li>
+        <strong>Proxy Options</strong>: Configure proxy routing and geolocation.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **input**: Optional templating inputs for the prompt
+  - **session_id**: Optional Browserbase session ID to reuse
+
+- **Outputs**:
+
+  - **output**: Agent's response summary
+  - **conversation**: Full agent conversation log
+  - **browser**: Browserbase session metadata (includes live view URL)
+
+## Use Case Examples
+1. **Web Data Extraction**:
+
+    Use the agent to navigate complex websites and extract structured data without writing scraping code.
+
+2. **Automated Testing**:
+
+    Configure the agent to test web applications by performing user actions and verifying results.
+
+3. **Form Automation**:
+
+    Let the agent fill out and submit forms across multiple websites automatically.
+
+4. **Competitive Intelligence**:
+
+    Automate browsing competitor websites to gather pricing, features, and product information.
+
+## Error Handling and Troubleshooting
+- **Session Issues**:
+
+    If the browser session fails, the node will handle cleanup automatically. Check Browserbase configuration if issues persist.
+
+- **Element Not Found**:
+
+    The agent uses natural language tools (Stagehand) that are more reliable than precise selectors. If precise tools fail, the agent will fall back to natural language.
+
+- **Iframe Content**:
+
+    When accessing iframe content, the agent will try to get the embedded page URL and navigate directly to it.
+
+- **Page Crashes**:
+
+    If the browser session crashes (ERR_ABORTED), the agent will stop and report the error.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Web Extract Node"
+    href="/docs/nodes/web-extract"
+  >
+    Extract data from web pages
+  </Card>
+
+  <Card
+    title="Web Search Node"
+    href="/docs/nodes/web-search"
+  >
+    Search the web for information
+  </Card>
+
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+</CardGroup>

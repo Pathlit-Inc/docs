@@ -1,0 +1,120 @@
+---
+title: 'CodeAct Agent Node'
+description: 'Execute Python code dynamically to complete complex analytical and computational tasks'
+---
+
+## Overview
+The CodeAct Agent Node provides an AI agent that can write and execute Python code to solve complex problems. This node enables:
+- Data analysis and visualization
+- File processing and manipulation
+- Mathematical computations and modeling
+- API interactions and data transformations
+- Multi-step programming tasks with iterative refinement
+
+## Configuration Parameters
+
+To set up the CodeAct Agent Node, configure the agent's behavior and select the tools it can use alongside code execution.
+
+### Node Configuration
+
+- **Query**:
+
+  Define the task for the agent to complete using Python code.
+
+  > *Analyze this dataset and create visualizations showing key trends*
+
+  > *Process these CSV files and generate a summary report*
+
+  > *Calculate statistical metrics and export the results*
+
+- **Tools**
+
+  Select additional workflow or node tools that the CodeAct Agent can use alongside code execution. You can combine code execution with other integrations and capabilities.
+
+  <Tip>The agent can execute Python code and use the selected tools together to complete complex tasks.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's coding behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-50).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+      <li>
+        <strong>Inject Access Token Function</strong>: Inject the get_access_token function into the sandbox for retrieving integration credentials.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **input**: Text input that can be referenced in the query using format strings
+  - **files**: Files to use in the CodeAct agent sandbox
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's code execution
+  - **conversation**: Detailed log of the agent's reasoning and code execution steps
+  - **files**: Files generated during code execution in the sandbox
+
+## Use Case Examples
+1. **Data Analysis**:
+
+    Use the agent to analyze datasets, calculate statistics, and generate insights automatically using pandas, numpy, and other data science libraries.
+
+2. **Report Generation**:
+
+    Configure the agent to process input data, perform calculations, and generate formatted reports with charts and visualizations.
+
+3. **File Processing Automation**:
+
+    Let the agent read, transform, and process files using Python code, handling various file formats and data transformations.
+
+## Error Handling and Troubleshooting
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+- **Code Execution Errors**:
+
+    The agent will attempt to debug and fix code errors automatically. Review the conversation output to see the agent's problem-solving process.
+
+- **Sandbox Limitations**:
+
+    Code execution happens in a sandboxed environment with limited access to external resources. Network requests and file system access may be restricted.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Direct access to language models for text generation
+  </Card>
+
+  <Card
+    title="Document Reader Node"
+    href="/docs/nodes/document-reader"
+  >
+    Extract text content from various document formats
+  </Card>
+</CardGroup>

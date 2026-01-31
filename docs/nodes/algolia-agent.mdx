@@ -1,0 +1,113 @@
+---
+title: 'Algolia Agent Node'
+description: 'Search and browse Algolia indices using an AI agent'
+---
+
+## Overview
+The Algolia Agent Node provides intelligent search and data browsing capabilities for Algolia indices. This node allows you to:
+- List available Algolia indices
+- Search within specific indices with natural language
+- Retrieve specific objects by ID
+- Filter and limit search results efficiently
+
+## Configuration Parameters
+
+To set up the Algolia Agent Node, connect your Algolia account with your Application ID and Search API Key.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Describe what the agent should search for or retrieve from Algolia.
+
+  > *List indices, then search index 'products' for 'iphone' with attributesToRetrieve*
+
+  > *Get the object with ID 'prod_123' from the 'catalog' index*
+
+  > *Search for all items in 'inventory' where category is 'electronics'*
+
+- **Tools**
+
+  Select which tools the Algolia Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Indices | Get all indices for the application |
+  | Search Index | Search within a specific index |
+  | Get Object | Fetch a single object by objectID |
+
+  <Tip>The agent prefers exact filters and attributes to minimize payload sizes.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize how the agent approaches Algolia searches.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt.
+
+- **Outputs**:
+
+  - **output**: Search results or retrieved data
+  - **conversation**: Agent's reasoning and search strategy
+
+## Use Case Examples
+1. **Product Search**:
+
+    Use the agent to search product catalogs and retrieve specific product information based on user queries.
+
+2. **Content Discovery**:
+
+    Let the agent intelligently search through content indices to find relevant articles, documents, or media.
+
+3. **Data Retrieval**:
+
+    Configure the agent to fetch specific objects and filter results based on complex criteria.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure your Algolia Application ID and Search API Key are correctly configured.
+
+- **Index Not Found**:
+
+    Verify that the index name exists in your Algolia application.
+
+- **Query Syntax**:
+
+    The agent constructs queries automatically, but ensure your prompts are clear about what you're searching for.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Web Search Node"
+    href="/docs/nodes/web-search"
+  >
+    Search the web for information
+  </Card>
+</CardGroup>

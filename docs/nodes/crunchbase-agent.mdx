@@ -1,0 +1,120 @@
+---
+title: 'Crunchbase Research Agent Node'
+description: 'Search and retrieve comprehensive company data from Crunchbase'
+---
+
+## Overview
+The Crunchbase Research Agent Node provides access to Crunchbase's comprehensive database of companies, funding, acquisitions, and key personnel. This node enables:
+- Search for organizations, people, and investors
+- Retrieve detailed company profiles and funding information
+- Access acquisition history and investment data
+- Research founders, executives, and key employees
+- Track company growth and predictions
+
+## Configuration Parameters
+
+To set up the Crunchbase Research Agent Node, configure the agent's prompt and select the tools it can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the research task for the agent to perform with Crunchbase data.
+
+  > *Find information about OpenAI including their funding rounds and key investors*
+
+  > *Search for Y Combinator portfolio companies in the fintech space*
+
+  > *Get details about Stripe's acquisitions and growth trajectory*
+
+- **Tools**
+
+  Select which tools the Crunchbase Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search | Search for entities (organizations, people, etc.) |
+  | Retrieve Organization | Get detailed organization information with funding, acquisitions, and more |
+
+  <Tip>Use Search first to find the correct organization permalink, then use Retrieve Organization to get detailed data.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's research behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's research
+  - **conversation**: Detailed log of the agent's search and retrieval operations
+
+## Use Case Examples
+1. **Company Research**:
+
+    Use the agent to gather comprehensive information about target companies including funding history, key personnel, and market positioning.
+
+2. **Investor Analysis**:
+
+    Configure the agent to research investors and their portfolio companies, tracking investment patterns and focus areas.
+
+3. **Market Intelligence**:
+
+    Let the agent analyze companies in specific sectors, identifying trends, funding patterns, and competitive landscape.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure your Crunchbase API key is properly configured in the backend settings.
+
+- **Entity Not Found**:
+
+    The agent will suggest alternative search terms if an entity cannot be found. Try different spellings or company name variations.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Hunter Agent Node"
+    href="/docs/nodes/hunter-agent"
+  >
+    Find email addresses and enrich contact information
+  </Card>
+
+  <Card
+    title="LinkedIn Agent Node"
+    href="/docs/nodes/linkedin-agent"
+  >
+    Scrape LinkedIn profiles and company information
+  </Card>
+</CardGroup>

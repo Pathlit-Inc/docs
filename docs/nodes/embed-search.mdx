@@ -1,57 +1,84 @@
 ---
-title: "Embedding Search Node"
-description: "Search for similar data chunks using embeddings"
+title: "Knowledge Base Search Node"
+description: "Search for similar data chunks from a knowledge base"
 ---
 
 ## Overview
 
-The Embedding Search Node is a robust feature in the Pathlit workflow builder that enables users to supply context from a [Knowledge Base](/guides/knowledge-base) to LLM nodes. [Knowledge Bases](/guides/knowledge-base) consist of user-uploaded documents or scraped web content that enhance the LLM’s ability to generate relevant and precise responses. This technique, commonly referred to as Retrieval Augmented Generation (RAG), is an effective way to elevate the quality of generated text by providing the model with additional context.
+The Knowledge Base Search Node (embed-search) retrieves the most relevant chunks from a [Knowledge Base](/docs/guides/knowledge-base) for a given search query. It uses vector search (with optional reranking and continuation) so you can feed retrieved context into LLM nodes—a common [Retrieval Augmented Generation (RAG)](https://en.wikipedia.org/wiki/Retrieval-augmented_generation) pattern.
 
-This node connects to a specified knowledge base and retrieves the most relevant data based on a search query. It is particularly useful for extracting insights or relevant information from large sets of documents.
+<Note>
+**Recommendation:** For most RAG and Q&A use cases, we recommend using the **[Agent Node](/docs/nodes/agent) with the Knowledge Base Search tool** configured instead of this node. The agent can decide when and how to query the knowledge base and combine search results with other tools (e.g. web search). Use this **Knowledge Base Search Node** when you need a single, deterministic search step in the graph (e.g. a fixed query that always runs and passes results to an LLM).
+</Note>
+
+You select a knowledge base, provide a search string (which can use format strings from workflow input), and optionally include XML-formatted metadata for citations. Retrieval can be **dense** (embeddings only), **sparse**, or **hybrid**; results can be reranked and expanded with neighboring chunks.
 
 ## Configuration Parameters
 
-To configure the Embedding Search Node, you need to set up the following parameters:
-
 - **Knowledge Base**
-  Provide the context to the search by selecting a knowledge base. If you haven't created one yet, you can do so by navigating to the Knowledge Base page.
+
+  Select the knowledge base to search. If you haven't created one yet, do so from the Knowledge Base page. The node will retrieve chunks from this index.
 
 - **Search String**
-  The query string used for embedding search.
-  Example: "What are the benefits of AI?"
+
+  The query used for semantic search. Supports format strings from workflow input (e.g. `{user_question}`).
+
+  Example: *What are the benefits of AI?*
 
 - **Include Document Metadata for Citations**
-  A checkbox option to include XML formatted metadata for citations in the output.
+
+  When enabled, the output includes XML-formatted metadata for citations.
 
 ### Advanced Settings
 
-- **\[VectorDB] Search Type**
-  Choose the search type for the retriever. Options include "Similarity" and "MMR".
+- **[VectorDB] Search Type**
 
-- **\[VectorDB] Retrieve Top-N Chunks**
-  Specify the number of most similar data chunks to extract. Range: 0 to 100.
+  **Similarity** — Retrieve by vector similarity only.
+  
+  **MMR** — Maximal Marginal Relevance; balances similarity with diversity to reduce redundant chunks.
 
-- **\[VectorDB] Similarity Score Threshold**
-  Set a minimal score threshold for the results. Range: 0.0 to 1.0.
+- **[VectorDB] Retrieval Mode**
 
-- **\[Reranker] Rerank Model**
-  Select the reranker model. Options include "Cohere Rerank-v3.5", "Cohere Rerank-English-v3.0", and "Cohere Rerank-Multilingual-v3.0".
+  **Dense** — Use dense embeddings only (default).
+  
+  **Sparse** — Use sparse embeddings only.
+  
+  **Hybrid** — Combine dense and sparse.
+  
+  Sparse and Hybrid require the knowledge base to have a sparse embedding model configured; otherwise the node returns an error and only Dense is supported.
 
-- **\[Reranker] Return Top-N Chunks**
-  Specify the number of chunks the reranker returns. Range: 0 to 100.
+- **[VectorDB] Retrieve Top-N Chunks**
 
-- **\[Advanced RAG] Max Continuation Radius**
-  Define the maximum number of neighboring continuation chunks to add to the returned chunks. Range: 0 to 20.
+  Number of most similar chunks to fetch from the vector store before reranking (0–100). Default: 40.
+
+- **[VectorDB] Similarity Score Threshold**
+
+  Minimum similarity score for results (0.0–1.0). Chunks below this threshold are excluded.
+
+- **[Reranker] Rerank Model**
+
+  Cohere model used to rerank retrieved chunks: 
+  - **Cohere Rerank-v3.5**
+  - **Cohere Rerank-English-v3.0**
+  - **Cohere Rerank-Multilingual-v3.0**
+
+- **[Reranker] Return Top-N Chunks**
+
+  Number of chunks to keep after reranking (0–100). Default: 20.
+
+- **[Advanced RAG] Max Continuation Radius**
+
+  Maximum number of neighboring continuation chunks to add to each returned chunk for better context (0–20, step 5). Helps avoid cutting off mid-sentence or mid-paragraph.
 
 ## Expected Inputs and Outputs
 
 - **Inputs**:
 
-  - This node expects input data in the form of a query string to perform the search.
+  - **input**: Optional. Values can be referenced in the Search String using format strings (e.g. `{user_question}`). If omitted, the search string is used as-is. A search string must be provided (non-empty after formatting).
 
 - **Outputs**:
 
-  - The output is a string containing the retrieved data chunks based on the search query. If the metadata option is enabled, the output will include formatted citations.
+  - **output**: A string containing the retrieved data chunks. If "Include document metadata for citations" is enabled, the output includes XML-formatted citations.
 
 ## Use Case Examples
 
@@ -70,18 +97,35 @@ To configure the Embedding Search Node, you need to set up the following paramet
 ## Error Handling and Troubleshooting
 
 - **Missing Knowledge Base**
-  If you encounter an error stating "A knowledge base must be selected," ensure that you have selected a knowledge base from the dropdown menu.
 
-If you experience any other issues with the Embedding Search Node not covered here, please contact our [support team](mailto:dev@pathlit.ai) for further assistance.
+  If you see "A knowledge base must be selected," select a knowledge base from the dropdown.
+
+- **Search String Required**
+
+  If you see "A search string must be provided," ensure the Search String is non-empty (after format-string substitution from input).
+
+- **Sparse / Hybrid Retrieval**
+
+  If you see "Sparse embedding model is not set for this knowledge base. Only 'dense' retrieval mode is supported," the knowledge base does not have a sparse embedding model configured. Use **Dense** retrieval mode, or configure a sparse embedding model for the knowledge base to use Sparse or Hybrid.
+
+If you experience any other issues not covered here, please contact our [support team](mailto:dev@pathlit.ai).
 
 ## Related Nodes
 
 <CardGroup>
-  <Card title="Document Data Node" href="/docs/nodes/document-data">
-    Extract and manage data from various document types
+  <Card title="Agent Node" href="/docs/nodes/agent">
+    Recommended: use the Agent with Knowledge Base Search tool for RAG and Q&A
   </Card>
 
-  <Card title="Google Drive Input Node" href="/docs/nodes/google-drive-input">
-    Import files from Google Drive into your workflow
+  <Card title="Knowledge Base Add Node" href="/docs/nodes/knowledge-base-add">
+    Add content to knowledge bases for search
+  </Card>
+
+  <Card title="Knowledge Base Guide" href="/docs/guides/knowledge-base">
+    Create, populate, and search knowledge bases
+  </Card>
+
+  <Card title="LLM Node" href="/docs/nodes/llm">
+    Use retrieved chunks as context for RAG (when using this node)
   </Card>
 </CardGroup>

@@ -1,0 +1,111 @@
+---
+title: 'Google Contacts Agent Node'
+description: 'Search and manage contacts in Google Contacts'
+---
+
+## Overview
+The Google Contacts Agent Node provides an AI agent for managing and searching Google Contacts. This node enables:
+- Search and retrieve primary contacts
+- Search and retrieve other contacts (auto-saved from Gmail)
+- Get detailed contact information including names, emails, and phone numbers
+- Comprehensive contact search across all contact types
+- Intelligent contact organization and filtering
+
+## Configuration Parameters
+
+To set up the Google Contacts Agent Node, authenticate with your Google account and configure the agent's behavior.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Google Contacts.
+
+  > *Find all contacts with "Smith" in their name*
+
+  > *Search for john@example.com and show me their contact details*
+
+  > *List all my contacts who work at Acme Corp*
+
+  <Tip>The agent searches both primary contacts (organized) and other contacts (auto-saved) by default for comprehensive results.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's search behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's contact search or retrieval
+  - **conversation**: Detailed log of the agent's operations
+
+## Use Case Examples
+1. **Contact Lookup**:
+
+    Use the agent to find specific contacts by name, email, or company, searching across all your Google Contacts.
+
+2. **Contact Organization**:
+
+    Configure the agent to categorize and organize contacts based on criteria like company affiliation or contact type.
+
+3. **Contact Data Extraction**:
+
+    Let the agent extract contact information for use in other workflows, such as email campaigns or outreach automation.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Google account and granted Google Contacts permissions.
+
+- **No Results Found**:
+
+    The agent searches both primary and other contacts. If no results are found, try alternative search terms or check spelling.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Automate email tasks with Gmail
+  </Card>
+
+  <Card
+    title="Google Drive Agent Node"
+    href="/docs/nodes/google-drive-agent"
+  >
+    Manage files in Google Drive
+  </Card>
+
+  <Card
+    title="HubSpot Agent Node"
+    href="/docs/nodes/hubspot-agent"
+  >
+    Manage contacts in HubSpot CRM
+  </Card>
+</CardGroup>

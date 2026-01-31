@@ -1,0 +1,99 @@
+---
+title: 'Workflow Invocation Delayed Node'
+description: 'Schedule workflow execution to start after a specified delay'
+---
+
+## Overview
+The Workflow Invocation Delayed Node schedules another workflow to run after a specified time delay. This node enables you to:
+- Schedule workflows to run in the future
+- Create time-based workflow chains
+- Implement delayed follow-ups and reminders
+- Coordinate asynchronous workflow execution
+- Build workflows that trigger other workflows with timing control
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Workflow**:
+
+  Select a deployed workflow to invoke. Configure input template values that will be passed to the workflow when it starts.
+
+- **Delay Duration**:
+
+  Time to wait before starting the workflow. Supports format strings and duration formats:
+  - `1h` - 1 hour
+  - `30m` - 30 minutes
+  - `24h` - 24 hours
+  - `2d` - 2 days
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Allow Self-Loop</strong>: Whether to allow the workflow to invoke itself (use with caution to avoid infinite loops)
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be used in the delay duration and workflow input template
+
+- **Outputs**:
+
+  - **result**: Confirmation that the workflow invocation was scheduled successfully
+
+## Use Case Examples
+1. **Follow-Up Reminders**:
+
+    Schedule reminder workflows to trigger hours or days after an initial action, such as following up on unanswered emails.
+
+2. **Delayed Processing**:
+
+    Wait for a specific period before processing data, allowing time for related events to occur.
+
+3. **Scheduled Notifications**:
+
+    Send notifications or alerts at specific times relative to triggering events.
+
+## Error Handling and Troubleshooting
+- **Invalid Duration Format**:
+
+    Ensure the delay duration uses supported formats (e.g., "1h", "30m", "2d"). Invalid formats will cause errors.
+
+- **Workflow Not Found**:
+
+    Verify the selected workflow is deployed and accessible from your current workflow.
+
+- **Self-Loop Warning**:
+
+    Be extremely careful when enabling self-loop. Always include conditions to prevent infinite recursion.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Workflow Invocation Node"
+    href="/docs/nodes/workflow-invocation"
+  >
+    Execute workflows immediately
+  </Card>
+
+  <Card
+    title="Scheduler Node"
+    href="/docs/nodes/scheduler"
+  >
+    Schedule workflows by specific times
+  </Card>
+
+  <Card
+    title="Delay Node"
+    href="/docs/nodes/delay"
+  >
+    Pause current workflow execution
+  </Card>
+</CardGroup>

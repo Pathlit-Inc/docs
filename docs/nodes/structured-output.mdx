@@ -55,7 +55,7 @@ You can access the advanced settings panel by clicking the settings button locat
 
 * **Temperature**:
 
-    Adjusts the randomness of the model's output. Lower values produce more deterministic results, while higher values encourage variety.
+    Adjusts the randomness of the model's output (0.0–2.0). **Recommendation:** use **0** (or very low, e.g. 0.1) for deterministic extraction so the same input yields consistent structured output; higher values are not recommended for this node.
 
 * **Top-P**:
 
@@ -130,56 +130,5 @@ If you encounter issues not covered here, please contact our [support team](mail
     href="/docs/nodes/gmail-receive"
   >
     Trigger workflows based on incoming emails
-  </Card>
-</CardGroup>
-
-## Use Case Examples
-
-1. **Customer Support Automation**:
-
-    Use the Structured Output Node to parse customer emails and automatically create structured support tickets, reducing manual data entry.
-
-2. **Market Research**:
-
-    Extract structured insights from survey responses or customer feedback, enabling easy analysis and reporting.
-
-3. **Financial Data Extraction**:
-
-    Automatically parse financial statements, invoices, or receipts into structured data for accounting and bookkeeping workflows.
-
-## Error Handling and Troubleshooting
-
-- **Schema Validation Errors**:
-
-    If your structured output does not match the expected schema, double-check the schema definition for accuracy and completeness.
-
-- **Model Selection**:
-
-    If extraction accuracy is insufficient, try using a different model or refining your prompt to better guide the model.
-
-For further assistance or unresolved issues, contact our [support team](mailto:dev@pathlit.ai).
-
-## Relevant Nodes
-
-<CardGroup>
-  <Card
-    title="Simple Router Node"
-    href="/docs/nodes/simple-router"
-  >
-    Route input data based on specified prompts and options
-  </Card>
-
-  <Card
-    title="Summarizer Node"
-    href="/docs/nodes/summarizer"
-  >
-    Summarize text into concise summaries
-  </Card>
-
-  <Card
-    title="Language Model Node"
-    href="/docs/nodes/llm"
-  >
-    Generate text based on prompts and options
   </Card>
 </CardGroup>

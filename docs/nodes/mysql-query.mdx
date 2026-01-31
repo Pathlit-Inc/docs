@@ -1,0 +1,109 @@
+---
+title: 'MySQL Query Node'
+description: 'Execute SQL queries on MySQL databases'
+---
+
+## Overview
+The MySQL Query Node allows you to execute SQL queries against MySQL databases. This node enables you to:
+- Execute SELECT queries to retrieve data
+- Run INSERT, UPDATE, DELETE statements
+- Perform complex joins and aggregations
+- Access remote MySQL databases securely
+- Process query results in workflows
+
+## Configuration Parameters
+
+To set up the MySQL Query Node, you need to provide database connection details and your SQL query.
+
+### Node Configuration
+
+- **Host**:
+
+  The MySQL server hostname or IP address (localhost not allowed for security)
+
+- **User**:
+
+  MySQL username for authentication (default: root)
+
+- **Password**:
+
+  MySQL password for authentication (securely stored)
+
+- **Database**:
+
+  The name of the MySQL database to query
+
+- **SQL Query**:
+
+  The SQL query to execute. Supports format strings from workflow inputs.
+
+  > *SELECT * FROM customers WHERE created_at > '2024-01-01';*
+
+  > *INSERT INTO orders (customer_id, total) VALUES (123, 99.99);*
+
+  > *UPDATE products SET stock = stock - 1 WHERE id = \{product_id\};*
+
+<Warning>
+For security reasons, localhost connections are not allowed. Use external database servers only.
+</Warning>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be used to format the SQL query dynamically (use `query` input port)
+
+- **Outputs**:
+
+  - **result**: JSON array of query results (for SELECT queries) or execution status (for other queries)
+
+## Use Case Examples
+1. **Data Retrieval**:
+
+    Query customer, product, or order data from MySQL databases for processing in workflows or generating reports.
+
+2. **Database Updates**:
+
+    Automatically update database records based on workflow triggers or external events.
+
+3. **Data Integration**:
+
+    Extract data from MySQL databases and sync it with other systems, spreadsheets, or cloud storage.
+
+## Error Handling and Troubleshooting
+- **Connection Issues**:
+
+    Verify the host, port, username, and password are correct. Ensure your database server accepts remote connections.
+
+- **Query Errors**:
+
+    Check SQL syntax and ensure referenced tables and columns exist in the database.
+
+- **Result Size Limits**:
+
+    Large query results (over 256 KB) may be truncated. Optimize queries to return only necessary data.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="PostgreSQL Query Node"
+    href="/docs/nodes/postgresql-query"
+  >
+    Query PostgreSQL databases
+  </Card>
+
+  <Card
+    title="Snowflake Agent"
+    href="/docs/nodes/snowflake-agent"
+  >
+    Query Snowflake data warehouses with AI
+  </Card>
+
+  <Card
+    title="Airtable Agent"
+    href="/docs/nodes/airtable-agent"
+  >
+    Work with Airtable databases
+  </Card>
+</CardGroup>

@@ -1,0 +1,121 @@
+---
+title: 'QuickBooks Agent Node'
+description: 'Query QuickBooks data and generate financial reports using an AI agent'
+---
+
+## Overview
+The QuickBooks Agent Node provides a comprehensive agent for accessing QuickBooks accounting data. This node enables you to:
+- Query customers, vendors, invoices, and bills
+- Access accounts, items, and payments
+- Generate financial reports (P&L, Balance Sheet, Cash Flow, etc.)
+- Search and filter accounting data
+- Export reports as CSV files
+- Analyze transactions and balances
+
+## Configuration Parameters
+
+To set up the QuickBooks Agent Node, you need to authenticate with your QuickBooks account. Once authenticated, configure the agent to perform accounting operations.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the accounting task for the agent to perform.
+
+  > *Get all invoices from January 2024 that are still unpaid*
+
+  > *Generate a Profit & Loss report for Q4 2024 and save it as a CSV file*
+
+  > *Find all customers with a balance greater than $1000*
+
+  > *Show me all bills from vendor "Acme Corp" in the past 6 months*
+
+- **Tools**
+
+  Select which tools the QuickBooks Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Query | Execute SQL-like queries on QuickBooks data |
+  | Download Report | Generate and download financial reports |
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and accounting guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and SQL queries
+
+## Use Case Examples
+1. **Automated Financial Reporting**:
+
+    Generate monthly or quarterly financial reports automatically and distribute them to stakeholders via email or cloud storage.
+
+2. **Accounts Receivable Management**:
+
+    Regularly query overdue invoices and create automated follow-up workflows for collections.
+
+3. **Expense Analysis**:
+
+    Analyze vendor bills and expenses, categorize spending, and identify cost-saving opportunities.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your QuickBooks account and the integration has access to your company data.
+
+- **Query Syntax Errors**:
+
+    QuickBooks uses SQL-like syntax with specific limitations (no OR, no JOIN). Refer to the system prompt for correct syntax.
+
+- **Report Date Requirements**:
+
+    Some reports require date ranges (start_date/end_date), while others require a single report_date. Check the agent's guidance.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Sheets Agent"
+    href="/docs/nodes/gsheets-agent"
+  >
+    Export QuickBooks data to Google Sheets
+  </Card>
+
+  <Card
+    title="Airtable Agent"
+    href="/docs/nodes/airtable-agent"
+  >
+    Sync accounting data with Airtable
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Email financial reports automatically
+  </Card>
+</CardGroup>

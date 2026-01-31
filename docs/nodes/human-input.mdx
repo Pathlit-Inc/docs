@@ -1,0 +1,104 @@
+---
+title: 'Human Input Node'
+description: 'Pause workflow execution to collect input from human operators'
+---
+
+## Overview
+The Human Input Node pauses workflow execution and waits for human intervention. This node enables you to:
+- Request approval or review from human operators
+- Collect structured data via custom form fields
+- Insert manual decision points in automated workflows
+- Gather contextual information that automation cannot determine
+- Create human-in-the-loop (HITL) workflows
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Prompt**:
+
+  Instructions shown to the operator when the workflow pauses. Use format strings to reference upstream outputs.
+
+  > *Awaiting your approval for this invoice*
+
+  > *Please review the following analysis: \{LLM output\}*
+
+  > *Customer \{workflow_inputs.customer_name\} has requested a refund. Approve or reject?*
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Form Fields</strong>: Define custom input fields to collect structured data from operators:
+        <ul>
+          <li><strong>Text</strong>: Short text input</li>
+          <li><strong>Textarea</strong>: Long text input</li>
+          <li><strong>Select</strong>: Dropdown selection</li>
+          <li><strong>Checkbox</strong>: Boolean yes/no</li>
+        </ul>
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings
+
+- **Outputs**:
+
+  - Dynamic output ports based on configured form fields
+  - Default "response" field if no custom fields are defined
+
+## Use Case Examples
+1. **Approval Workflows**:
+
+    Pause workflows for manager approval before proceeding with high-value transactions or sensitive operations.
+
+2. **Content Review**:
+
+    Request human review of AI-generated content before publishing or sending to customers.
+
+3. **Exception Handling**:
+
+    When automation encounters uncertain situations, pause and ask operators for guidance on how to proceed.
+
+## Error Handling and Troubleshooting
+- **Workflow Timeout**:
+
+    Workflows paused for human input will remain active until input is provided or the workflow times out.
+
+- **Missing Field Keys**:
+
+    Ensure all custom form fields have unique keys to avoid conflicts in output data.
+
+- **Notification Setup**:
+
+    Configure notifications to alert operators when workflows are waiting for their input.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Conditional Node"
+    href="/docs/nodes/conditional"
+  >
+    Make automated decisions without human input
+  </Card>
+
+  <Card
+    title="Router Node"
+    href="/docs/nodes/router"
+  >
+    Route workflows based on AI-powered decisions
+  </Card>
+
+  <Card
+    title="Webhook Trigger"
+    href="/docs/nodes/webhook-trigger"
+  >
+    Resume workflows via API
+  </Card>
+</CardGroup>

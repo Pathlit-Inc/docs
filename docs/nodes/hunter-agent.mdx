@@ -1,0 +1,124 @@
+---
+title: 'Hunter Email Intelligence Agent Node'
+description: 'Find, verify, and enrich professional email addresses and company data'
+---
+
+## Overview
+The Hunter Email Intelligence Agent Node provides access to Hunter.io's comprehensive email intelligence platform. This node enables:
+- Search for all email addresses associated with a domain
+- Find professional email addresses by name and company
+- Verify email deliverability and validity
+- Enrich company information by domain
+- Enrich person profiles by email address
+- Access email patterns and confidence scores
+
+## Configuration Parameters
+
+To set up the Hunter Agent Node, configure the agent's prompt and select the tools it can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Hunter.io.
+
+  > *Find the email address for John Smith at stripe.com*
+
+  > *Search all email addresses found for intercom.com*
+
+  > *Verify if patrick@stripe.com is a valid email address*
+
+- **Tools**
+
+  Select which tools the Hunter Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search Domain | Find all email addresses for a company domain |
+  | Find Email | Find professional email by first name, last name, and domain |
+  | Verify Email | Check email deliverability and validity |
+  | Enrich Company | Get detailed company information by domain |
+  | Enrich Person | Get person profile data by email address |
+
+  <Tip>Always verify emails before using them in outreach campaigns to ensure deliverability.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's email intelligence behavior.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's email intelligence operations
+  - **conversation**: Detailed log of the agent's Hunter API interactions
+
+## Use Case Examples
+1. **Lead Generation**:
+
+    Use the agent to find contact information for prospects at target companies, building outreach lists with verified email addresses.
+
+2. **Email Verification**:
+
+    Configure the agent to verify email addresses before sending campaigns, reducing bounce rates and protecting sender reputation.
+
+3. **Contact Enrichment**:
+
+    Let the agent enrich existing contact databases with additional information about people and companies.
+
+## Error Handling and Troubleshooting
+- **API Key Configuration**:
+
+    Ensure your Hunter.io API key is properly configured in the backend settings.
+
+- **Rate Limits**:
+
+    Hunter.io has API rate limits. The agent will notify you if rate limits are exceeded.
+
+- **Domain Format**:
+
+    Use precise domains without protocol (e.g., "stripe.com" not "https://stripe.com").
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Crunchbase Agent Node"
+    href="/docs/nodes/crunchbase-agent"
+  >
+    Research company information and funding data
+  </Card>
+
+  <Card
+    title="LinkedIn Agent Node"
+    href="/docs/nodes/linkedin-agent"
+  >
+    Scrape LinkedIn profiles and company pages
+  </Card>
+
+  <Card
+    title="HubSpot Agent Node"
+    href="/docs/nodes/hubspot-agent"
+  >
+    Manage contacts in HubSpot CRM
+  </Card>
+</CardGroup>

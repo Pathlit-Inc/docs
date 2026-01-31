@@ -1,0 +1,88 @@
+---
+title: 'Outlook Reply Node'
+description: 'Send replies to Outlook messages automatically'
+---
+
+## Overview
+The Outlook Reply Node allows you to send replies to existing Outlook messages. This node is typically used with the Outlook Receive trigger to automatically respond to incoming emails.
+
+## Configuration Parameters
+
+To set up the Outlook Reply Node, you need to authenticate with your Microsoft account and configure the reply settings.
+
+### Node Configuration
+
+- **Message ID**:
+
+  The Outlook message ID of the email to reply to (typically from the Outlook Receive trigger)
+
+- **Body**:
+
+  The HTML content of your reply message. Supports HTML formatting and format strings from workflow inputs.
+
+- **Draft**:
+
+  When enabled, saves the reply as a draft instead of sending it immediately
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input, typically including the message ID and any dynamic content for the reply body
+
+- **Outputs**:
+
+  - **result**: Confirmation that the reply was sent or saved as draft
+  - **draft_id**: If saved as draft, the ID of the created draft
+  - **web_link**: Link to view the sent message or draft in Outlook
+
+## Use Case Examples
+1. **Automated Acknowledgments**:
+
+    Automatically send confirmation emails when requests are received via Outlook, acknowledging receipt and next steps.
+
+2. **Smart Auto-Responders**:
+
+    Create intelligent auto-reply systems that analyze incoming Outlook emails and send contextual responses.
+
+3. **Draft Generation for Review**:
+
+    Generate draft replies for manual review before sending, allowing human oversight of automated responses.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted Mail.ReadWrite permissions.
+
+- **Message Not Found**:
+
+    Verify the message ID is still valid and the original email exists in your account.
+
+- **HTML Formatting**:
+
+    Ensure HTML content is properly formatted. Invalid HTML may cause display issues in the recipient's email client.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Outlook Receive Node"
+    href="/docs/nodes/outlook-receive"
+  >
+    Trigger workflows from incoming Outlook messages
+  </Card>
+
+  <Card
+    title="Outlook Send Node"
+    href="/docs/nodes/outlook-send"
+  >
+    Send new emails via Outlook
+  </Card>
+
+  <Card
+    title="Outlook Agent"
+    href="/docs/nodes/outlook-agent"
+  >
+    Comprehensive Outlook management with AI
+  </Card>
+</CardGroup>

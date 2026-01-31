@@ -21,7 +21,11 @@ To set up the Language Model Node, you need to configure the following parameter
 
 - **Temperature**:
 
-  A value between 0.0 and 2.0 that controls the randomness of the output. Lower values make the output more deterministic, while higher values increase variability.
+  A value between 0.0 and 2.0 that controls the randomness of the output. **Recommendation:** use **0** (or low, e.g. 0.2) for deterministic tasks (classification, extraction, structured output); use higher values (0.7–1.0) for creative writing or varied responses.
+
+  <Note>
+    Some models and some model providers do not support temperature or temperature value over 1.0.
+  </Note>
 
 - **Enable Conversation History**:
 
@@ -82,7 +86,7 @@ If you encounter any issues with the Language Model Node that are not covered in
 ## Relevant Nodes
 
 <CardGroup>
-  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-input">
     Import data from Airtable into your workflow.
   </Card>
   <Card title="Airtable Output Node" href="/docs/nodes/airtable-output">

@@ -1,0 +1,139 @@
+---
+title: 'Mailchimp Agent Node'
+description: 'Manage email marketing lists, campaigns, and subscribers using an AI agent'
+---
+
+## Overview
+The Mailchimp Agent Node provides an intelligent agent for managing your Mailchimp account. This node enables you to:
+- Manage lists/audiences and their members
+- Add, update, and remove subscribers
+- Create and manage segments for targeted campaigns
+- Apply tags to subscribers for organization
+- Create, configure, and send email campaigns
+- Manage campaign content and settings
+
+## Configuration Parameters
+
+To set up the Mailchimp Agent Node, you need to authenticate with your Mailchimp account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Mailchimp.
+
+  > *Add these email addresses to my "Newsletter" list with the tag "new-subscriber"*
+
+  > *Create a campaign for my newsletter list with subject "Weekly Update" and send it*
+
+  > *Get all subscribers from the "Customers" list who have the tag "premium"*
+
+- **Tools**
+
+  Select which tools the Mailchimp Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Get Lists | Retrieve all lists/audiences |
+  | Get List | Get details about a specific list |
+  | Get List Members | Fetch members from a list |
+  | Add List Member | Add new subscribers |
+  | Update List Member | Modify existing subscribers |
+  | Add Or Update List Member | Upsert operation for subscribers |
+  | Remove List Member | Delete subscribers |
+  | Get List Segments | View list segments |
+  | Create List Segment | Create new segments |
+  | Add Members To Segment | Assign members to segments |
+  | Get List Tags | View available tags |
+  | Add Tags To Member | Apply tags to subscribers |
+  | Remove Tags From Member | Remove tags from subscribers |
+  | Get Campaigns | List all campaigns |
+  | Get Campaign | Get campaign details |
+  | Create Campaign | Create new campaigns |
+  | Update Campaign Settings | Modify campaign settings |
+  | Set Campaign Content | Set campaign HTML/text content |
+  | Send Campaign | Send campaigns immediately |
+  | Delete Campaign | Remove campaigns |
+
+  <Tip>Be careful with Send Campaign and Remove List Member - enable only when needed</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Subscriber Management**:
+
+    Automatically add new customers to specific Mailchimp lists based on workflow triggers, with appropriate tags and segments.
+
+2. **Campaign Automation**:
+
+    Create and send targeted email campaigns based on subscriber activity, applying different content for different segments.
+
+3. **List Maintenance**:
+
+    Regularly clean up lists by removing inactive subscribers or updating subscriber information based on external data sources.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Mailchimp account and the datacenter is correctly configured.
+
+- **List Operations**:
+
+    Always verify the list ID exists before performing operations. Use Get Lists to find the correct list ID.
+
+- **Campaign Sending**:
+
+    Before sending campaigns, ensure content is set and the campaign passes Mailchimp's validation checks.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Automate Gmail email operations
+  </Card>
+
+  <Card
+    title="Outlook Agent"
+    href="/docs/nodes/outlook-agent"
+  >
+    Manage Outlook emails with AI
+  </Card>
+
+  <Card
+    title="Airtable Agent"
+    href="/docs/nodes/airtable-agent"
+  >
+    Sync subscriber data with Airtable
+  </Card>
+</CardGroup>

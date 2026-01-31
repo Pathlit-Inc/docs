@@ -1,0 +1,119 @@
+---
+title: 'PitchBook Agent Node'
+description: 'Search and retrieve company information from PitchBook using an AI agent'
+---
+
+## Overview
+The PitchBook Agent Node provides an intelligent agent for researching companies using the PitchBook database. This node enables you to:
+- Search for companies, investors, and other entities
+- Retrieve comprehensive company information
+- Access company bio, industries, and classifications
+- View investor relationships and funding history
+- Explore service providers and advisors
+- Analyze most recent financing details
+
+## Configuration Parameters
+
+To set up the PitchBook Agent Node, you need to authenticate with your PitchBook API key. Once authenticated, configure the agent to perform research tasks.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the research task for the agent to perform.
+
+  > *Search for "Acme Corporation" and provide a detailed company overview*
+
+  > *Find companies in the fintech sector that received Series A funding in 2024*
+
+  > *Get comprehensive information for PitchBook ID 12345, including investors and financing*
+
+- **Tools**
+
+  Select which tools the PitchBook Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search | Search for entities by name |
+  | Retrieve Company | Get comprehensive company data by PBID |
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Company Research**:
+
+    Automatically research companies mentioned in documents or emails, pulling comprehensive PitchBook data for analysis.
+
+2. **Investment Pipeline Enrichment**:
+
+    Enrich your investment pipeline by automatically retrieving detailed company information, funding history, and investor relationships.
+
+3. **Market Intelligence**:
+
+    Build market intelligence reports by researching multiple companies and aggregating their industry classifications, investors, and funding data.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've provided a valid PitchBook API key with the necessary access permissions.
+
+- **Company Not Found**:
+
+    If a company search returns no results, try variations of the company name or use alternative search terms.
+
+- **Rate Limiting**:
+
+    PitchBook API has rate limits. If you encounter rate limit errors, reduce the frequency of requests or contact PitchBook support.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Crunchbase Agent"
+    href="/docs/nodes/crunchbase-agent"
+  >
+    Research companies using Crunchbase
+  </Card>
+
+  <Card
+    title="Hunter Agent"
+    href="/docs/nodes/hunter-agent"
+  >
+    Find and verify company contact information
+  </Card>
+
+  <Card
+    title="Aviato Agent"
+    href="/docs/nodes/aviato-agent"
+  >
+    Access alternative company data sources
+  </Card>
+</CardGroup>

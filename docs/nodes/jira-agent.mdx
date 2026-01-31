@@ -1,0 +1,122 @@
+---
+title: 'Jira Agent Node'
+description: 'Manage Jira issues with search, create, update, comment, and transition capabilities'
+---
+
+## Overview
+The Jira Agent Node provides an AI agent for managing Atlassian Jira issues. This node enables:
+- Search for issues using JQL (Jira Query Language)
+- Create new issues in Jira projects
+- Update issue fields and properties
+- Add comments to issues
+- Transition issues between workflow states
+- Get detailed issue information
+
+## Configuration Parameters
+
+To set up the Jira Agent Node, authenticate with your Atlassian account and select the tools the agent can use.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Jira.
+
+  > *Search for BUG issues assigned to me, then create a Task in PROJ with a summary and description*
+
+  > *Find all issues in the sprint and update their status to In Progress*
+
+  > *Add a comment to PROJ-123 with today's update*
+
+- **Tools**
+
+  Select which tools the Jira Agent can use. Available tools include:
+  - Search for issues
+  - Create issues
+  - Update issue fields
+  - Add comments
+  - Transition issue status
+  - Get issue details
+
+  <Tip>Use JQL for powerful issue searches. The agent can help construct JQL queries based on natural language.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's Jira management behavior.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-50).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's Jira operations
+  - **conversation**: Detailed log of the agent's actions and reasoning
+
+## Use Case Examples
+1. **Issue Automation**:
+
+    Use the agent to automatically create, update, and organize Jira issues based on workflow triggers or external data.
+
+2. **Sprint Management**:
+
+    Configure the agent to search for sprint issues, update their status, and add progress comments automatically.
+
+3. **Issue Reporting**:
+
+    Let the agent search and analyze issues to generate reports on bug counts, feature progress, or team workload.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Atlassian account with the necessary Jira permissions.
+
+- **Project Permissions**:
+
+    Make sure you have permission to create, update, or transition issues in the target Jira projects.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Slack Agent Node"
+    href="/docs/nodes/slack-agent"
+  >
+    Send notifications and manage Slack messages
+  </Card>
+
+  <Card
+    title="Gmail Agent Node"
+    href="/docs/nodes/gmail-agent"
+  >
+    Automate email tasks with Gmail
+  </Card>
+</CardGroup>

@@ -1,0 +1,130 @@
+---
+title: 'Notion Agent Node'
+description: 'Manage Notion pages and databases using an AI agent'
+---
+
+## Overview
+The Notion Agent Node provides a comprehensive agent for managing Notion workspaces. This node enables you to:
+- Search for and fetch page content as Markdown
+- Create new pages from Markdown content
+- List and explore available databases
+- Query and filter database entries
+- Create, update, and delete database entries
+- Manage database properties and relationships
+
+## Configuration Parameters
+
+To set up the Notion Agent Node, you need to authenticate with your Notion account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Notion.
+
+  > *Search for the page titled "Project Roadmap" and fetch its content*
+
+  > *Create a new page under "Meeting Notes" with today's meeting summary*
+
+  > *List all entries in the "Tasks" database where Status is "In Progress"*
+
+  > *Add a new entry to the "Contacts" database with Name "John Doe" and Email "john@example.com"*
+
+- **Tools**
+
+  Select which tools the Notion Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Search Pages | Search for pages by title |
+  | Fetch Page | Get page content as Markdown |
+  | Create Page | Create new pages from Markdown |
+  | List Databases | View available databases |
+  | List Database Entries | Query all entries in a database |
+  | Find Database Entries | Search entries with filters |
+  | Modify Database Entry | Update existing entries |
+  | Append Database Entry | Create new database entries |
+  | Delete Database Entries | Remove entries from databases |
+
+  <Tip>Be careful with Delete Database Entries - enable only when necessary</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Documentation**:
+
+    Create and update documentation pages in Notion automatically based on workflow results or external data sources.
+
+2. **Database Synchronization**:
+
+    Keep Notion databases in sync with external systems by automatically creating, updating, or deleting entries based on changes.
+
+3. **Content Aggregation**:
+
+    Search across multiple Notion pages, extract relevant content, and create summary pages or reports.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Notion account and granted access to the workspaces and databases you want to use.
+
+- **Database Property Formats**:
+
+    When modifying databases, ensure property values match Notion's API format (e.g., title arrays, rich text objects, select options).
+
+- **Parent Page Not Found**:
+
+    When creating pages, verify the parent page name is correct and the agent has access to it.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Notion Page Input Node"
+    href="/docs/nodes/notion-page-input"
+  >
+    Read content from Notion pages
+  </Card>
+
+  <Card
+    title="Notion Page Output Node"
+    href="/docs/nodes/notion-page-output"
+  >
+    Write content to Notion pages
+  </Card>
+
+  <Card
+    title="Airtable Agent"
+    href="/docs/nodes/airtable-agent"
+  >
+    Work with Airtable databases
+  </Card>
+</CardGroup>

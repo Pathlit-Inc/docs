@@ -5,11 +5,19 @@ description: 'Automate LinkedIn data scraping with a specialized AI agent'
 
 ## Overview
 
-The LinkedIn Scraper Agent Node is designed to interact with LinkedIn data efficiently. This node allows you to:
+The LinkedIn Scraper Agent Node uses an AI agent with tools that **fetch LinkedIn data by URL** (via Bright Data). The agent decides which tool to call based on your prompt. Capabilities:
 
-- Search for and scrape LinkedIn posts, profiles, and companies.
-- Utilize various tools to enhance data retrieval and processing.
-- Automate LinkedIn data scraping tasks using natural language prompts.
+- **Get profiles by URL** — Retrieve profile data for one or more LinkedIn profile URLs (e.g. `linkedin.com/in/username`).
+- **Get companies by URL** — Retrieve company page data for one or more LinkedIn company URLs (e.g. `linkedin.com/company/microsoft`).
+- **Get posts by URL** — Retrieve post data for one or more LinkedIn post URLs.
+- **Get posts by profile URL** — Retrieve posts published by given profile URL(s), with optional `start_date` and `end_date` (input is JSON).
+- **Get posts by company URL** — Retrieve posts from given company page URL(s).
+
+There is no keyword search: you (or upstream nodes) provide URLs; the agent fetches and returns the data for those URLs.
+
+<Tip>
+**Finding people or companies by name?** Use an **Agent Swarm** with (1) an **Agent** node that has a **web search** tool and (2) this LinkedIn Scraper Agent. The agent with web search can find LinkedIn profile or company URLs from the web, then hand off to this agent to fetch the LinkedIn profile or company data.
+</Tip>
 
 ## Configuration Parameters
 
@@ -18,25 +26,47 @@ To set up the LinkedIn Scraper Agent Node, configure the following parameters:
 ### Node Configuration
 
 - **Prompt**:
-  
-    Define the task the agent should perform on LinkedIn. For example,
 
-    > *Search for companies in finance.*
+    Describe what you want using **LinkedIn URLs** (profile, company, or post URLs). The agent will choose the right tool and fetch the data.
 
-    > *Find profiles of software engineers in New York.*
+    > *Get profile data for https://www.linkedin.com/in/jane-doe and https://www.linkedin.com/in/john-smith*
+
+    > *Get company data for Microsoft and Google—here are the URLs: https://www.linkedin.com/company/microsoft, https://www.linkedin.com/company/google*
+
+    > *Get posts from https://www.linkedin.com/company/acme-corp*
+
+    > *Get posts from this profile between 2024-01-01 and 2024-06-01: https://www.linkedin.com/in/thought-leader*
+
+    If you have URLs from another node (e.g. a list of company URLs), reference them in the prompt with format strings (e.g. `{company_urls}`).
 
 - **Tools**:
-  
-    Select the tools available for the LinkedIn Agent to use. These tools help the agent perform specific tasks on LinkedIn.
+
+    Select which tools the agent can use. All are URL-based:
+
+    | Tool | Description |
+    | ----- | ----------- |
+    | Get Profiles By Url | Fetch profile data for comma-separated profile URLs |
+    | Get Companies By Url | Fetch company page data for comma-separated company URLs |
+    | Get Posts By Url | Fetch post data for comma-separated post URLs |
+    | Get Posts By Profile Url | Fetch posts by profile URL(s), with optional start/end date (JSON input) |
+    | Get Posts By Company Url | Fetch posts from company page URL(s) |
+
+    <Tip>LinkedIn scraping is subject to rate limits and LinkedIn's terms of service. Use responsibly.</Tip>
 
 <AccordionGroup>
   <Accordion title="Advanced Settings">
     <ul>
       <li>
-        <strong>Model</strong>: Choose the language model that the agent will use for processing. 
+        <strong>System Prompt</strong>: Customize the agent's LinkedIn scraping behavior.
       </li>
       <li>
-        <strong>Max Steps</strong>: Set the maximum number of steps (1-20) the agent can take to complete the task.
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
       </li>
     </ul>
   </Accordion>
@@ -50,59 +80,60 @@ To set up the LinkedIn Scraper Agent Node, configure the following parameters:
 
 - **Outputs**:
 
-    - **output**: The final result of the agent's operations on LinkedIn.
-    - **conversation**: A detailed log of the agent's process and actions.
+    - **output**: The final result from the agent's LinkedIn scraping operations
+    - **conversation**: Detailed log of the agent's scraping activities
 
 ## Use Case Examples
 
-1. **Recruitment Automation**:
+1. **Profile and company enrichment**:
 
-    Use the agent to find potential candidates by scraping profiles that match specific job criteria.
+    You have a list of LinkedIn profile or company URLs (e.g. from a CRM or spreadsheet). Use the agent to fetch profile data or company page data for those URLs and feed the result into downstream nodes.
 
-2. **Market Research**:
+2. **Company and post monitoring**:
 
-    Automate the collection of data about companies in a particular industry to inform business strategies.
+    Provide company page URLs; the agent fetches company details and posts from those pages. Use for competitive intelligence or content aggregation when you already know which companies to track.
+
+3. **Posts by profile or date range**:
+
+    You have profile URLs and optionally a date range. Use **Get Posts By Profile Url** (with JSON input for URLs and start/end dates) to retrieve their posts for analysis or reporting.
 
 ## Error Handling and Troubleshooting
 
-- **Prompt Formatting**:
+- **Rate Limits**:
 
-    Ensure that the prompt is correctly formatted and references the input data accurately.
+    LinkedIn scraping services have rate limits. The agent will manage requests to avoid hitting limits.
 
-- **Tool Selection**:
+- **Profile Access**:
 
-    Verify that the appropriate tools are selected for the tasks you want to perform.
+    Some profiles may be private or have limited public information. The agent will indicate when data is unavailable.
 
-If you encounter issues not covered in this documentation, please contact our [support team](mailto:dev@pathlit.ai) for assistance.
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
 
 ## Relevant Nodes
 
 <CardGroup>
   <Card
-    title="Agent Node"
-    href="/docs/nodes/agent"
+    title="Hunter Agent Node"
+    href="/docs/nodes/hunter-agent"
   >
-    General-purpose agent for various tasks
+    Find and verify professional email addresses
   </Card>
 
   <Card
-    title="Agent Swarm Node"
-    href="/docs/nodes/agent-swarm"
+    title="Crunchbase Agent Node"
+    href="/docs/nodes/crunchbase-agent"
   >
-    Orchestrate multiple agents for complex tasks
+    Research company funding and business information
   </Card>
 
   <Card
-    title="Google Sheets Agent Node"
-    href="/docs/nodes/gsheets-agent"
+    title="Reddit Scrape Agent Node"
+    href="/docs/nodes/reddit-scrape-agent"
   >
-    Interact with and manipulate Google Sheets using a specialized AI agent
-  </Card>
-
-  <Card
-    title="Gmail Agent Node"
-    href="/docs/nodes/gmail-agent"
-  >
-    Agent that interact with Gmail
+    Scrape Reddit posts and comments
   </Card>
 </CardGroup>

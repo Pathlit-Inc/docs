@@ -1,0 +1,98 @@
+---
+title: 'Document Reader Node'
+description: 'Read and extract text content from various document formats'
+---
+
+## Overview
+The Document Reader Node extracts text content from uploaded documents. This node enables you to:
+- Read text from PDFs, Word documents, PowerPoint, Excel, and more
+- Extract content from images using OCR
+- Control reading position with start index and max length
+- Process large documents incrementally
+- Support numerous document formats
+
+<Note>
+**Reading files with an LLM:** For most workflows that need to read document content and use it with an LLM (summarize, answer questions, extract), we recommend using the **Agent node** with the **Document Reader** tool. You can connect the node that produces the file in **series** to that agent, or use an **Agent Swarm** if the producer is also an agent. See [Files in Workflows — Reading files: Agent with Document Reader](/docs/guides/files-in-workflows#reading-files-agent-with-document-reader) for details.
+</Note>
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Upload File**:
+
+  Upload a document to read. Supported formats include:
+  - PDF (.pdf)
+  - Microsoft Office (.docx, .xlsx, .pptx)
+  - Text files (.txt, .md, .csv)
+  - Images with text (.jpg, .png)
+  - And many more
+
+- **Start Index**:
+
+  Character position to start reading from. Use negative values to start from the end (default: 0)
+
+- **Max Length**:
+
+  Maximum number of characters to read from the file. Useful for processing large documents in chunks.
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts file uploads via the file selection input
+
+- **Outputs**:
+
+  - **content**: Extracted text content from the document
+
+## Use Case Examples
+1. **Document Processing**:
+
+    Extract text from uploaded documents for analysis, summarization, or data extraction workflows.
+
+2. **Incremental Reading**:
+
+    Process very large documents by reading in chunks using start_index and max_length parameters.
+
+3. **OCR Text Extraction**:
+
+    Extract text from scanned documents or images for digitization and searchability.
+
+## Error Handling and Troubleshooting
+- **Unsupported File Format**:
+
+    Verify the uploaded file format is in the list of supported document types.
+
+- **Empty Content**:
+
+    If no content is extracted, the file may be corrupted, password-protected, or contain only images without OCR.
+
+- **Large File Performance**:
+
+    For very large files, consider using start_index and max_length to process the document in smaller chunks.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="VLM Document Extraction"
+    href="/docs/nodes/vlm-document-extraction"
+  >
+    Extract structured data using vision models
+  </Card>
+
+  <Card
+    title="Document Data Node"
+    href="/docs/nodes/document-data"
+  >
+    Process PDFs and images with OCR or VLM
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process extracted content with AI
+  </Card>
+</CardGroup>

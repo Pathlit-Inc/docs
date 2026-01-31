@@ -7,6 +7,10 @@ description: "Create a concise summary of the uploaded documents."
 
 The Document Summarizer Node is a powerful tool in the Pathlit workflow builder that allows users to create concise summaries of uploaded documents. By utilizing advanced language models, this node processes the content of your documents and generates a clear and brief summary, making it easier to digest information quickly.
 
+<Note>
+  We recommend using the newer VLM Document Extraction Node instead of this node for better results.
+</Note>
+
 ## Configuration Parameters
 
 To set up the Document Summarizer Node, you need to configure the following parameters:
@@ -15,13 +19,13 @@ To set up the Document Summarizer Node, you need to configure the following para
 
   The language model you wish to use for summarization.
 
-- **Upload File**:
+- **Upload Files**:
 
   The document or documents that you want to summarize. You can upload multiple files.
 
 - **Temperature**:
 
-  A value that controls the randomness of the output. A lower value results in more focused and deterministic summaries, while a higher value allows for more creative outputs.
+  Controls randomness of the output (0.0–2.0). **Recommendation:** use **0.3–0.5** for consistent, factual summaries; use higher values only if you want more varied phrasing.
 
 - **Summarization Length**:
 
@@ -31,7 +35,7 @@ To set up the Document Summarizer Node, you need to configure the following para
 
 - **Max Tokens**:
 
-  The maximum length of the output summary in tokens.
+  Maximum length of the output summary in tokens (1–3000). Increase if you need longer summaries.
 
 ## Expected Inputs and Outputs
 

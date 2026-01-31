@@ -1,0 +1,130 @@
+---
+title: 'Outlook Agent Node'
+description: 'Read, send, and manage Outlook emails using an AI agent'
+---
+
+## Overview
+The Outlook Agent Node provides an intelligent agent for managing Outlook emails. This node enables you to:
+- Read email messages and their attachments
+- Search emails by keywords or filters
+- Send emails and replies
+- Create and send email drafts
+- Manage email categories (similar to Gmail labels)
+- Download attachments for processing
+- Delete unwanted emails
+
+## Configuration Parameters
+
+To set up the Outlook Agent Node, you need to authenticate with your Microsoft account. Once authenticated, configure the agent to perform email operations.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Outlook.
+
+  > *Search for emails from john@example.com and summarize the conversations*
+
+  > *Read the email with ID \{message_id\}, extract the PDF attachment, and reply acknowledging receipt*
+
+  > *Find all unread emails from the past week and categorize them by topic*
+
+- **Tools**
+
+  Select which tools the Outlook Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Get Message | Read email content and metadata |
+  | Get Attachment | Extract text from attachments |
+  | Download Attachment | Download attachment as file |
+  | Search Emails | Search for emails by keywords |
+  | Send Email | Send new emails or replies |
+  | Create Draft | Create email drafts |
+  | Send Draft | Send existing drafts |
+  | Delete Email | Remove emails |
+  | List Categories | View available categories |
+  | Modify Categories | Add/remove email categories |
+
+  <Tip>Be careful with Send Email and Delete Email - enable only when needed</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt, typically email IDs from trigger nodes.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Email Triage Automation**:
+
+    Automatically read incoming emails, categorize them by importance or topic, and send appropriate responses.
+
+2. **Attachment Processing**:
+
+    Extract and process attachments from emails, then send summary emails with the processed results.
+
+3. **Email Search and Analysis**:
+
+    Search through your inbox for specific information, analyze email threads, and generate reports or summaries.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted Mail.ReadWrite permissions.
+
+- **Message Not Found**:
+
+    Verify that email IDs are still valid and emails haven't been deleted or moved.
+
+- **Attachment Access**:
+
+    Some attachment types may not support text extraction. Use download_attachment for binary files.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Outlook Receive Node"
+    href="/docs/nodes/outlook-receive"
+  >
+    Trigger workflows from incoming Outlook emails
+  </Card>
+
+  <Card
+    title="Outlook Send Node"
+    href="/docs/nodes/outlook-send"
+  >
+    Send emails via Outlook
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Manage Gmail emails with AI
+  </Card>
+</CardGroup>

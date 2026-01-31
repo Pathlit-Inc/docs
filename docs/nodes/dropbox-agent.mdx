@@ -1,0 +1,127 @@
+---
+title: 'Dropbox Agent Node'
+description: 'Manage files and folders in Dropbox using an AI agent'
+---
+
+## Overview
+The Dropbox Agent Node provides an intelligent agent for managing files and folders in Dropbox. This node enables you to:
+- List files and folders in any Dropbox directory
+- Download files and extract text content
+- Search for files by name or path
+- Manage shared links and access shared files
+- List files shared with you by others
+- Work with both personal files and shared content
+
+## Configuration Parameters
+
+To set up the Dropbox Agent Node, you need to authenticate with your Dropbox account. Once authenticated, configure the agent to perform operations based on your workflow requirements.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Dropbox.
+
+  > *List all PDF files in the /Reports folder and download the latest one*
+
+  > *Find the file named "Q4_Summary.xlsx" in any folder and extract its content*
+
+  > *List all shared links for files in the /Marketing folder*
+
+- **Tools**
+
+  Select which tools the Dropbox Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | List Folder | List files and folders in a directory |
+  | Download File | Download and extract text from files |
+  | Get File Metadata | Get detailed file information |
+  | List Shared Links | View shared links for files |
+  | List Received Files | See files shared with you |
+  | Get Shared Link Metadata | Get metadata for shared link |
+  | List Shared Link Folder | Browse shared folder contents |
+  | Download Shared Link File | Download files via shared link |
+
+  <Tip>Only enable tools that the agent should be allowed to use for your specific workflow</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Document Processing**:
+
+    Use the agent to automatically find and download specific documents from Dropbox, extract their content, and process the text for analysis.
+
+2. **Shared File Management**:
+
+    Automate workflows that handle files shared with you, such as downloading attachments from shared links and organizing them.
+
+3. **File Search and Retrieval**:
+
+    Let the agent intelligently search for files across your Dropbox folders using natural language queries and retrieve the most relevant ones.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, ensure you've connected your Dropbox account and granted the necessary permissions.
+
+- **File Access Errors**:
+
+    If you cannot access certain files, verify that you have the appropriate permissions for those files or folders.
+
+- **Model Compatibility**:
+
+    The selected model must support function calling. Switch to a compatible model if you encounter errors.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Google Drive Agent"
+    href="/docs/nodes/google-drive-agent"
+  >
+    Manage files in Google Drive with an AI agent
+  </Card>
+
+  <Card
+    title="OneDrive Agent"
+    href="/docs/nodes/onedrive-agent"
+  >
+    Work with Microsoft OneDrive files
+  </Card>
+
+  <Card
+    title="Box Input Node"
+    href="/docs/nodes/box-input"
+  >
+    Import files from Box cloud storage
+  </Card>
+</CardGroup>

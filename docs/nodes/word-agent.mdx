@@ -1,0 +1,124 @@
+---
+title: 'Microsoft Word Agent Node'
+description: 'Create, read, and modify Word documents in OneDrive using an AI agent'
+---
+
+## Overview
+The Microsoft Word Agent Node provides an intelligent agent for working with Word documents in OneDrive. This node enables you to:
+- Create new Word documents
+- Read document content as markdown
+- Get document metadata and structure
+- Add paragraphs and text content
+- Insert tables and structured data
+- Apply formatting and styles
+- Manage document sections and layouts
+
+## Configuration Parameters
+
+To set up the Word Agent Node, you need to authenticate with your Microsoft account. Once authenticated, configure the agent to work with Word documents.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Define the task for the agent to perform with Word documents.
+
+  > *Create a new document called "Project Report" and add an introduction paragraph*
+
+  > *Read the document with file ID \{file_id\} and extract all table data*
+
+  > *Add a summary section to the document with these bullet points*
+
+- **Tools**
+
+  Select which tools the Word Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Create Document | Create new Word documents |
+  | Read Document | Read document content as markdown |
+  | Get Document Info | Get metadata and structure info |
+  | Add Paragraph | Add text paragraphs |
+  | Add Table | Insert tables with data |
+  | Apply Formatting | Apply styles and formatting |
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior and guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent (must support function calling).
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt using format strings.
+
+- **Outputs**:
+
+  - **output**: The final result from the agent's actions
+  - **conversation**: Detailed log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Document Generation**:
+
+    Create professional documents automatically from workflow data, such as reports, contracts, or proposals.
+
+2. **Document Processing**:
+
+    Extract content from existing Word documents, analyze or transform it, and create new documents with the results.
+
+3. **Template Population**:
+
+    Create document templates and populate them with dynamic content based on workflow inputs.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Microsoft account and granted Files.ReadWrite permissions for OneDrive.
+
+- **Document Not Found**:
+
+    Verify that file IDs are correct and documents still exist in your OneDrive.
+
+- **Formatting Errors**:
+
+    When applying formatting, ensure style names match available Word styles.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Excel Agent"
+    href="/docs/nodes/excel-agent"
+  >
+    Work with Excel workbooks in OneDrive
+  </Card>
+
+  <Card
+    title="OneDrive Agent"
+    href="/docs/nodes/onedrive-agent"
+  >
+    Manage files in Microsoft OneDrive
+  </Card>
+
+  <Card
+    title="Google Docs Agent"
+    href="/docs/nodes/google-docs-agent"
+  >
+    Work with Google Docs documents
+  </Card>
+</CardGroup>

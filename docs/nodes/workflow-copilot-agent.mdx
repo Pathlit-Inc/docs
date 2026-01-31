@@ -1,0 +1,108 @@
+---
+title: 'Workflow Copilot Agent Node'
+description: 'AI agent that can analyze and modify workflow structures'
+---
+
+## Overview
+The Workflow Copilot Agent Node provides an AI agent that can understand and manipulate workflow structures. This node enables you to:
+- Analyze existing workflows and explain their logic
+- Suggest improvements to workflow designs
+- Programmatically modify workflow structures
+- Answer questions about workflow configurations
+- Construct new workflow segments
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Query**:
+
+  Ask questions or give instructions about the workflow
+
+  > *Tell me about this workflow*
+
+  > *What does this workflow do?*
+
+  > *Add a node that sends an email after the LLM node*
+
+- **Workflow Data**:
+
+  The workflow structure (nodes and edges) in JSON format. Typically passed from workflow inputs.
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the copilot's behavior and capabilities
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model (must support function calling)
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Maximum reasoning and tool-use iterations (1-50)
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts workflow data and queries about workflow structure
+
+- **Outputs**:
+
+  - **output**: The copilot's response or modified workflow structure
+  - **conversation**: Detailed log of the copilot's reasoning and actions
+
+## Use Case Examples
+1. **Workflow Analysis**:
+
+    Analyze complex workflows to understand their logic, identify inefficiencies, or generate documentation.
+
+2. **Automated Workflow Generation**:
+
+    Programmatically create workflow segments based on natural language descriptions.
+
+3. **Workflow Optimization**:
+
+    Get AI-powered suggestions for improving workflow structure, performance, or maintainability.
+
+## Error Handling and Troubleshooting
+- **Invalid Workflow Data**:
+
+    Ensure the workflow_data parameter contains valid JSON with nodes and edges arrays.
+
+- **Model Compatibility**:
+
+    This node requires models with function calling support. Verify your selected model has this capability.
+
+- **Complex Modifications**:
+
+    The copilot works best with clear, specific instructions. Break down complex changes into smaller steps.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Workflow Invocation Node"
+    href="/docs/nodes/workflow-invocation"
+  >
+    Execute other workflows
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    General-purpose AI operations
+  </Card>
+
+  <Card
+    title="Router Node"
+    href="/docs/nodes/router"
+  >
+    Dynamic workflow routing
+  </Card>
+</CardGroup>

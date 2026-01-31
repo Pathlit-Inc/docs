@@ -1,0 +1,103 @@
+---
+title: 'Spider Scrape Node'
+description: 'Extract and crawl content from websites using the Spider scraping engine'
+---
+
+## Overview
+The Spider Scrape Node provides a powerful web scraping tool for extracting content from websites. This node enables you to:
+- Extract text content from single web pages
+- Crawl multiple subpages automatically
+- Parse structured data from HTML
+- Include metadata for citations
+- Handle dynamic and JavaScript-rendered content
+
+<Note>
+Deprecated. Please use the [Web Search Node](/docs/nodes/web-search) instead.
+</Note>
+
+<Warning>
+This node is not SOC2 compliant. Please use it responsibly and ensure you have permission to scrape the target websites.
+</Warning>
+
+## Configuration Parameters
+
+### Node Configuration
+
+- **Target Site URL**:
+
+  The URL of the webpage you want to scrape (e.g., https://www.example.com)
+
+- **Crawl Subpages**:
+
+  Enable crawling to automatically read multiple webpages linked from the target URL
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>Include document metadata for citations</strong>: When enabled, includes XML-formatted metadata with source URLs for proper attribution
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be used to format the target URL dynamically
+
+- **Outputs**:
+
+  - **content**: Extracted text content from the webpage(s)
+
+## Use Case Examples
+1. **Content Aggregation**:
+
+    Extract articles, blog posts, or documentation from websites for analysis or archiving.
+
+2. **Competitive Intelligence**:
+
+    Monitor competitor websites for changes in pricing, features, or content.
+
+3. **Data Collection**:
+
+    Gather structured data from multiple pages for market research or database population.
+
+## Error Handling and Troubleshooting
+- **Website Access Blocked**:
+
+    Some websites block scraping attempts. Respect robots.txt files and website terms of service.
+
+- **JavaScript Rendering Issues**:
+
+    If content isn't loading properly, the website may require JavaScript execution which Spider handles automatically.
+
+- **Rate Limiting**:
+
+    Avoid making too many requests too quickly to prevent being blocked by the target website.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Web Extract Node"
+    href="/docs/nodes/web-extract"
+  >
+    Extract content from websites
+  </Card>
+
+  <Card
+    title="Browser Agent"
+    href="/docs/nodes/browser-agent"
+  >
+    Navigate and interact with websites using AI
+  </Card>
+
+  <Card
+    title="Web Search Node"
+    href="/docs/nodes/web-search"
+  >
+    Search the web for information
+  </Card>
+</CardGroup>

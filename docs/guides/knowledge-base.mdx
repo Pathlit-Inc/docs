@@ -1,0 +1,107 @@
+---
+title: 'Knowledge Base'
+description: 'Create, populate, and search knowledge bases for RAG and semantic search'
+---
+
+## What is a Knowledge Base?
+
+A **Knowledge Base** in Pathlit is a searchable collection of documents (text, PDFs, web pages, and more) that are chunked, embedded, and stored in a vector index. You use knowledge bases to:
+
+- **Power RAG (Retrieval Augmented Generation)** — Retrieve relevant chunks for a query and pass them as context to an [LLM Node](/docs/nodes/llm) so answers are grounded in your content.
+- **Semantic search** — Find documents or passages by meaning, not just keywords.
+- **Centralize content** — Keep product docs, support articles, internal wikis, or scraped web content in one place and query them from workflows.
+
+Content is processed into chunks, embedded with a chosen embedding model (and optionally a sparse model for hybrid search), and stored. To search a knowledge base in a workflow, **we recommend using the [Agent Node](/docs/nodes/agent) with the Knowledge Base Search tool configured**—the agent can decide when and how to query the knowledge base and combine results with other tools. Alternatively, you can use the standalone [Knowledge Base Search Node](/docs/nodes/embed-search) when you need a single, fixed search step in the graph.
+
+<Info>
+Knowledge bases are available on plans that include the **Knowledge Bases** entitlement. You create and manage them in the Pathlit app (e.g. **Knowledge Base** or **Document Index** section in your organization).
+</Info>
+
+## Creating a Knowledge Base
+
+Create a knowledge base from the Pathlit app (e.g. **Knowledge Base** page in your organization). You will be asked for:
+
+- **Name** — A short name (letters, numbers, underscores, spaces). Used to identify the index in the app and in workflow nodes.
+- **Description** — Optional short description of what the knowledge base is for.
+- **Embedding model** — Model used to compute dense embeddings for chunks. Options typically include:
+  - **text-embedding-3-small** — Fast and cost-effective (default).
+  - **text-embedding-3-large** — Higher quality, larger dimension.
+  - **text-embedding-ada-002** — Legacy option.
+- **Sparse embedding model** (optional) — If set, you can use **Sparse** or **Hybrid** retrieval when searching (e.g. in the [Agent Node](/docs/nodes/agent) Knowledge Base Search tool or the [Knowledge Base Search Node](/docs/nodes/embed-search)) for better recall on keyword-heavy queries. Options include **BM25** and **Splade PP English**.
+
+After creation, the knowledge base has an ID. Workflow nodes (Knowledge Base Add, Knowledge Base Search) let you **select the knowledge base** from a dropdown; no need to copy the ID unless you use the API.
+
+## Adding Content
+
+You can add content in several ways:
+
+### 1. Upload files (app or API)
+
+From the Pathlit app, open the knowledge base and **upload files** (PDF, Word, text, and other supported types). Files are chunked and embedded automatically. You can also use the **ingest-files** API to upload documents programmatically.
+
+### 2. Google Drive sync (app or API)
+
+Sync files from **Google Drive** into the knowledge base. The app/API lets you configure which folders or files to index. Content is processed and embedded like uploaded files.
+
+### 3. Website scraping (app or API)
+
+**Scrape a website** to index its pages into the knowledge base. Useful for documentation sites, blogs, or public pages. Configure the URL and crawl options; scraped content is chunked and embedded.
+
+### 4. Knowledge Base Add Node (workflows)
+
+Use the [Knowledge Base Add Node](/docs/nodes/knowledge-base-add) inside a workflow to **add plain text** to a knowledge base. The node accepts:
+
+- **Knowledge Base** — The target index (from the dropdown).
+- **File Content** — The text to add (supports format strings from workflow input, e.g. `{llm_output}`).
+- Optional **File Name Prefix** and **Wait for indexing to complete**.
+
+This is useful for:
+
+- Writing summaries or extracted data from an LLM or Document Data node into a knowledge base.
+- Indexing customer feedback or support tickets from previous steps.
+- Building a knowledge base dynamically from workflow outputs.
+
+<Tip>
+For large or complex documents, use **file upload** or **Document Data** + **Knowledge Base Add** so you control chunking and content. The Knowledge Base Add node adds the text as a single document; processing and chunking follow the index’s configuration.
+</Tip>
+
+## Searching a Knowledge Base
+
+**Recommended: Agent Node with Knowledge Base Search tool**
+
+Use the [Agent Node](/docs/nodes/agent) with the **Knowledge Base Search** tool enabled and your knowledge base selected. The agent receives the user prompt (e.g. a question) and can call the knowledge base search tool when it needs to look up information—so it decides when to search, how to phrase queries, and how to combine results with other tools (e.g. web search). This is the preferred approach for RAG chatbots, Q&A, and flexible workflows.
+
+1. Add an [Agent Node](/docs/nodes/agent) to your workflow.
+2. In the node’s **Tools** configuration, enable **Knowledge Base Search** and select your knowledge base.
+3. Provide a prompt (e.g. *Answer the user’s question using the knowledge base. If the answer isn’t in the knowledge base, say so.*). The agent will call the search tool as needed and use the retrieved chunks in its response.
+
+**Alternative: Knowledge Base Search Node**
+
+When you need a **single, deterministic search step** in the graph (e.g. “always run this query and pass the result to an LLM”), use the [Knowledge Base Search Node](/docs/nodes/embed-search): select the knowledge base, set the Search String (with optional format strings from input), and connect its output to an [LLM Node](/docs/nodes/llm). You can tune retrieval in the node’s Advanced Settings (search type, retrieval mode, top-N, reranker, continuation radius).
+
+## RAG workflow example
+
+**Recommended: Agent with Knowledge Base Search tool**
+
+1. **Trigger** (e.g. chatbot, webhook, or form) captures a user question.
+2. **Agent Node** — Enable the **Knowledge Base Search** tool and select your knowledge base. Prompt: *Answer the user’s question using the knowledge base. Only use information from the search results; if the answer isn’t there, say so.* The agent will search the knowledge base when needed and respond with grounded answers.
+
+**Alternative: Knowledge Base Search node + LLM**
+
+1. **Trigger** captures a user question.
+2. **Knowledge Base Search Node** — Search String `{user_question}`; output = retrieved chunks.
+3. **LLM Node** — System prompt: *Answer using only the following context. If the answer is not in the context, say so.* User prompt: include the retrieved chunks and the user question.
+
+You can add a **Knowledge Base Add** node earlier (or in another workflow) to keep the knowledge base updated from new documents or summaries.
+
+## Summary
+
+| Step | Where | What |
+|------|--------|------|
+| Create | Pathlit app → Knowledge Base | Name, description, embedding model, optional sparse model |
+| Add content | App (upload / GDrive / website) or [Knowledge Base Add](/docs/nodes/knowledge-base-add) node | Files, URLs, or plain text |
+| Search | **Recommended:** [Agent](/docs/nodes/agent) node with Knowledge Base Search tool | Agent decides when/how to search and combines with other tools |
+| Search (alternative) | [Knowledge Base Search](/docs/nodes/embed-search) node | Single fixed search step → retrieved chunks (and optional citations) |
+| Use in RAG | Agent (with KB tool) or [LLM](/docs/nodes/llm) node | Agent uses tool results; or pass KB Search node output as context to LLM |
+
+For full parameter and troubleshooting details, see the [Agent Node](/docs/nodes/agent), [Knowledge Base Search Node](/docs/nodes/embed-search), and [Knowledge Base Add Node](/docs/nodes/knowledge-base-add) docs.

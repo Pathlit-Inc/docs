@@ -6,6 +6,10 @@ description: 'Perform Google searches and integrate results directly into your w
 ## Overview
 The Google Search Node enables your Pathlit workflows to perform Google searches programmatically. It leverages the [Serper API](https://serper.dev/) to fetch search results, allowing you to integrate real-time web data directly into your automated processes.
 
+<Note>
+  Deprecated. Please use the Web Search Node instead.
+</Note>
+
 ## Configuration Parameters
 To configure the Google Search Node, you must provide the following parameters:
 
@@ -13,7 +17,7 @@ To configure the Google Search Node, you must provide the following parameters:
   
   Specify the search query. You can use dynamic placeholders to incorporate data from previous nodes in your workflow. For example:
   ```
-  What is the latest news on {topic}?
+  What is the latest news on \{topic\}?
   ```
 
 - **Date Range**:

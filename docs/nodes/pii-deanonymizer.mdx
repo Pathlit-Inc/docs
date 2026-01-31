@@ -1,0 +1,86 @@
+---
+title: 'PII Deanonymizer Node'
+description: 'Restore original data from anonymized text using deanonymization keys'
+---
+
+## Overview
+The PII Deanonymizer Node restores original personally identifiable information (PII) from anonymized text. This node enables you to:
+- Reverse anonymization performed by the PII Anonymizer node
+- Restore encrypted PII values to their original form
+- Reapply placeholder mappings
+- Safely process and then restore sensitive data
+
+## Configuration Parameters
+
+### Node Configuration
+
+This node requires two inputs to function:
+
+1. **Anonymized Text** (input port): The text that was previously anonymized
+2. **Deanonymization Info** (secrets port): The JSON object containing the encryption key, entity mappings, and placeholders from the PII Anonymizer node
+
+<Warning>
+The deanonymization secrets must be stored securely and only used when necessary. Unauthorized access to these secrets can compromise privacy protections.
+</Warning>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - **input**: Anonymized text with PII placeholders
+  - **secrets**: JSON deanonymization information from PII Anonymizer node
+
+- **Outputs**:
+
+  - **output**: Original text with PII restored
+
+## Use Case Examples
+1. **Secure Processing Pipeline**:
+
+    Anonymize data for processing through external systems, then deanonymize results before storing in your secure database.
+
+2. **Privacy-Safe AI Analysis**:
+
+    Send anonymized data to AI models for analysis, then restore original PII in the final output for authorized users.
+
+3. **Audit Trail Recovery**:
+
+    Maintain anonymized audit logs but allow authorized personnel to deanonymize specific entries when needed.
+
+## Error Handling and Troubleshooting
+- **Invalid Deanonymization Info**:
+
+    Ensure the secrets JSON from the PII Anonymizer node is passed correctly without modification.
+
+- **Missing Key**:
+
+    The encryption key must be present in the deanonymization info. If missing, the original data cannot be restored.
+
+- **Non-Invertible Operations**:
+
+    Only encrypted PII can be fully restored. Other anonymization methods (like hashing) cannot be reversed.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="PII Anonymizer Node"
+    href="/docs/nodes/pii-anonymizer"
+  >
+    Anonymize sensitive data before processing
+  </Card>
+
+  <Card
+    title="LLM Node"
+    href="/docs/nodes/llm"
+  >
+    Process data between anonymization steps
+  </Card>
+
+  <Card
+    title="Conditional Node"
+    href="/docs/nodes/conditional"
+  >
+    Control when deanonymization occurs
+  </Card>
+</CardGroup>

@@ -1,0 +1,115 @@
+---
+title: 'Asana Agent Node'
+description: 'Manage Asana projects and tasks using an AI agent'
+---
+
+## Overview
+The Asana Agent Node provides intelligent project and task management capabilities for Asana. This node enables you to:
+- List projects and workspaces
+- View and manage tasks
+- Create new tasks with assignments
+- Search and filter tasks by various criteria
+
+## Configuration Parameters
+
+To set up the Asana Agent Node, connect your Asana account through OAuth authentication.
+
+### Node Configuration
+
+- **Prompt**:
+
+  Tell the agent what to do in Asana.
+
+  > *List my projects and summarize recent tasks*
+
+  > *Create a task called "Review Q1 reports" in the Marketing project, assigned to me*
+
+  > *Find all tasks due this week in the Engineering project*
+
+- **Tools**
+
+  Select which tools the Asana Agent can use:
+
+  | Tool name | Description |
+  | --------- | ----------- |
+  | Get Me | Get current user's profile and workspaces |
+  | List Projects | List accessible projects |
+  | List Tasks In Project | Get tasks for a specific project |
+  | Get Task | Retrieve detailed task information |
+  | Create Task | Create new tasks with assignments |
+
+  <Tip>The agent follows a read-only approach by default unless explicitly instructed to modify tasks.</Tip>
+
+<AccordionGroup>
+  <Accordion title="Advanced Settings">
+    <ul>
+      <li>
+        <strong>System Prompt</strong>: Customize the agent's behavior guidelines.
+      </li>
+      <li>
+        <strong>Model</strong>: Select the language model for the agent.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Set the maximum number of steps the agent can take (1-20).
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Allow automatic fallback to alternative models if the primary model fails.
+      </li>
+    </ul>
+  </Accordion>
+</AccordionGroup>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be referenced in the prompt.
+
+- **Outputs**:
+
+  - **output**: Results of the agent's actions
+  - **conversation**: Log of the agent's reasoning and operations
+
+## Use Case Examples
+1. **Automated Task Creation**:
+
+    Use the agent to automatically create tasks in Asana based on workflow triggers or external events.
+
+2. **Project Status Reports**:
+
+    Configure the agent to generate summaries of project status and recent task activity.
+
+3. **Task Management**:
+
+    Let the agent intelligently organize and update tasks based on business rules and priorities.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    If the node fails to authenticate, reconnect your Asana account and ensure the necessary permissions are granted.
+
+- **Project Access**:
+
+    Verify that you have access to the projects and workspaces you're trying to query.
+
+- **Task Creation**:
+
+    When creating tasks, ensure you provide either a project list or workspace ID.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Agent Node"
+    href="/docs/nodes/agent"
+  >
+    General-purpose agent for complex tasks
+  </Card>
+
+  <Card
+    title="Jira Agent Node"
+    href="/docs/nodes/jira-agent"
+  >
+    Agent for Jira project management
+  </Card>
+</CardGroup>

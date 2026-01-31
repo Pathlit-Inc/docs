@@ -13,7 +13,7 @@ To set up the Gmail Send Node, you need to configure the following parameters:
 
 - **Recipients**:
 
-  A comma-separated list of valid email addresses without spaces.
+  A comma-separated list of valid email addresses without spaces. Supports format strings from workflow input (e.g. `{email}`).
 
   Example:
 
@@ -33,7 +33,7 @@ To set up the Gmail Send Node, you need to configure the following parameters:
 
 - **Body**:
 
-  The main content of the email.
+  The main content of the email. Supports format strings from workflow input (e.g. `{llm_output}`).
 
   Example:
 
@@ -82,7 +82,7 @@ If you encounter any issues with the Gmail Send Node that are not covered in thi
   <Card title="Gmail Receive Node" href="/docs/nodes/gmail-receive">
     Receive emails directly into your workflow
   </Card>
-  <Card title="Airtable Input Node" href="/docs/nodes/airtable-in">
+  <Card title="Airtable Input Node" href="/docs/nodes/airtable-input">
     Import table data from Airtable into your workflow
   </Card>
   <Card

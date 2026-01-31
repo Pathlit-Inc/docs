@@ -1,0 +1,114 @@
+---
+title: 'PostgreSQL Query Node'
+description: 'Execute SQL queries on PostgreSQL databases'
+---
+
+## Overview
+The PostgreSQL Query Node allows you to execute SQL queries against PostgreSQL databases. This node enables you to:
+- Execute SELECT queries to retrieve data
+- Run INSERT, UPDATE, DELETE statements
+- Perform complex joins and aggregations
+- Access remote PostgreSQL databases securely
+- Leverage PostgreSQL-specific features
+- Process query results in workflows
+
+## Configuration Parameters
+
+To set up the PostgreSQL Query Node, you need to provide database connection details and your SQL query.
+
+### Node Configuration
+
+- **Host**:
+
+  The PostgreSQL server hostname or IP address (localhost not allowed for security)
+
+- **Port**:
+
+  The PostgreSQL server port (default: 5432)
+
+- **User**:
+
+  PostgreSQL username for authentication (default: postgres)
+
+- **Password**:
+
+  PostgreSQL password for authentication (securely stored)
+
+- **Database**:
+
+  The name of the PostgreSQL database to query
+
+- **SQL Query**:
+
+  The SQL query to execute. Supports format strings from workflow inputs.
+
+  > *SELECT * FROM users WHERE email LIKE '%@example.com';*
+
+  > *INSERT INTO logs (event, timestamp) VALUES ('login', NOW());*
+
+  > *UPDATE accounts SET balance = balance + \{amount\} WHERE user_id = \{user_id\};*
+
+<Warning>
+For security reasons, localhost connections are not allowed. Use external database servers only.
+</Warning>
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input that can be used to format the SQL query dynamically (use `query` input port)
+
+- **Outputs**:
+
+  - **result**: JSON array of query results (for SELECT queries) or execution status (for other queries)
+
+## Use Case Examples
+1. **Data Retrieval**:
+
+    Query user, transaction, or analytics data from PostgreSQL databases for processing or reporting.
+
+2. **Database Operations**:
+
+    Automatically create, update, or delete records in PostgreSQL based on workflow logic.
+
+3. **ETL Pipelines**:
+
+    Extract data from PostgreSQL, transform it in the workflow, and load it into other systems or formats.
+
+## Error Handling and Troubleshooting
+- **Connection Issues**:
+
+    Verify the host, port, username, and password are correct. Ensure the PostgreSQL server accepts remote connections.
+
+- **Query Errors**:
+
+    Check SQL syntax and ensure referenced tables and columns exist in the database schema.
+
+- **Result Size Limits**:
+
+    Large query results (over 256 KB) may be truncated. Use LIMIT clauses or filters to reduce result sizes.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="MySQL Query Node"
+    href="/docs/nodes/mysql-query"
+  >
+    Query MySQL databases
+  </Card>
+
+  <Card
+    title="Snowflake Agent"
+    href="/docs/nodes/snowflake-agent"
+  >
+    Query Snowflake data warehouses with AI
+  </Card>
+
+  <Card
+    title="Google Sheets Agent"
+    href="/docs/nodes/gsheets-agent"
+  >
+    Export query results to spreadsheets
+  </Card>
+</CardGroup>

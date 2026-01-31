@@ -1,67 +1,90 @@
 ---
 title: 'Agent Node'
-description: 'Execute tasks using a single AI agent with configurable tools and capabilities'
+description: 'Run a single AI agent with configurable tools—workflows, nodes, and knowledge base search'
 ---
 
 ## Overview
-The Agent Node is a versatile component that allows you to run a single AI agent with specific tools and capabilities. This node enables:
-- Execution of complex queries with customizable tools
-- Integration with other workflows and nodes
-- Flexible configuration of model parameters and system prompts
-- Detailed conversation tracking and output management
+
+The Agent Node runs a single AI agent that uses **tools** you configure to complete tasks. The agent receives your prompt (which can use format strings from workflow input), decides when to call which tool, and returns a final answer. Use it for RAG, research, orchestration, and multi-step tasks.
+
+- **Tools** — Workflows (invoke other workflows), **Node tools** (e.g. Web Search, Google Search, REST API, Knowledge Base Search, Human Input), and **Knowledge Base Search** (search a selected knowledge base). The agent chooses when and how to use each tool.
+- **Model** — Must support function calling. You can set temperature, top-p, system prompt, and max steps.
+- **Output** — Final result plus a conversation log of reasoning and tool calls.
+
+<Tip>
+**RAG and Q&A:** For answering questions using your documents, we recommend adding the **Knowledge Base Search** tool and selecting your [knowledge base](/docs/guides/knowledge-base). The agent will search the knowledge base when needed and ground answers in your content.
+</Tip>
 
 ## Configuration Parameters
 
-The Agent Node requires configuration of the agent's behavior, tools, and model settings to effectively process queries.
-
 ### Node Configuration
 
-- **Query**:
-  
-  Define the task or question for the agent to handle.
+- **Query**
+
+  The task or question for the agent. Supports format strings from workflow input (e.g. `{user_question}`). The agent can call tools as needed to complete the task.
 
 - **Tools**
 
-  Select tools that the agent can use to accomplish its tasks. Tools can be of two types:
-  - **Workflow Tools**: Existing workflows that the agent can execute
-  - **Node Tools**: Individual nodes that the agent can utilize
+  Select which tools the agent can use. The agent only has access to the tools you enable.
 
-  <Tip>Choose tools carefully as they define the capabilities available to the agent. The agent can only perform actions using the tools provided.</Tip>
+  - **Node tools** — Expose individual nodes as tools, e.g. **Web Search**, **Document Reader**, **Code**, and others. The agent calls the node with parameters it chooses.
+  - **Workflow** — Invoke another workflow. Configure workflow and input template.
+  - **Knowledge Base Search** — Search a selected knowledge base (semantic search). Recommended for RAG and Q&A over your documents.
+
+  <Tip>Choose tools that match the task. The agent can only perform actions through the tools you provide.</Tip>
 
 <AccordionGroup>
   <Accordion title="Advanced Settings">
     <ul>
       <li>
-        <strong>System Prompt</strong>: Define the agent's persona and behavior guidelines with a custom system prompt.
+        <strong>System Prompt</strong>: Define the agent's persona and behavior (e.g. "You are a research assistant. Use the knowledge base to answer questions."). Supports format strings from workflow input.
       </li>
       <li>
-        <strong>Model</strong>: Select the language model to power the agent. Note that the model must support function calling.
+        <strong>Model</strong>: Language model for the agent. Must support function calling.
       </li>
       <li>
-        <strong>Max Steps</strong>: Configure the maximum number of steps (1-50) the agent can take to complete the task.
+        <strong>Temperature</strong>: 0–2. Lower for more deterministic tool use; higher for more varied behavior.
+      </li>
+      <li>
+        <strong>Top P</strong>: 0–1. Nucleus sampling for generation.
+      </li>
+      <li>
+        <strong>Max Steps</strong>: Maximum number of steps (1–50) the agent can take. Increase for complex multi-tool tasks.
+      </li>
+      <li>
+        <strong>PII guardrails for agent operations (excl. tools)</strong>: Enable PII guardrails on the agent's reasoning; combine with PII handling in tools as needed.
+      </li>
+      <li>
+        <strong>Enable Model Fallbacks</strong>: Automatically try alternative models if the primary model fails.
       </li>
     </ul>
   </Accordion>
 </AccordionGroup>
 
 ## Expected Inputs and Outputs
+
 - **Inputs**:
 
-  - The node accepts input data that can be referenced in the query using format strings.
+  - **input**: Data that can be referenced in the Query and System Prompt using format strings (e.g. `{user_question}`, `{ticket_id}`).
 
 - **Outputs**:
 
-  - **output**: The final result produced by the agent
-  - **conversation**: A detailed log of the agent's thought process and actions taken
+  - **output**: The final result produced by the agent.
+  - **conversation**: A detailed log of the agent's reasoning and tool calls.
 
 ## Use Case Examples
-1. **Web Search**:
 
-    Configure the node with Google Search tool and Web Content Extraction tool. Prompt the agent to do research anything from company information to finding contact information from name.
+1. **RAG / Q&A over your docs**
 
-2. **Workflow Orchastrator**:
+   Add the **Knowledge Base Search** tool and select your knowledge base. Prompt: *Answer the user's question using the knowledge base. If the answer isn't there, say so.* See the [Knowledge Base guide](/docs/guides/knowledge-base) for creating and populating knowledge bases.
 
-    Setup an agent that has access to your workflows as tools so that it launches workflow to complete tasks given by the user.
+2. **Web research**
+
+   Add **Web Search** and/or **Google Search** (and optionally **Webpage Extractor**). Prompt the agent to research companies, find contact info, or gather up-to-date information from the web.
+
+3. **Workflow orchestrator**
+
+   Add **Workflow** tools that invoke your existing workflows. The agent can decide when to run which workflow and pass inputs, so users can give high-level tasks and the agent orchestrates execution.
 
 ## Error Handling and Troubleshooting
 - **Model Compatibility**:
@@ -79,6 +102,7 @@ The Agent Node requires configuration of the agent's behavior, tools, and model 
 If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
 
 ## Relevant Nodes
+
 <CardGroup>
   <Card
     title="Agent Swarm Node"
@@ -91,20 +115,13 @@ If you encounter any issues not covered in this documentation, please reach out 
     title="LLM Node"
     href="/docs/nodes/llm"
   >
-    Direct access to language models without agent framework
+    Direct LLM access without the agent framework
   </Card>
 
   <Card
-    title="Gmail Agent Node"
-    href="/docs/nodes/gmail-agent"
+    title="Knowledge Base Search Node"
+    href="/docs/nodes/embed-search"
   >
-    Agent that interact with Gmail
-  </Card>
-
-  <Card
-    title="Google Calendar Agent Node"
-    href="/docs/nodes/gcal-agent"
-  >
-    Agent that interact with Google Calendar
+    Standalone KB search when you need a fixed search step; prefer Agent + KB Search tool for RAG
   </Card>
 </CardGroup>

@@ -1,0 +1,86 @@
+---
+title: 'Gmail Label Modify Node'
+description: 'Add or remove Gmail labels from specific email messages'
+---
+
+## Overview
+The Gmail Label Modify Node allows you to programmatically add or remove labels from Gmail messages. This node is commonly used with the Gmail Receive trigger to automatically organize incoming emails based on workflow logic.
+
+## Configuration Parameters
+
+To set up the Gmail Label Modify Node, you need to authenticate with your Google account and configure the label operations.
+
+### Node Configuration
+
+- **Email Message ID**:
+
+  The Gmail message ID of the email to modify (typically received from the Gmail Receive trigger node)
+
+- **Gmail Label to Add**:
+
+  The label to add to the email (e.g., "IMPORTANT", "STARRED", or custom labels like "Processed")
+
+- **Gmail Label to Remove**:
+
+  The label to remove from the email (e.g., "UNREAD", "INBOX")
+
+## Expected Inputs and Outputs
+- **Inputs**:
+
+  - The node accepts text input, typically the message ID from the Gmail Receive trigger
+
+- **Outputs**:
+
+  - **result**: Confirmation that labels were successfully modified
+
+## Use Case Examples
+1. **Automated Email Organization**:
+
+    Automatically label incoming emails based on content analysis, sender, or other criteria.
+
+2. **Workflow Status Tracking**:
+
+    Mark emails as processed by adding a custom "Processed" label after the workflow completes.
+
+3. **Priority Management**:
+
+    Add "STARRED" or "IMPORTANT" labels to emails that meet specific business rules or contain certain keywords.
+
+## Error Handling and Troubleshooting
+- **Authentication Issues**:
+
+    Ensure you've connected your Gmail account and granted the necessary permissions.
+
+- **Invalid Label Names**:
+
+    Verify label names are spelled correctly. Use all caps for system labels (UNREAD, IMPORTANT, STARRED, INBOX).
+
+- **Message Not Found**:
+
+    Check that the message ID is still valid and the email hasn't been deleted.
+
+If you encounter any issues not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Relevant Nodes
+<CardGroup>
+  <Card
+    title="Gmail Receive Node"
+    href="/docs/nodes/gmail-receive"
+  >
+    Trigger workflows from incoming Gmail messages
+  </Card>
+
+  <Card
+    title="Gmail Agent"
+    href="/docs/nodes/gmail-agent"
+  >
+    Comprehensive Gmail management with AI
+  </Card>
+
+  <Card
+    title="Gmail Search Node"
+    href="/docs/nodes/gmail-search"
+  >
+    Search for emails in your inbox
+  </Card>
+</CardGroup>

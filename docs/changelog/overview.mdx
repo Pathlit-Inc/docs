@@ -3,40 +3,642 @@ title: "Overview"
 description: "New updates, fixes, and improvements"
 ---
 
+<Update label="2026-01-29" description="v0.41">
+### New Features
+
+- **Google Drive sync**: Improved file sync from Google Drive with polling
+- **Batch runs**: Multi-file selection and ability to stop batch runs from the interface
+- **Deploy with previous credentials**: Option to reuse existing credentials when redeploying
+
+### Improvements
+
+- **Airtable agent**: Better Airtable agent behavior and reliability
+- **Google Drive tools**: Enhanced Google Drive tool capabilities in workflows
+- **Default model**: Updated default AI model to Claude 4.5 Sonnet for new workflows
+
+</Update>
+
+<Update label="2026-01-27" description="v0.40">
+### New Features
+
+- **LinkedIn tools**: Expanded LinkedIn integration with improved tooling
+
+### Improvements
+
+- **Monitor page**: Refined monitor page for better visibility into runs and workflows
+
+</Update>
+
+<Update label="2026-01-25" description="v0.39">
+### New Features
+
+- **Host icons**: Visual host icons for clearer identification in the UI
+
+### Bug Fixes
+
+- **Knowledge base**: Fixed an issue with sparse embeddings in the knowledge base
+
+</Update>
+
+<Update label="2026-01-22" description="v0.38">
+### New Features
+
+- **Workflow evaluation**: online and offline workflow evaluation feature for assessing run quality out of beta!
+- **Batch run UX**: Improved batch run interface and experience
+- **Chatbot styling**: More options for customizing chatbot appearance
+- **Agent node LLM parameter**: Configure LLM settings directly on the agent node
+
+### Bug Fixes
+
+- **Slack nodes**: Resolved issues with Slack node behavior
+
+</Update>
+
+<Update label="2026-01-15" description="v0.37">
+### New Features
+
+- **Excel styling tools**: New tools for formatting and styling in Excel integrations
+- **Migration banner**: In-app banner to guide users through migrations when needed
+- **VLM document extraction**: Vision-language model support for document extraction
+
+### Bug Fixes
+
+- **Gmail trigger**: Fixed Gmail trigger reliability
+- **Typeform trigger**: Fixed Typeform trigger behavior
+
+</Update>
+
+<Update label="2026-01-14" description="v0.36">
+### New Features
+
+- **Projects**: New projects route and organization for workflows
+- **VLM document extraction**: Document extraction using vision-language models
+
+### Improvements
+
+- **Organization budget**: Clearer behavior when organization budget limits are reached
+- **Typeform trigger**: Fixed Typeform trigger reliability
+
+### Bug Fixes
+
+- **Notion tools**: Improved error handling for Notion tool nodes
+
+</Update>
+
+<Update label="2025-12-22" description="v0.35">
+### New Features
+
+- **GPT-5.2**: Added support for OpenAI's GPT-5.2 model
+- **Load previous run**: Load and resume from a previous workflow run in the builder
+- **Copilot model config**: Configure which model the Workflow Copilot uses
+- **Tool response guardrails**: Limits on tool response length for stability
+
+### Improvements
+
+- **Human-in-the-loop**: Refinements to the human-in-the-loop experience
+- **Cost accuracy**: Fixed double-counting issue with cached usage for more accurate billing
+
+</Update>
+
+<Update label="2025-12-04" description="v0.34">
+### New Features
+
+- **Opus 4.5**: Added support for Anthropic's Opus 4.5 model
+- **Workflow run search**: Faster, searchable workflow run history
+- **Deployment run alerts**: Email alerts when deployment runs complete or fail
+- **Access control**: Redesigned access control for clearer permissions
+
+### Bug Fixes
+
+- **Custom OAuth apps**: Fixed custom OAuth application configuration
+- **Google Drive trigger**: Resolved deployment failures for Google Drive triggers
+- **Agent version**: Fixed missing agent version in certain cases
+
+</Update>
+
+<Update label="2025-11-24" description="v0.33">
+### New Features
+
+- **Human-in-the-loop**: Pause workflows for human approval or input before proceeding
+- **Databricks integration**: Connect to Databricks to query and manage data
+- **Custom integrations**: Support for organization-level custom integration configuration
+- **Workflow as node**: Create workflows that can be used as nodes in other workflows
+- **Node access control**: Fine-grained permissions for controlling access to specific workflow nodes
+
+### Improvements
+
+- **Knowledge base reindexing**: Ability to reindex individual items in the knowledge base
+- **Infrastructure stability**: Improved internal networking stability and reliability
+
+### Bug Fixes
+
+- **Editor fixes**: Resolved scrolling issues in the code editor
+- **UI polish**: Fixed modal display bugs in the Google Drive picker
+
+</Update>
+
+<Update label="2025-11-21" description="v0.32">
+### New Features
+
+- **Google Drive triggers**: Automatically start workflows when files change in Google Drive
+- **Gemini 3 Pro**: Added support for Google's latest Gemini 3 Pro model
+
+### Improvements
+
+- **Web search**: Enhanced search relevance and simplified tool configuration
+- **Airtable download**: Added file download capabilities to Airtable nodes
+- **Pricing simplification**: Streamlined pricing structure and removed complex tiers
+
+### Bug Fixes
+
+- **Integration reliability**: Critical fixes for webhooks and trigger reliability
+- **Workflow resumption**: Fixed issues when resuming workflows from checkpoints
+- **Swarm management**: Resolved UI bugs in agent swarm configuration
+
+</Update>
+
+<Update label="2025-10-28" description="v0.31">
+### New Features
+
+- **Browser Use agent**: New autonomous agent capable of executing web browsing tasks
+- **Microsoft 365 agents**: Suite of agents for Outlook, Teams, and Microsoft 365 ecosystem
+- **Notion databases**: Enhanced support for interacting with and managing Notion databases
+- **Workflow Copilot uploads**: Support for file uploads directly in the Workflow Copilot
+
+### Improvements
+
+- **Quick node creation**: Paste image links to quickly verify and create nodes
+- **Code node auth**: Access tokens now available within code node execution environment
+
+### Bug Fixes
+
+- **Security patches**: Addressed vulnerabilities in PDF processing and frontend dependencies
+- **Swarm UI**: Fixed display issues in multi-agent swarm interfaces
+- **Workflow invocation**: Resolved bugs in sub-workflow invocation reliability
+
+</Update>
+
+<Update label="2025-10-17" description="v0.30">
+### New Features
+
+- **New integrations**: Added support for Egnyte and Mailchimp
+- **Claude 4.5 Haiku**: Added support for Anthropic's faster, lighter model
+- **GDPR compliance**: Added comprehensive cookie consent management
+
+### Improvements
+
+- **Token counting**: More accurate and blazing fast token estimation
+- **Agent builder polish**: UI/UX refinements for the agent builder interface
+
+### Bug Fixes
+
+- **Database stability**: Enabled disk usage for complex queries to prevent memory issues
+
+</Update>
+
+<Update label="2025-10-11" description="v0.29">
+### New Features
+
+- **Claude 4.5 support**: Added support for the latest Anthropic Claude 4.5 model
+- **Tool access control**: Granular permission controls for agent tools
+
+### Improvements
+
+- **Vertex AI regions**: Configurable regions for Vertex AI model deployments
+- **Streaming reliability**: improved streaming reliability for long-running workflows
+
+### Bug Fixes
+
+- **Workflow reliability**: Fixed issues with run continuation and worker activity
+- **Chat interface**: Resolved bugs in the chat UI and history loading
+
+</Update>
+
+<Update label="2025-09-26" description="v0.28">
+### New Features
+
+- **Hybrid search**: Combine keyword and vector search for higher-quality retrievals
+- **Google Docs agent**: Create and edit Google Docs from workflows
+- **Inference profiles for Anthropic**: Smarter defaults for model configuration
+
+### Improvements
+
+- **Agent builder polish**: Batch of UI/UX refinements across the editor
+
+### Bug Fixes
+
+- **Production pipeline reliability**: Resolved issues causing intermittent failures
+- **Minor UI fixes**: Small styling and behavior corrections
+
+</Update>
+
+<Update label="2025-09-23" description="v0.27">
+### New Features
+
+- **Conversation attachments**: Add files into agent conversations and keep them in history
+- **Run history for Chatbot Builder**: Track and review previous test runs directly in the builder
+- **Slack enhancements**: Richer Slack actions and improved reliability
+- **EXA integration**: New search data source for research workflows
+
+### Improvements
+
+- **SOP UI improvements**: Clearer structure and navigation for standard operating procedures
+
+### Bug Fixes
+
+- **Stability fixes**: Addressed release pipeline issues uncovered during deploys
+
+</Update>
+
+<Update label="2025-09-15" description="v0.26">
+### New Features
+
+- **New integrations**: Asana, Snowflake, Reddit Scraper
+- **Nango Connect UI**: Streamlined OAuth connection flow for end users
+
+### Improvements
+
+- **More robust messaging**: Improved streaming connection handling and automatic reconnects
+- **Provider fallbacks**: Better resiliency when upstream AI providers have incidents
+- **Email rendering**: Gmail nodes now prefer HTML for better fidelity
+- **Google Sheet notes**: Add notes to cells within google sheet
+
+### Bug Fixes
+
+- **Config and test reliability**: Fixed configuration edge cases and strengthened test coverage
+
+</Update>
+
+<Update label="2025-09-04" description="v0.25">
+### New Features
+
+- **Agent Builder version history**: Browse and restore prior versions of your agent
+- **Recent executions**: New Agent Home section for quick access to latest runs
+- **Conditional inputs**: Inputs in the builder can be shown or hidden based on context
+- **Disable triggers**: Temporarily turn off workflow triggers without deleting them
+- **End-to-end health checks**: Better readiness and liveness validations
+
+### Improvements
+
+- **Better image models**: Higher quality outputs from supported VLMs
+- **Tracing stability**: Reliability improvements for execution tracing
+
+### Bug Fixes
+
+- **Security patch**: Addressed an authorization edge case on org member endpoints
+- **UI polish**: Fixed run panel visibility and small styling issues
+
+</Update>
+
+<Update label="2025-08-29" description="v0.24">
+### New Features
+
+- **Agent Builder**: New chat interface, details page, integration page, and templates page
+- **Agent Builder triggers**: Deploy and test agent-triggered flows with session support
+- **Agent Builder Copilot**: Inline assistance while configuring agents
+- **Image embeds**: Attach and preview images directly in the agent builder
+- **Jira agent**: Automate Jira workflows with a dedicated agent
+- **QuickBooks agent**: Connect QuickBooks to automate finance tasks
+- **Google Drive output**: Send files to Drive from workflows
+- **Airtable agent**: Read and write Airtable data
+- **Workflow tracing (OTel)**: End-to-end tracing for executions
+- **Self-hosted Nango**: Option to run your own OAuth connection service
+
+### Improvements
+
+- **Better error handling and fallbacks**: More robust behavior during model/provider issues
+- **Monitor and prompts**: Improved monitor page and smarter prompt rewrite
+- **Templates and tools**: Updated templates and version-agnostic node tools
+- **Document reader**: Higher accuracy and failure handling for document processing
+- **Copy/paste improvements**: Faster, more reliable clipboard interactions
+
+### Bug Fixes
+
+- **Triggers**: Fixed debouncing issues and improved scheduler UX
+- **Editor performance**: Reduced lag and addressed occasional freezes
+- **Integration reliability**: Multiple fixes across Gmail, Google, YouTube, and others
+
+</Update>
+
+<Update label="2025-08-22" description="v0.23">
+### New Features
+
+- **New Frontend**: new notion-like agent builder UI for building automations
+  Build your automations with a new UI that is more intuitive and user-friendly.
+
+### Improvements
+
+- **Small UI fixes**: Various minor UI improvements
+
+### Bug Fixes
+
+- **Fix trigger deployment runs**: Resolved issues with trigger deployment runs
+- **Fix salesforce agent config**: Resolved issues with the Salesforce agent system prompt configuration
+- **Fix misc UI bugs**: Various UI bug fixes and improvements
+
+</Update>
+
+<Update label="2025-08-09" description="v0.22">
+### New Features
+
+- **Add GPT-5, Opus-4.1, GPT-OSS models**: Added support for new AI models with housekeeping improvements
+- **Update recommended models**: Updated model recommendations
+
+### Improvements
+
+- **Landing page improvements**: Enhanced landing page with better routing and UI
+- **Fix pricing page redirect to login**: Improved pricing page navigation
+- **Add landing route group**: Better route organization
+- **QuickBooks UX improvements**: Enhanced QuickBooks integration user experience
+- **Generic report download tool**: Added flexible report downloading capabilities
+
+</Update>
+
+<Update label="2025-07-23" description="v0.20">
+### New Features
+- **Enhanced data security**: Added PII encode and decode nodes for sensitive data protection
+
+### Bug Fixes
+
+- **Fixed agent swarm issues**: Resolved streaming and running behavior problems
+- **Improved error handling**: Better handling of SDK failures and unstructured API issues
+- **Fixed vision language models**: Resolved VLM issues and streaming problems with Claude 4 Sonnet
+
+### Improvements
+
+- **Enhanced document reading**: Better document reading capabilities and tools
+- **Improved agent functionality**: Enhanced agent nodes with system prompt templating
+- **Better vision language models**: Improved VLM strategy and output handling
+- **Enhanced data protection**: Better PII masking capabilities for language models
+
+</Update>
+
+<Update label="2025-06-17" description="v0.16">
+### Bug Fixes
+
+- **Fixed input handling**: Resolved special character handling in autocomplete and text input
+- **Improved UI menus**: Fixed completion menu glitches and widget rendering issues
+- **Better text editing**: Enhanced text editing functionality and token validation display
+
+### Improvements
+
+- **Enhanced integrations**: Improved Model Context Protocol and added GitHub integration
+- **Better authentication**: Enhanced workflow integration authentication with improved UX
+- **Improved workflow visualization**: Better workflow edge styling and chatbot management
+- **Enhanced system stability**: Updated dependencies and improved overall system performance
+
+</Update>
+
+<Update label="2025-06-03" description="v0.15">
+### Bug Fixes
+
+- **Fixed UI display issues**: Resolved output display, markdown rendering, and chat assistant interface problems
+- **Improved cost tracking**: Fixed cost monitoring for LinkedIn agent
+- **Better system warnings**: Added experimental warnings and disabled non-functioning features
+- **Enhanced deployment**: Fixed deployment template issues
+
+### Improvements
+
+- **Enhanced workflow builder**: Upgraded workflow building interface with better UI
+- **Better status indicators**: Improved status display and output node overflow handling
+- **Enhanced search capabilities**: Added Google Sheets search tool with regex support
+- **Real-time streaming**: Implemented streaming for agents, LLMs, and chat functionality
+- **Better conversation interface**: Redesigned agent conversation history UI with improved loading
+- **Enhanced error handling**: Better streaming error handling and chat functionality
+- **Improved text formatting**: Better markdown rendering and display
+
+</Update>
+
+<Update label="2025-05-05" description="v0.13">
+### New Features
+
+- **Email verification integration**: Added Hunter.io integration for email finding and verification
+- **Enhanced code execution**: Code node with file support for more complex workflows
+- **Performance improvements**: Node execution caching for faster workflow runs
+- **Better document handling**: Enhanced document data node with caching capabilities
+
+### Bug Fixes
+
+- **Enhanced security**: Cleaned up deprecated security checks and improved API key protection
+- **Fixed integrations**: Resolved Slack webhook and cost reporting issues
+- **Better error handling**: Improved error handling and alias management
+
+### Improvements
+
+- **Enhanced workflow execution**: Better workflow execution with improved callbacks
+- **Better sandbox management**: Additional checks for code sandbox status
+- **Improved caching**: Enhanced document data node caching system
+
+</Update>
+
+<Update label="2025-04-29" description="v0.12">
+### New Features
+
+- **Enhanced AI models**: Added new Perplexity Sonar models for improved AI capabilities
+- **Automatic deployment**: Deploy on agent updates for seamless workflow management
+- **Enhanced knowledge base**: Multi-data-source knowledge base with improved search
+- **Better file management**: Constrained upload file types for improved security
+- **Enhanced CRM automation**: Updated auto CRM workflow with optimized agent steps
+- **Email CRM platform**: Enhanced email CRM functionality for business automation
+- **Better mobile experience**: Fixed mobile overflow and scrolling issues
+- **Improved navigation**: Updated landing page links and user notifications
+
+### Improvements
+
+- **Flexible descriptions**: Optional descriptions for better workflow customization
+- **Enhanced knowledge base UI**: Better interface for knowledge base data constraints
+- **Better deployment**: Improved frontend deployment configuration and build process
+- **Enhanced error handling**: Better error management and user experience
+
+</Update>
+
+<Update label="2025-04-07" description="v0.9">
+  ### New Features
+
+- **LinkedIn integration**: Enhanced LinkedIn agent and scraper nodes for data extraction
+- **Enhanced data integration**: Added BrightData API for expanded data capabilities
+- **Visual workflow branding**: Support for workflow logos and enhanced chatbot branding
+- **Better workflow management**: Improved workflow history UI and deployment management
+- **Enhanced AI models**: Updated Groq models and added Llama 4 and Gemini 2.5 support
+- **Streamlined interface**: Hidden pages in account settings for cleaner navigation
+- **Advanced batch processing**: Sequential workflow runs with concurrency controls
+
+### Improvements
+
+- **Better performance**: Improved parallelization and timeout handling
+- **Enhanced data handling**: Better JSON output and data processing
+- **Improved navigation**: Better user navigation text and styling
+- **Enhanced integrations**: Fixed Groq integration issues and improved BrightData setup
+- **Better user experience**: Improved UI design and user interface
+
+</Update>
+
+<Update label="2025-04-07" description="v0.8">
+### New Features
+
+- **Visual node identification**: Added icons to node UI for better workflow visualization
+- **LinkedIn integration**: New LinkedIn agent and scraper nodes for data extraction
+- **Enhanced AI models**: Added Gemini 2.5 and Llama 4 language model support
+- **Calendar integration**: New calendar agent for workflow automation
+- **Agent collaboration**: Enhanced agent swarm node for multi-agent workflows
+- **Cloud storage integration**: Added OneDrive file integration
+- **Advanced batch processing**: Sequential batch run with concurrency controls
+
+### Improvements
+
+- **Better app layout**: Improved application structure and navigation
+- **Enhanced workflow management**: Better workflow lifecycle UI and management
+- **Improved batch processing**: Enhanced batch run interface and user experience
+- **Better agent communication**: Improved agent conversation display and history
+- **Enhanced integrations**: Fixed Groq models and Google Drive integration issues
+- **Better performance**: Improved code execution and performance monitoring
+- **Streamlined interface**: Various UI improvements for better user experience
+
+</Update>
+
+<Update label="2025-03-30" description="v0.7">
+### New Features
+
+- **Enhanced calendar integration**: Improved calendar agent functionality
+- **Agent collaboration**: New agent swarm node for better multi-agent workflows
+- **OneDrive integration**: Added OneDrive file handling and integration
+- **Pipeline improvements**: Fixed pipeline duplication issues
+
+### Improvements
+
+- **Better search functionality**: Improved embedded search and workflow detection
+- **Enhanced node organization**: Better node menu grouping and organization
+- **Enhanced batch processing**: Better batch run interface and capabilities
+- **Vision language models**: Better integration of VLMs with document data
+- **Improved navigation**: Enhanced top bar UI and navigation experience
+- **Better email handling**: Enhanced email attachment reading and processing
+- **Enhanced project management**: Improved project management interface
+
+</Update>
+
+<Update label="2025-03-17" description="v0.6">
+### New Features
+
+- **Real-time workflow monitoring**: Active workflow run dashboard for live tracking
+- **Deployment control**: Added ability to disable deployments for better workflow management
+- **Enhanced error handling**: Improved workflow upload error tolerance
+
+### Improvements
+
+- **Streamlined editor**: Cleaner editing interface with better sidebar organization
+- **Enhanced templates**: Improved workflow templates and management system
+- **Better visual feedback**: Improved status indicators and workflow colors
+- **Enhanced integrations**: Better Gmail nodes and email integration
+- **Improved data handling**: Enhanced document data nodes and export capabilities
+- **Better performance**: Improved YouTube node performance and video processing
+- **Enhanced security**: Addressed security vulnerabilities and improved privacy
+- **Streamlined interface**: Various UI/UX improvements for better user experience
+
+</Update>
+
+<Update label="2025-03-07" description="v0.5">
+### New Features
+
+- **Enhanced search capabilities**: Improved search functionality with updated API integration
+- **Simplified interface**: Streamlined application structure for better user experience
+- **New AI models**: Added GPT-4.5 and enhanced Gemini support for cost optimization
+
+### Bug Fixes
+
+- **Fixed text overflow**: Resolved prompt rewrite display issues
+- **Improved run history**: Added refresh button for better workflow monitoring
+- **Fixed video processing**: Resolved YouTube node functionality issues
+- **Enhanced chatbot templates**: Fixed template and knowledge base issues
+
+### Improvements
+
+- **Cost optimization**: Added cheaper default models for better affordability
+- **Better navigation**: Improved tab naming and navigation experience
+- **Version control integration**: Enhanced Bitbucket integration for workflow automation
+- **Improved visual design**: Better UI colors and display layering
+- **Enhanced security**: Better security management and deployment processes
+
+</Update>
+
+<Update label="2025-02-21" description="v0.4">
+### New Features
+
+- **New AI models**: Added support for Grok models and enhanced AI capabilities
+- **Google calendar integration**: Seamless calendar integration for workflow automation
+- **Business data integrations**: New Aviato and Pitchbook nodes for enhanced business intelligence
+- **Workflow composition**: Workflow as node feature for building complex automation chains
+- **Enhanced templates**: Improved template system for faster workflow creation
+
+### Improvements
+
+- **Better file management**: Improved workflow file handling and organization
+- **Free tier enhancements**: Increased quotas and limits for free tier users
+- **Enhanced agent functionality**: Improved agent nodes and workflow capabilities
+- **Better UI/UX**: Enhanced builder interface and user experience
+- **New data sources**: Added Crunchbase API integration for business data
+- **Streamlined interface**: Cleaner, more focused user interface
+- **Improved language models**: Better LLM node performance and reliability
+- **Enhanced security**: Improved security measures and deployment management
+
+</Update>
+
+<Update label="2025-01-31" description="v0.3">
+### New Features
+
+- **Enhanced security features**: Improved access token protection and security measures
+- **Better task scheduling**: Enhanced task management capabilities
+- **Improved chatbot builder**: Enhanced chatbot creation and management tools
+
+### Bug Fixes
+
+- **Fixed data processing issues**: Resolved interpolation and data handling problems
+- **Email subscription improvements**: Fixed subscription creation and management
+- **Security enhancements**: Addressed security vulnerabilities and improved protection
+
+### Improvements
+
+- **Enhanced RAG workflow builder**: Better retrieval-augmented generation capabilities
+- **Improved deployment management**: Enhanced deployment configuration and management
+- **Better email functionality**: Improved email client integration and DNS configuration
+
+</Update>
+
 <Update label="2025-01-24" description="v0.2.12">
   ### New Features
 
-  - **Add Dark Mode Support**: Introduced a new dark mode theme for the application, enhancing user experience in low-light environments.
-  - **Integrate Payment Gateway**: Implemented a new payment gateway to support a wider range of payment options, including credit cards and digital wallets.
+- **Add Dark Mode Support**: Introduced a new dark mode theme for the application, enhancing user experience in low-light environments.
+- **Integrate Payment Gateway**: Implemented a new payment gateway to support a wider range of payment options, including credit cards and digital wallets.
 
-  ### Improvements
+### Improvements
 
-  - **Optimize Search Functionality**: Improved search algorithm to deliver faster and more accurate results, enhancing overall user efficiency.
-  - **Enhance Security Protocols**: Upgraded security protocols to ensure better protection of user data and privacy.
+- **Optimize Search Functionality**: Improved search algorithm to deliver faster and more accurate results, enhancing overall user efficiency.
+- **Enhance Security Protocols**: Upgraded security protocols to ensure better protection of user data and privacy.
 
-  ### Bug Fixes
+### Bug Fixes
 
-  - **Fix Login Session Timeout Issue**: Resolved an issue where user sessions were timing out prematurely during login.
-  - **Resolve Image Upload Error**: Fixed a bug that caused errors during image uploads under certain conditions.
-  - **Correct Data Sync Inconsistency**: Addressed a problem where data synchronization between devices was inconsistent.
+- **Fix Login Session Timeout Issue**: Resolved an issue where user sessions were timing out prematurely during login.
+- **Resolve Image Upload Error**: Fixed a bug that caused errors during image uploads under certain conditions.
+- **Correct Data Sync Inconsistency**: Addressed a problem where data synchronization between devices was inconsistent.
+
 </Update>
 
 <Update label="2025-01-09" description="v0.2.11">
   ### New Features
 
-  - **Add Dark Mode Support**: Introduced a new dark mode theme for the application, enhancing user experience in low-light environments.
-  - **Integrate Payment Gateway**: Implemented a new payment gateway to support a wider range of payment options, including credit cards and digital wallets.
+- **Add Dark Mode Support**: Introduced a new dark mode theme for the application, enhancing user experience in low-light environments.
+- **Integrate Payment Gateway**: Implemented a new payment gateway to support a wider range of payment options, including credit cards and digital wallets.
 
-  ### Improvements
+### Improvements
 
-  - **Optimize Search Functionality**: Improved search algorithm to deliver faster and more accurate results, enhancing overall user efficiency.
-  - **Enhance Security Protocols**: Upgraded security protocols to ensure better protection of user data and privacy.
+- **Optimize Search Functionality**: Improved search algorithm to deliver faster and more accurate results, enhancing overall user efficiency.
+- **Enhance Security Protocols**: Upgraded security protocols to ensure better protection of user data and privacy.
 
-  ### Bug Fixes
+### Bug Fixes
 
-  - **Fix Login Session Timeout Issue**: Resolved an issue where user sessions were timing out prematurely during login.
-  - **Resolve Image Upload Error**: Fixed a bug that caused errors during image uploads under certain conditions.
-  - **Correct Data Sync Inconsistency**: Addressed a problem where data synchronization between devices was inconsistent.
+- **Fix Login Session Timeout Issue**: Resolved an issue where user sessions were timing out prematurely during login.
+- **Resolve Image Upload Error**: Fixed a bug that caused errors during image uploads under certain conditions.
+- **Correct Data Sync Inconsistency**: Addressed a problem where data synchronization between devices was inconsistent.
+
 </Update>
 
 <Update label="2024-12-27" description="v0.2.10">
@@ -55,6 +657,7 @@ description: "New updates, fixes, and improvements"
 - **Fix Login Error**: Resolved an issue where some users were unable to log in due to a session timeout error.
 - **Correct Display Issue on Mobile Devices**: Fixed a bug causing incorrect display of elements on mobile screens.
 - **Resolve Crash on Settings Page**: Addressed a problem that caused the app to crash when accessing the settings page.
+
 </Update>
 
 <Update label="2024-12-12" description="v0.2.9">
@@ -72,6 +675,7 @@ description: "New updates, fixes, and improvements"
 - **Fix Login Redirect Issue**: Resolved an issue where users were not redirected to the home page after logging in.
 - **Correct Date Formatting in Reports**: Fixed a bug where dates were incorrectly formatted in generated reports.
 - **Resolve Crash on Settings Page**: Addressed a crash occurring when navigating to the settings page.
+
 </Update>
 
 <Update label="2024-11-28" description="v0.2.8">
@@ -89,6 +693,7 @@ description: "New updates, fixes, and improvements"
 - **Fix Login Issue on Safari**: Resolved an issue where users were unable to log in using Safari browser.
 - **Correct Display Error in Dashboard**: Fixed a bug that caused incorrect data to display on the user dashboard.
 - **Resolve Crash on Mobile Devices**: Addressed a crash that occurred when accessing the application on mobile devices.
+
 </Update>
 
 <Update label="2024-11-15" description="v0.2.7">
@@ -106,6 +711,7 @@ description: "New updates, fixes, and improvements"
 
 - **Fix Login Redirection Issue**: Resolved an issue where users were not redirected correctly after logging in.
 - **Correct Display of Special Characters**: Fixed a bug that caused special characters to display incorrectly in user input fields.
+
 </Update>
 
 <Update label="2024-10-31" description="v0.2.6">
@@ -123,6 +729,7 @@ description: "New updates, fixes, and improvements"
 
 - **Fix Login Issue**: Resolved an issue where users were unable to log in under certain conditions.
 - **Correct Data Sync Error**: Fixed a bug causing data synchronization to fail intermittently between devices.
+
 </Update>
 
 <Update label="2024-10-17" description="v0.2.5">
@@ -142,5 +749,5 @@ description: "New updates, fixes, and improvements"
 - **Login Page Error**: Resolved an issue where users were unable to log in under certain conditions.
 - **Data Sync Issue**: Fixed a problem where data was not syncing correctly across devices.
 - **Notification Bug**: Addressed a bug where notifications were not being displayed to users.
-</Update>
 
+</Update>
