@@ -1,0 +1,116 @@
+---
+title: 'Notion Trigger Node'
+description: 'Trigger workflows from Notion buttons and database automations'
+---
+
+## Overview
+
+The **Notion Trigger Node** starts a workflow when Notion sends a webhook. Use it with Notion's **Send webhook** action in buttons or database automations so that clicking a button or running an automation in Notion triggers your Pathlit workflow.
+
+## Configuration Parameters
+
+This node has no required configuration. After you add it and deploy the workflow, Pathlit shows a **webhook URL**. Copy that URL and paste it into Notion.
+
+## Setup in Notion
+
+1. In Pathlit: Add the Notion Trigger node to your workflow, save, and **deploy**.
+2. On the deployment or workflow page, copy the **webhook URL** and the **webhook secret**.
+3. In Notion: In a button or database automation, select **Add action** → **Send webhook**.
+4. Paste the webhook URL from Pathlit into the **URL** field.
+5. **Add custom header**: Click **Add custom header**, set **Key** to `X-Webhook-Secret`, and set **Value** to the secret from Pathlit. This is required so Pathlit can verify the request.
+6. Optionally, for database automations, select which database properties to include in the request body.
+
+Notion sends a POST request with that URL and header when the action runs. Pathlit verifies the `X-Webhook-Secret` header and then runs your workflow.
+
+## Payload
+
+Notion sends a POST request with a user-defined JSON body (e.g. database properties you selected, or a fixed payload). The node outputs:
+
+- **event**: The request body as a JSON string. Use downstream nodes (e.g. JSON node, code) to parse and use the data.
+
+## Trigger Testing Inputs
+
+The workflow runs from the webhook when it is saved and **deployed**. To test in the editor without deploying, use **Run Workflow** and set:
+
+* **Test Payload JSON**:
+
+  Enter sample JSON to simulate the webhook body (e.g. `{"key": "value"}`). This value is used as the trigger output when running manually.
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  This node has no inputs from other nodes.
+
+- **Outputs**:
+
+  - **event**: The webhook request body as a JSON-formatted string.
+
+## Example: Notion Trigger → Notion Agent
+
+A common pattern is to trigger a workflow from a Notion button or automation and have the **Notion Agent** read or act on the page (or database row) that triggered it. Notion can send page IDs or other data in the webhook body; the agent receives the trigger output and can search or fetch pages accordingly.
+
+1. Add a **Notion Trigger** node and a **Notion Agent** node.
+2. Connect the trigger’s **event** output to the agent’s **input**.
+3. In the Notion Agent, set the prompt to reference the event, for example: *"Read the page content for the page referenced in the event:"* followed by the trigger output (e.g. ``{notion-trigger-0 event}`` in the prompt template).
+4. In Notion’s **Send webhook** action, include the page ID or URL in the request body (e.g. from a database property) so the agent has the right context.
+
+## Use Case Examples
+
+1. **Button-triggered workflows**:
+
+   Add a button in a Notion page that runs a Pathlit workflow (e.g. send a summary email, create a task in another tool).
+
+2. **Database automation**:
+
+   When a database row meets a condition, run a Notion automation that sends a webhook to Pathlit to process the row data.
+
+3. **Notion → downstream tools**:
+
+   Use the payload from Notion to update a CRM, send a Slack message, or run an agent in Pathlit.
+
+## Error Handling and Troubleshooting
+
+- **Workflow does not run when Notion sends the webhook**:
+
+  - Ensure the workflow is saved and **deployed**.
+  - Confirm you pasted the webhook URL from Pathlit into Notion.
+  - **Add the custom header**: In Notion Send webhook, add custom header **Key** `X-Webhook-Secret`, **Value** the secret shown in Pathlit (copy from the deployment page).
+
+- **Invalid or missing X-Webhook-Secret header (401)**:
+
+  Pathlit requires the `X-Webhook-Secret` header to match the secret for this workflow. In Notion, use **Add custom header** with Key `X-Webhook-Secret` and Value set to the secret from Pathlit.
+
+If you run into issues not covered here, contact the [support team](mailto:dev@pathlit.ai).
+
+## Relevant Nodes
+
+<CardGroup>
+  <Card
+    title="Notion Page Input Node"
+    href="/docs/nodes/notion-page-input"
+  >
+    Read content from Notion pages
+  </Card>
+
+  <Card
+    title="Notion Page Output Node"
+    href="/docs/nodes/notion-page-output"
+  >
+    Write or update Notion pages from your workflow
+  </Card>
+
+  <Card
+    title="Notion Agent Node"
+    href="/docs/nodes/notion-agent"
+  >
+    Use an agent to work with Notion
+  </Card>
+
+  <Card
+    title="Typeform Trigger Node"
+    href="/docs/nodes/typeform-trigger"
+  >
+    Trigger workflows from form submissions
+  </Card>
+</CardGroup>
