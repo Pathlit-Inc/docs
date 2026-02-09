@@ -1,0 +1,52 @@
+---
+title: "Merge Branches Node"
+description: "Rejoin flow after conditional branches"
+---
+
+## Overview
+
+The Merge Branches Node reconnects workflow flow after conditional or branched paths. When you use a [Router Node](/docs/nodes/router) or other node that sends execution down one of several branches, only one branch runs. A normal node with multiple incoming edges would wait for **all** predecessors to complete and would never run if the other branches never execute. The Merge Branches Node is ready when **any** incoming branch has a result and passes that result through so the rest of the workflow can continue.
+
+Use this node after conditional branches so that downstream nodes receive the output from whichever branch actually ran.
+
+## Configuration Parameters
+
+N/A
+
+## Expected Inputs and Outputs
+
+- **Inputs**:
+
+  - **From branch**: One or more edges from the end of each conditional branch. The node becomes ready when **any** of these edges has a result (not all).
+
+- **Outputs**:
+
+  - **Merged result**: The value from whichever branch completed. If multiple branches have results (e.g. in tests or edge cases), the first available value is passed through.
+
+## Use Case Examples
+
+1. **After a Router**:
+
+   Router → Branch A → Node A → **Merge Branches** → Output  
+   Router → Branch B → Node B ↗  
+
+   Only one of Branch A or Branch B runs. Merge Branches runs as soon as that branch’s Node A or Node B completes and passes its result to Output.
+
+2. **Conditional workflows**:
+
+   Use Merge Branches wherever multiple branches feed into a single path and only one branch runs per execution (e.g. approval vs rejection, language-specific paths).
+
+## Error Handling and Troubleshooting
+
+If you encounter any issues with the Merge Branches Node that are not covered in this documentation, please reach out to our [support team](mailto:dev@pathlit.ai) for assistance.
+
+## Related Nodes
+
+<CardGroup>
+  <Card title="Router Node" href="/docs/nodes/router">
+    Route workflow execution to different branches
+  </Card>
+  <Card title="Output Node" href="/docs/nodes/output">
+    Finalize and output data from your workflow
+  </Card>
+</CardGroup>

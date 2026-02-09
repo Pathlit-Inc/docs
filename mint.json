@@ -74,6 +74,7 @@
         "docs/nodes/bitbucket-event-receive",
         "docs/nodes/bitbucket-pr-input",
         "docs/nodes/box-input",
+        "docs/nodes/branch-merge",
         "docs/nodes/browser-agent",
         "docs/nodes/code",
         "docs/nodes/codeact-agent",
